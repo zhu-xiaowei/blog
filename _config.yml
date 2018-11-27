@@ -5,10 +5,10 @@
 # Site
 title: zxwei's blog
 subtitle: 分享我的爱好
-description:
+description: 嗯，就是与众不同
 keywords:
 author: zxwei
-language: zh-cn
+language: zh-CN
 timezone:
 
 # URL
@@ -83,4 +83,3 @@ deploy:
     coding: https://git.dev.tencent.com/1649201921/blog.git
     github: https://github.com/love-ai/love-ai.github.io.git
   branch: master
-

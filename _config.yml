@@ -75,6 +75,14 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+leancloud_counter_security:
+  enable_sync: true
+  app_id: ikWC13RKxmC0aI95Xp02pQ91-gzGzoHsz
+  app_key: Wvq9KyLMuLDbhu2LAlCiLA6P
+  username: 1649201921@qq.com
+  password:
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -83,3 +91,5 @@ deploy:
     coding: https://git.dev.tencent.com/1649201921/blog.git
     github: https://github.com/love-ai/love-ai.github.io.git
   branch: master
+  # other deployer
+  -type: leancloud_counter_security_sync

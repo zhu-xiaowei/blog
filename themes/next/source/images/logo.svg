@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(12.000000, 0.000000)">
+            <g id="Group-2">
+                <g id="六边形-(1)" fill="#131313">
+                    <path d="M170.404161,45.343348 L94.8432842,1.71372813 C90.8993443,-0.571241548 86.034251,-0.571241548 82.0903111,1.71372813 L6.54896367,45.343348 C2.60393984,47.6283371 0.182241992,51.8272486 0.182241992,56.3776969 L0.182241992,143.617407 C0.182241992,148.167855 2.60393984,152.386297 6.54896367,154.651756 L82.1098408,198.281376 C86.0537807,200.566345 90.918874,200.566345 94.8628139,198.281376 L170.423691,154.651756 C174.368715,152.366767 176.790413,148.167855 176.790413,143.617407 L176.790413,56.3776969 C176.770883,51.8272486 174.349185,47.6283371 170.404161,45.343348 Z" id="Path"></path>
+                </g>
+                <text id="X" font-family="Arial-BoldMT, Arial" font-size="128" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="45.3125" y="145">X</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

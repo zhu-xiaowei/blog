@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: zxwei's blog
+title: carlwe's blog
 subtitle: 分享我的爱好
 description: 嗯，就是与众不同
 keywords:
-author: zxwei
+author: carlwe
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://zxwei.cc
+url: http://carlwe.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

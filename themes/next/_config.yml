@@ -696,12 +696,12 @@ firestore:
   bluebird: false #enable this if you want to include bluebird 3.5.1(core version) Promise polyfill
 
 # Show Views/Visitors of the website/page with busuanzi.
-# Get more information on http://ibruce.info/2015/04/04/busuanzi
+# Get more information on http://ibruce.info/2015/04/04/busuanzi enable true 只开启统计不显示 如想显示，将下面的false变为true即可
 busuanzi_count:
   enable: true
-  total_visitors: true
+  total_visitors: false
   total_visitors_icon: user
-  total_views: true
+  total_views: false
   total_views_icon: eye
   post_views: false
   post_views_icon: eye

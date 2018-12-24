@@ -55,6 +55,12 @@
 #}</div>
 {% endif %}
 
+<div class="BbeiAn-info">
+{{ __('京ICP备')}} -
+<a target="_blank"  href="http://www.miitbeian.gov.cn/">18063442号</a>
+</a>
+</div>
+
 {% if theme.footer.custom_text %}
   <div class="footer-custom">{#
   #}{{ theme.footer.custom_text }}{#

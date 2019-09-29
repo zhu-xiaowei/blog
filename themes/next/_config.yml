@@ -292,11 +292,11 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enabled: true
+    enabled: false
     # If true, show updated date label only if `updated date` different from 'created date' (post edited in another day than was created).
     # And if post will edited in same day as created, edited time will show in popup title under created time label.
     # If false show anyway, but if post edited in same day, show only edited time.
-    another_day: true
+    another_day: false
   categories: true
 
 # Post wordcount display settings
@@ -535,7 +535,7 @@ valine:
   verify: false # Verification code
   placeholder: 轻点回复即可留言～ # comment box placeholder
   avatar: mm # gravatar style
-  guest_info: nick,mail,link # custom comment header,this can't be chinese otherwhise db can't match 
+  guest_info: nick # custom comment header,this can't be chinese otherwhise db can't match 
   pageSize: 10 # pagination size
   visitor: true # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
   lang: zh-CN # use this can auto translate to chinese zh-CN can refere to language package item name
@@ -594,9 +594,9 @@ gitalk:
 #           Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,
 #           Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru
 needmoreshare2:
-  enable: true
+  enable: false
   postbottom:
-    enable: true
+    enable: false
     options:
       iconStyle: default
       boxForm: horizontal

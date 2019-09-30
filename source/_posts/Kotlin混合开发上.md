@@ -4,7 +4,7 @@ date: 2019-04-30 15:10:15
 tags: 技术
 ---
 
-![](https://img.carlwe.com/kotlin_history.jpg)
+![](https://img.carlwe.com/kotlin_history.jpg-h)
 
 <!--more-->
 

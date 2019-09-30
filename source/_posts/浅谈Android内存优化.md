@@ -4,7 +4,7 @@ date: 2019-01-11 16:39:04
 tags: 技术
 ---
 
-![](https://img.carlwe.com/android_memory_logo.png)
+![](https://img.carlwe.com/android_memory_logo.png-h)
 
 今天我们来聊一聊Android 内存优化，这篇文章本来很早就应该写了，但因为小游戏开发太吸引人了，所以这个就拖到了现在才开始，不过我觉得也不晚😁
 <!--more-->

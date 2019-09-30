@@ -5,7 +5,7 @@ tags: 技术
 mathjax: true
 ---
 
-![](https://img.carlwe.com/rsa_lock.jpg)
+![](https://img.carlwe.com/rsa_lock.jpg-h)
 
 <!--more-->
 

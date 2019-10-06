@@ -1050,9 +1050,8 @@ vendors:
   # valine comment
   # See: https://github.com/xCss/Valine
   # Example:
-  # valine: //cdn.jsdelivr.net/npm/valine@1.3.3/dist/Valine.min.js
-  # valine: //cdnjs.cloudflare.com/ajax/libs/valine/1.3.3/Valine.min.js
-  valine:
+  #valine: //cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js
+  valine: https://img.carlwe.com/Valine.min.js
 
   # Internal version: 1.4.0
   # See: https://github.com/gitalk/gitalk

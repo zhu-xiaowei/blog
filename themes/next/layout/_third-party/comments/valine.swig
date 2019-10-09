@@ -1,6 +1,6 @@
 {% if theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
-  <script src="https://img.carlwe.com/Valine.min.js"></script>
-  {% set valine_uri = 'https://img.carlwe.com/Valine.min.js' %}
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  {% set valine_uri = 'https://img.carlwe.com/modify.valine.min.js' %}
   {% if theme.vendors.valine %}
     {% set valine_uri = theme.vendors.valine %}
   {% endif %}

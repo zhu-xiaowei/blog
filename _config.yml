@@ -92,7 +92,7 @@ leancloud_counter_security:
 deploy:
   type: git
   repo: 
-    coding: https://git.dev.tencent.com/1649201921/blog.git
+    coding: https://e.coding.net/1649201921/blog.git
     github: https://github.com/love-ai/love-ai.github.io.git
   branch: master
   # other deployer

@@ -4,7 +4,7 @@ date: 2020-03-21 14:55:26
 tags: 技术
 ---
 
-![](http://img.carlwe.com/push_confilt_xiaomi.png)
+![](https://img.carlwe.com/push_confilt_xiaomi.png)
 
 <!--more-->
 
@@ -40,7 +40,7 @@ dependencies {
 
 以小米为例，我们看看极光引入的`cn.jiguang.sdk.plugin:xiaomi:3.3.9` arr包是如何工作的：
 
-![](http://img.carlwe.com/plugin_xiaomi_push_remark.png)
+![](https://img.carlwe.com/plugin_xiaomi_push_remark.png)
 
 可以看到极光提供的这个arr包中直接把小米官方提供的`MiPush_SDK_Client_3_6_18.jar`(处理小米厂商推送的SDK) 包了进来，同时提供了一个`PluginXiaomiPlatformsReceiver`类，让其继承自上述小米jar包中的`PushMessageReceiver`，打包后`PluginXiaomiPlatformsReceiver`会被添加到Manifest文件，当系统收到推送后，会将消息转发到继承了`PushMessageReceiver`的类，所以`PluginXiaomiPlatformsReceiver`就会收到消息，并将消息传递给极光自己的SDK进行处理，后面的流程就和App在前台的推送流程一样了。简单总结下这个Plugin类：
 
@@ -66,11 +66,11 @@ dependencies {
 
 这个`MiPushReceiver`我们查看源码会发现它主要是处理并转发小米厂商推送的各种事件，`MiPushReceiver`同样是继承自小米push sdk中的`PushMessageReceiver`，`MiPushReceiver`代码如下：
 
-![](http://img.carlwe.com/xiaomi_push_receiver.png)
+![](https://img.carlwe.com/xiaomi_push_receiver.png)
 
 到这里官方文档说已经可以开始测试推送消息，于是把手机进程杀掉，给手机发送一条消息，确实能够收到。但进程杀掉后原本接收正常的极光推送，现在却收不到了🤪，其他厂商机型有的能收到，但点击推送消息不能打开App，我们看下图来分析原因：
 
-![](http://img.carlwe.com/push_confilt_xiaomi.png)
+![](https://img.carlwe.com/push_confilt_xiaomi.png)
 
 >不管是极光的消息还是云信的消息，首先都会把消息推给小米的推送云服务，然后小米手机系统会和小米的推送云服务保持一个长链接，MiPush SDK收到后，首先会找到继承了`PushMessageReceiver` 并且注册到Manifest的Receiver，并把消息传给这个Receiver，因为极光和云信在Manifest中都注册了`PushMessageReceiver`，所以这个时候谁能收到就存在不确定性了。如果配置了`priority` 优先级，则优先级高的会收到。
 
@@ -148,11 +148,11 @@ public final class MiPushReceiver extends PushMessageReceiver {
 
 如果按照云信推荐的方法，处理之后就是这样的流程：
 
-![](http://img.carlwe.com/push_confilct_right.png)
+![](https://img.carlwe.com/push_confilct_right.png)
 
 好了到这里处理方式和原理都弄清楚了，我们现在也就只需要将极光处理推送的`PluginXiaomiPlatformsReceiver`改为继承`MiPushMessageReceiver`，然后按照上面的方法将其添加到Manifest中即可，看起来很简单，然后我们再来看看极光的`PluginXiaomiPlatformsReceiver`：
 
-![](http://img.carlwe.com/plugin_xiaomi_push.png)
+![](https://img.carlwe.com/plugin_xiaomi_push.png)
 
 呃... 那么问题来了，这个类是包在极光推送的arr中的，**怎么去修改打好的arr包中类的继承呢？**这个问题似乎不太好解决啊～
 
@@ -162,11 +162,11 @@ public final class MiPushReceiver extends PushMessageReceiver {
 
 首先想到的是这种处理同时监听厂商推送冲突的方案是云信提供的，那就先问问云信的技术有没有解决方案，云信给出的答复如下：
 
-![](http://img.carlwe.com/yunxin_wechat_remark.png)
+![](https://img.carlwe.com/wechat_yunxin.png)
 
 云信的意思是，他们只提供这种继承的兼容方案，如果是第三方封装了，他们也没太好的办法，然后推荐我们去找极光技术人员，商量把对应的类拆出来，首先想到的是如果极光能提供源码，我们直接修改下继承关系就好了，于是就赶紧找了极光的技术进行了沟通：
 
-![](http://img.carlwe.com/jiguang_wechat_remark.png)
+![](https://img.carlwe.com/wechat_jiguang.png)
 
 极光的技术表示他们只提供统一封装的版本，同时也没有考虑和其他第三方同时接入SDK导致的冲突问题，并且建议我们只集成一家的厂商通道... 
 
@@ -186,7 +186,7 @@ public final class MiPushReceiver extends PushMessageReceiver {
 
 其实我们现在只需要有一个类，内部实现逻辑和云信的 `PluginXiaomiPlatformsReceiver` 一样，能将收到的消息转发给云信SDK，并且该类能任意修改继承关系。好了不知道你想到没有，我们可以在自己的代码里写一个一模一样的类，内部的代码直接把`PluginXiaomiPlatformsReceiver`的拷贝过来，然后修改继承关系不就可以了！是的，我们还是来看下云信的`PluginXiaomiPlatformsReceiver`：
 
-![](http://img.carlwe.com/plugin_xiaomi_push.png)
+![](https://img.carlwe.com/plugin_xiaomi_push.png)
 
 看到虽然这个类混淆了，不过没关系，源码都在sdk中，在外部也可以调用，我们可以直接把代码拷贝到自己新建的类`PluginXiaomiPlatformsReceiverYx`中:
 
@@ -218,13 +218,13 @@ public class PluginXiaomiPlatformsReceiverYx extends MiPushMessageReceiver {
 
 可以看到这个类继承了云信提供的`MiPushMessageReceiver`，其每个回调实现和极光之前的一模一样，这样能把收到的消息传给极光处理，然后按照云信的文档将该类添加到Manifest中：
 
-![](http://img.carlwe.com/push_manifest.png)
+![](https://img.carlwe.com/push_manifest.png)
 
 这里需要注意，为了只让云信去监听厂商的推送，还需要将极光SDK在编译时自动添加到Manifest中的`PluginXiaomiPlatformsReceiver` 手动remove掉，关于Manifest的merge规则我们可以查看Android文档[合并多个清单文件](https://developer.android.google.cn/studio/build/manifest-merge.html)。
 
 这样修改之后，相当于我们就把极光的`PluginXiaomiPlatformsReceiver` **“架空”**了，云信和极光的消息推送就统一由云信来接收，不是云信的消息会交给`PluginXiaomiPlatformsReceiverYx`转发到极光再去处理，流程和上面提到的就一样了：
 
-![](http://img.carlwe.com/push_confilct_right.png)
+![](https://img.carlwe.com/push_confilct_right.png)
 
 这里只是以小米厂商推送的冲突为例，其他像华为、魅族、OPPO、VIVO等都可以以同样的方式处理。通过上述方案，可以顺利的完成云信和极光的厂商推送兼容。当升级极光SDK版本时，如果极光各厂商以"Plugin"开头的Receiver内部实现有变化，则直接拷贝对应的内容到自定义的Receiver中，这点需要注意。
 

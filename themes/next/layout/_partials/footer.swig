@@ -56,8 +56,8 @@
 {% endif %}
 
 <div class="BbeiAn-info">
-{{ __('京ICP备')}} -
-<a target="_blank"  href="http://www.beian.miit.gov.cn">18063442号</a>
+{{ __('京ICP备')}} 
+<a target="_blank"  href="http://beian.miit.gov.cn">18063442号</a>
 </a>
 </div>
 

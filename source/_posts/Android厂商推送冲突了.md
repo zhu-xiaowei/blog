@@ -6,7 +6,7 @@ tags: 技术
 
 ![](https://img.carlwe.com/push_confilt_xiaomi.png)
 
-> 本文已授权在 [郭霖公众号](https://mp.weixin.qq.com/s/i4b3flzx-OFmIowOfUyhQA) 发布
+> 本文已授权在 **郭霖公众号** 发布
 
 <!--more-->
 

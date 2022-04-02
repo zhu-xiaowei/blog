@@ -93,7 +93,6 @@ deploy:
   type: git
   repo: 
     coding: https://e.coding.net/1649201921/blog.git
-    github: https://github.com/love-ai/love-ai.github.io.git
   branch: master
   # other deployer
   -type: leancloud_counter_security_sync

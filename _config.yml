@@ -105,6 +105,12 @@ plugins:
   hexo-generator-feed
 feed:
   enable: true
-  type: atom
-  path: atom.xml
+  type: rss2
+  path: rss2.xml
   limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  autodiscovery: true
+  template:

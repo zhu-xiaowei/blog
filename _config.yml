@@ -77,6 +77,7 @@ aplayer:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
+
 theme: next
 
 leancloud_counter_security:
@@ -97,3 +98,13 @@ deploy:
   branch: master
   # other deployer
   -type: leancloud_counter_security_sync
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+plugins:
+  hexo-generator-feed
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20

@@ -98,19 +98,3 @@ deploy:
   branch: master
   # other deployer
   -type: leancloud_counter_security_sync
-
-# Extensions
-## Plugins: https://hexo.io/plugins/
-plugins:
-  hexo-generator-feed
-feed:
-  enable: true
-  type: rss2
-  path: rss2.xml
-  limit: 20
-  hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' '
-  autodiscovery: true
-  template:

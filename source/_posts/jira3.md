@@ -34,7 +34,7 @@ tags: Jira
 
 JMWE是一个功能强大的一体化的Jira自动化应用。其可快速自定义和扩展你的自动化流程。
 
-<div style="position: relative; width: 100%; height: 100%; padding-bottom: 65%;">
+<div style="position: relative; width: 100%; height: 100%; padding-bottom: 70%;">
 <iframe src="//img.carlwe.com/xs/Jira%20Misc%20Workflow%20Extensions%20(JMWE)%20in%20under%202%20minutes.mp4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div>
 
 通过上面的视频我们可以很直观的了解JMWE的功能，下面分别来说下：

@@ -1,5 +1,5 @@
 ---
-title: 研发管理(一)从现状到Jira
+title: 研发管理（一）从现状到Jira
 date: 2022-03-07 16:57:00
 tags: Jira
 

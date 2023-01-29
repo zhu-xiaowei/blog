@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前面两篇文章我们详细介绍了团队现有的研发模式，引出我们为何选择jira，同时对jira基础内容做了详细的讲解。并且通过jira基本实现了之前在墙上的看版模式，使得问题修改实时在线化，问题状态变更能够实时邮件通知。现在就让我们来梳理下使用一段时间遇到的问题，以及我们是如何解决这些问题的。">
+<meta name="keywords" content="Jira">
+<meta property="og:type" content="article">
+<meta property="og:title" content="研发管理（三）从实际出发优化jira使用">
+<meta property="og:url" content="http://carlwe.com/2022/05/09/jira3/index.html">
+<meta property="og:site_name" content="CarlWe">
+<meta property="og:description" content="前面两篇文章我们详细介绍了团队现有的研发模式，引出我们为何选择jira，同时对jira基础内容做了详细的讲解。并且通过jira基本实现了之前在墙上的看版模式，使得问题修改实时在线化，问题状态变更能够实时邮件通知。现在就让我们来梳理下使用一段时间遇到的问题，以及我们是如何解决这些问题的。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_slogan.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_post_function.webp">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_automation_beyond_workflows.webp">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_scripting.webp">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_filed_required.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_sprint_filed_required.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_assignee_required.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_work_flow_validator.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_work_flow_translate_validator_add.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_fields_required_validator.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_field_required_validator_assignee.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_assignee_validator_submit.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_field_required_validator_sprint.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_how_to_write_expression.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_test_groovy_script_selet_issue.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_test_groovy_script_test_result.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_sprint_required_show.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_post_function_copy_field.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_copy_field_from_parent_issue_select.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_copy_field_value_from_parent_issue_edit.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_create_subtask_without_redundant_filed.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jql_config_quick_search.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_quick_search_for_productor.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_quick_search_processing.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_dev_kanban_create_by_assignee.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_dev_kanban_show_bug.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_dev_kanban_show.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_worklog_create.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_workflow_edit_screen.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_create_worklog_screen.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_workflow_config_woklog_screen.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_start_intergrate_worklog.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_quick_search_processing.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_work_flow_jmwe_edit_start_dev.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_select_transition_parent_issue.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_transition_parent_issue_edit_parent.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_pick_a_transition_for_parent.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_transition_parent_issue_condition.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_transition_parent_issue_to_dev_down.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_condition_dev_down.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_debug_return.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_trans_parent_issue_show1.png">
+<meta property="og:image" content="https://img.carlwe.com/xs/jira_jmwe_trans_parent_issue_show2.png">
+<meta property="og:updated_time" content="2022-07-06T04:03:04.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="研发管理（三）从实际出发优化jira使用">
+<meta name="twitter:description" content="前面两篇文章我们详细介绍了团队现有的研发模式，引出我们为何选择jira，同时对jira基础内容做了详细的讲解。并且通过jira基本实现了之前在墙上的看版模式，使得问题修改实时在线化，问题状态变更能够实时邮件通知。现在就让我们来梳理下使用一段时间遇到的问题，以及我们是如何解决这些问题的。">
+<meta name="twitter:image" content="https://img.carlwe.com/xs/jira_jmwe_slogan.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://carlwe.com/2022/05/09/jira3/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>研发管理（三）从实际出发优化jira使用 | CarlWe</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CarlWe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2022/05/09/jira3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CarlWe">
+      <meta itemprop="description" content="Think Different">
+      <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CarlWe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">研发管理（三）从实际出发优化jira使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-05-09 14:55:38" itemprop="dateCreated datePublished" datetime="2022-05-09T14:55:38+08:00">2022-05-09</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/05/09/jira3/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2022/05/09/jira3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/05/09/jira3/" class="leancloud_visitors" data-flag-title="研发管理（三）从实际出发优化jira使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://img.carlwe.com/xs/jira_jmwe_slogan.png" alt=""></p>
+<p>前面两篇文章我们详细介绍了团队现有的研发模式，引出我们为何选择jira，同时对jira基础内容做了详细的讲解。并且通过jira基本实现了之前在墙上的看版模式，使得问题修改实时在线化，问题状态变更能够实时邮件通知。现在就让我们来梳理下使用一段时间遇到的问题，以及我们是如何解决这些问题的。</p>
+<a id="more"></a>
+<ul>
+<li><a href="/2022/03/07/jira1">研发管理（一）从现状到Jira</a></li>
+<li><a href="/2022/05/06/jira2">研发管理（二）Jira实现基本功能</a></li>
+<li><a href="/2022/05/09/jira3"><strong>研发管理（三）从实际出发优化Jira使用</strong></a></li>
+<li><a href="/2022/06/29/jira4">研发管理（四）可用报表及项目管理</a></li>
+</ul>
+<p>首先介绍下在实施过程中我们所遇到的问题如下：</p>
+<blockquote>
+<p>1.<strong><a href="#p1">字段必填</a></strong>：使不能设置成必填字段的字段变为必填字段，避免字段缺失。<br>2.<strong><a href="#p2">子任务字段复用</a></strong>：让子任务创建时直接复用主任务的字段，减少重复填写。<br>3.<strong><a href="#p3">快捷筛选项</a></strong>：让产品同学能够快速筛选到自己的提出的需求并查看进展。<br>4.<strong><a href="#p4">早会看版</a></strong>：如何让早会看版更简洁，并体现所开发的内容。<br>5.<strong><a href="#p5">工作日志弹框</a></strong>：让开发同学在拖动卡片状态时自动弹出工作日志登记弹框。<br>6.<strong><a href="#p6">故事状态同步</a></strong>：当子任务拖动状态变更时，自动同步主任务状态。</p>
+</blockquote>
+<p>由于本篇文章较长，大家也可以根据自己的兴趣，点击上面每个问题的直达链接快速查看。</p>
+<h2 id="JMWE介绍"><a href="#JMWE介绍" class="headerlink" title="JMWE介绍"></a>JMWE介绍</h2><p>在解决上述问题前，我们有必要介绍下jira中一个非常重要的应用。那就是<a href="https://marketplace.atlassian.com/apps/292/jira-misc-workflow-extensions-jmwe?tab=overview&amp;hosting=cloud" target="_blank" rel="noopener">JMWE</a>(Jira Misc Workflow Extensions)，官方的介绍如下：</p>
+<blockquote>
+<p>Powerful, all-in-one  Jira automation app to quickly customize and expand your automated processes.</p>
+</blockquote>
+<p>JMWE是一个功能强大的一体化的Jira自动化应用。其可快速自定义和扩展你的自动化流程。</p>
+<div style="position: relative; width: 100%; height: 100%; padding-bottom: 75%;">
+<iframe src="//img.carlwe.com/xs/Jira%20Misc%20Workflow%20Extensions%20(JMWE)%20in%20under%202%20minutes.mp4" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div>
+
+<p>通过上面的视频我们可以很直观的了解JMWE的功能，下面分别来说下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_post_function.webp" alt=""></p>
+<blockquote>
+<p><strong>提供了预定义好的多种后处理功能</strong>，可以支持在卡片拖动状态改变时设置对应的后处理功能，例如清除、修改卡片的某些属性，创建、删除问题，修改角色等，这些可高度定制化的工具可以非常好的帮助我们高度自定义和丰富自己的工作流程。</p>
+</blockquote>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_automation_beyond_workflows.webp" alt=""></p>
+<blockquote>
+<p><strong>可通过简化的脚本增强自动化</strong>，借助即时 Groovy 语法检查、内联帮助、友好的字段、方法、属性提示和我们的脚本测试器，即使是非编码人员也可以使用 Nunjucks/Jira 表达式轻松扩展工作流程，我们可以构建自己的条件、验证器和发布函数。尤其是脚本测试器，可以直接选择对应的任务进行脚本测试。这个功能对于验证groovy语句写的是否正确来说是非常的好评了，后面会介绍实际例子来说明。</p>
+</blockquote>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_scripting.webp" alt=""></p>
+<blockquote>
+<p><strong>超越工作流程的自动化</strong>，可在工作流程和节点转换之外来进行自动化任务的处理。例如，可通过字段/问题更改触发的基于事件的自动化。</p>
+<p>基于 JQL 的<a href="https://www.innovalog.com/jira-blog/videos-jmwe-jira-cloud/251-scheduled-actions" target="_blank" rel="noopener">计划操作</a>：同时对于常规工作流后期功能在过渡上运行。但是，使用计划操作，我们可以计划一个或多个 JMWE 后处理功能来针对 JQL 搜索返回的问题运行，例如：我们可以自动转换任何上报但超过 24 小时仍未解决的问题，这个对于管理测试bug修改时效非常有帮助。</p>
+</blockquote>
+<p>总之：JMWE可以使用后处理函数，条件和验证器，在工作流内部或者外部放大jira的自动化，通过编写简化的脚本，可使自动化功能更强大。同时JMWE拥有大量顶级公司在使用，例如：微软、沃尔玛、P&amp;G、Pfizer等。</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p><a id="p1"></a></p>
+<h3 id="1-字段必填"><a href="#1-字段必填" class="headerlink" title="1.字段必填"></a>1.字段必填</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>在使用一段时间后，首先出现的问题就是在创建故事及子任务卡片时，很多重要的字段大家忘记填写了，例如经办人、Sprint名称。这就会导致大家创建好的子任务或者故事在对应的冲刺中看不到，或者筛选自己的任务的时候找不到自己创建的卡片。</p>
+<p><img src="https://img.carlwe.com/xs/jira_filed_required.png" alt=""></p>
+<p>但是这两个字段在系统设置中又不能设置成必填，如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_sprint_filed_required.png" alt=""></p>
+<p><img src="https://img.carlwe.com/xs/jira_assignee_required.png" alt=""></p>
+<p>这两个字段系统默认没有开放设置成必填，那该如何处理呢？</p>
+<h4 id="处理思路"><a href="#处理思路" class="headerlink" title="处理思路"></a>处理思路</h4><p>既然不能通过系统字段设置直接设置成必填，让其在创建面板字段左侧展示红*，那么可以想办法在点击新建的时候判断如果没有填写Sprint和经办人则不允许其提交，也可以实现相同的功能，这个就需要用到和验证器相关的JMWE了。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>首先我们需要明确流程，这个是在创建问题的环节我们需要进行做验证，那么就先在工作流节点找到这个转化，选中后点击后处理功能。</p>
+<p><img src="https://img.carlwe.com/xs/jira_work_flow_validator.png" alt=""></p>
+<p>点击后处理功能打开工作流转换的编辑页面，我们可以看到左侧该转换对应的验证器，然后添加一个验证器。</p>
+<p><img src="https://img.carlwe.com/xs/jira_work_flow_translate_validator_add.png" alt=""></p>
+<p>在添加验证器到转换页面我们选择Fileds Required Validator(JMWE app)</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_fields_required_validator.png" alt=""></p>
+<p>Fileds Required Validator就是针对字段必填的验证器，可以选择设置任务的所有属性，然后设置是否必填，进入后如下，</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_field_required_validator_assignee.png" alt=""></p>
+<p>我们将字段选择位经办人，当出现错误没有填写时提示：“请填写经办人”。Conditional validation 条件验证我们先不设置，也就是对所有类型的任务，只要在创建这个节点经办人没有填写，这个验证器就会生效，提示用户需填写经办人，并保留在当前页面不允许提交。设置完成后更新，然后在工作流转换的编辑页面进行发布后才能生效。我们看看效果：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_assignee_validator_submit.png" alt=""></p>
+<p>当我们点新建时会先校验系统的必填字段，再走验证器验证我们自定义的必填字段条件是否通过，不通过时会在上述位置提示我们设置好的提示语。</p>
+<p>同样的对于Sprint字段的必填我们需要约定并不是所有的任务新建都校验，当只有是故事卡片新建时我们才校验Sprint字段是否必填，这里就正好用到了Conditional validation 条件验证，如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_field_required_validator_sprint.png" alt=""></p>
+<p>选择Conditinal validation后会出现条件语句的编写。我们需要判断当前问题的问题类型字段的值为故事条件才能通过，对应的groovy语法如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">issue.get(<span class="string">"issuetype"</span>)?.name == "故事"</span><br></pre></td></tr></table></figure>
+<p>对于不熟悉groovy语法以及jira字段的使用者来说，如何让大家低成本的写出上述的表达式呢？JMWE给出了Help功能，我们可以去查看全局字段、问题的属性、问题的方法、接口等功能，例如这里我们要查找问题属性，则点击issueFields：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_how_to_write_expression.png" alt=""></p>
+<p>首先我们需要选择一个问题的字段，这里在下拉框中我们选择问题类型，然后选择按照字段的id来查找，就会出现下方的方法告诉你怎么写语句找到对应的属性，以及属性的的子字段，同时还会告诉你如何测试找到的属性的值是否是正确的，我们就能够很方便的模仿其给出的示例<code>issue.get(&quot;issuetype&quot;)?.name == &quot;bug&quot;</code>来改造，把bug类型换成“故事”就OK了，那如何来确保我们修改后的语句是否正确呢，一个是保存后去实际体验下，当然这个对于线上运行的jira服务来说很不友好，很可能会影响到别人的工作，在编写语句的上方我们可以看到JMWE提供了Test Groovy Script功能。我们点击后如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_test_groovy_script_selet_issue.png" alt=""></p>
+<p>让我们选择一个问题来测试，那我们就随便选择一个故事，看看表达式是否能通过，点击Test后如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_test_groovy_script_test_result.png" alt=""></p>
+<p>很清晰的告诉我们测试通过，返回的结果类型是boolean类型，返回的值是true。同时如果发现验证结果错误也会有相应提示，我们只需根据错误提示修改上述表达式然后点击Test again就可以继续以当前选中的故事来对新的表达式进行测试了，整体体验还是非常友好的。这样我们验证通过后就可以更新并部署了，效果如下。</p>
+<p><img src="https://img.carlwe.com/xs/jira_sprint_required_show.png" alt=""></p>
+<p><a id="p2"></a></p>
+<h3 id="2-子任务字段复用"><a href="#2-子任务字段复用" class="headerlink" title="2.子任务字段复用"></a>2.子任务字段复用</h3><h4 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h4><p>在jira字段必填处理好后，大家发现每创建一个子任务的时候都还得再重复填写下修复的版本、模块这两个字段，使得创建一个子任务不是那么方便。</p>
+<h4 id="处理思路-1"><a href="#处理思路-1" class="headerlink" title="处理思路"></a>处理思路</h4><p>既然创建故事的时候已经填写了修复的版本，模块，而且子任务是挂在主任务下的，所以他的修复的版本和模块也一定和主任务的相同，那么我们就可以想办法在创建子任务提交时直接找到其主任务的修复的版本和模块这两个字段，然后把值取出来赋值给子任务就可以了。</p>
+<h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h4><p>同样的这里也需要使用到JMWE，在任务创建后执行一个后处理功能，如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_post_function_copy_field.png" alt=""></p>
+<p>进入添加后处理功能后选择copyfield value from parent issue(JMWE app)，即从父问题拷贝一个字段的值到子问题上。</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_copy_field_from_parent_issue_select.png" alt=""></p>
+<p>选择进入后如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_copy_field_value_from_parent_issue_edit.png" alt=""></p>
+<p>从上图我们看到这个设置非常方便，我们仅需要选择从父问题拷贝哪个字段，以及把这个字段的值拷贝到当前问题的哪个字段上，然后有一些可选项和条件验证器，这里我们选择仅当子问题没有设置值的时候拷贝，勾选上当出错时给出提示就可以了。就这样点两下就可以完成子任务在创建后自动复用父任务的属性了，而JMWE后台程序则帮我们把里面的实现逻辑都封装好了，其易用性和扩展性还是挺好的。</p>
+<p>到这里字段是复用了，但是在创建子任务时界面上还是会出现这两个字段，虽然不用填，这里我们可以通过上一篇文章中介绍的，在界面配置中，只针对我们这个项目的子任务在创建时隐藏这两个字段就好了，这样创建子任务的界面就简洁很多了：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_create_subtask_without_redundant_filed.png" alt=""></p>
+<p>我们填写好问题标题，点下经办人、填写下预估时间就可以提交一个子任务了。虽然只是节省填写了两个字段，但是在项目人数较多，频繁创建任务时还是明显能感觉到好用很多，而且越多的这种小问题被解决，大家就会逐步觉得系统慢慢变好用了，也更愿意去使用并反馈问题从而形成正向循环，并逐渐提升开发效率。</p>
+<p><a id="p3"></a></p>
+<h3 id="3-快捷筛选项"><a href="#3-快捷筛选项" class="headerlink" title="3.快捷筛选项"></a>3.快捷筛选项</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>到现在我们创建任务基本上没有太大的问题，但是在一个迭代过程中我们会有多个产品的需求，每个产品希望能够快捷的看到自己提出需求当前的开发进度。同时对于整个版本迭代来说，我们比较关心有哪些还在进行中的需求。就需要我们在冲刺的看版中能够快捷的进行筛选。</p>
+<h4 id="处理思路-2"><a href="#处理思路-2" class="headerlink" title="处理思路"></a>处理思路</h4><p>针对不同产品过滤其负责的需求卡片这个需求，我们可以在冲刺看版中进行JQL筛选，但怎么去筛选对应产品的需求呢，这里我们预先规定所有故事卡片的报告人都指向产品同学，这样我们只需要筛选出报告人是对应产品的故事，且把这些故事下面的子任务都筛选出来就可以了。</p>
+<p>针对查看进行中的项目和上面类似，我们需要筛选出故事状态除完成之外的所有故事并筛选出其子任务也就可以实现了。</p>
+<h4 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h4><p><img src="https://img.carlwe.com/xs/jira_jql_config_quick_search.png" alt=""></p>
+<p>我们进入Sprint的面板配置页面，选择左侧的快速搜索，我们可以在这里新建JQL筛选语句，对于产品卡片的筛选语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">issueFunction in subtasksOf("project =DEV AND component =Sp AND reporter = zhangsan")</span><br></pre></td></tr></table></figure>
+<p>进行中的筛选语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">issueFunction in subtasksOf("project =DEV AND component =Sp AND status in (测试中, 开发中, 开发完成, 待办, 集成中) ")</span><br></pre></td></tr></table></figure>
+<p>更多高级筛选的编写可以参考<a href="https://www.atlassian.com/blog/jira-software/jql-the-most-flexible-way-to-search-jira-14" target="_blank" rel="noopener">这里</a>，配置好名称后并保存，返回到Spring看版中我们就可以看到刚刚配置的快速筛选项，选中某个产品的需求如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_quick_search_for_productor.png" alt=""></p>
+<p>筛选当前冲刺进行中所有开发的任务则如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_quick_search_processing.png" alt=""></p>
+<p>可以看到当前Sprint只剩下一个测试中和一个开发完成的需求，同时系统提供了默认的仅我的问题和最新的更新筛选项，到这里我们就拥有了一个比较好用的筛选器。</p>
+<p><a id="p4"></a></p>
+<h3 id="4-早会看版"><a href="#4-早会看版" class="headerlink" title="4.早会看版"></a>4.早会看版</h3><h4 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h4><p>上述问题解决后我们需要让jira支持好我们每天早上的站立会，那么就需要另外一个看版，以人的维度把大家手上的子任务都清晰的展示出来，同时把大家待解决的问题也都展现出来。</p>
+<h4 id="处理思路-3"><a href="#处理思路-3" class="headerlink" title="处理思路"></a>处理思路</h4><p>针对第一个按照人的维度，这个可以新创建一个看版，看版的展示维度按照经办人来划分就好，第二个就是只展示子任务，那这个就得把故事这种类型给过滤了，同时需要把bug也给大家展示出来，那么就得把bug流程的状态对应到我们现在的开发中的状态。这样就能比较全面的体现出大家开发的进展以及当前所遇到的问题。</p>
+<h4 id="解决方法-3"><a href="#解决方法-3" class="headerlink" title="解决方法"></a>解决方法</h4><h5 id="1-创建看版"><a href="#1-创建看版" class="headerlink" title="1.创建看版"></a>1.创建看版</h5><p>看版基于筛选器，卡片的内容是所有研发的内容</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project = DEV ORDER BY 等级 ASC</span><br></pre></td></tr></table></figure>
+<p>配置项目基础泳道基于经办人</p>
+<p><img src="https://img.carlwe.com/xs/jira_dev_kanban_create_by_assignee.png" alt=""></p>
+<h5 id="2-故事类型过滤"><a href="#2-故事类型过滤" class="headerlink" title="2.故事类型过滤"></a>2.故事类型过滤</h5><p>在快速筛选项中配置</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project = DEV AND component = App AND (issuetype = 子任务 OR issuetype =故障) ORDER BY 等级 ASC</span><br></pre></td></tr></table></figure>
+<p>对于App的项目我们可以配置只展示子任务和故障这两种类型，这样就不会有很多故事的卡片多余的展示在基于经办人的看版中。</p>
+<h5 id="3-在开发中的任务展示还未解决的bug"><a href="#3-在开发中的任务展示还未解决的bug" class="headerlink" title="3.在开发中的任务展示还未解决的bug"></a>3.在开发中的任务展示还未解决的bug</h5><p>虽然上述把bug类型筛选出来了，但是需要把未解决的bug展示在开发中，我们还需要对jira的列进行单独的配置，如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_dev_kanban_show_bug.png" alt=""></p>
+<p>我们把bug状态是开放和重新打开的认为是研发同学正在开发中的任务，已经解决的bug放到测试中，这个时候测试需要关注已经关闭的bug，在我们的看版中就不进行关注了。</p>
+<p>上述功能配置完成后，可以看下我们最终的站例会看版：</p>
+<p><img src="https://img.carlwe.com/xs/jira_dev_kanban_show.png" alt=""></p>
+<p>图中可以看出，看板首先是基于人的维度来展示的，所有的子任务标题上都带上了其父任务的标题，没有出现父任务卡片，同时当前正在解决的bug也展示出来了，那么每天开早会的时候就能清楚的知道每个人当前待办的问题，正在开发中的问题以及开发完成的有哪些需求，大家就可以很好的根据这个看板来进行每个人自己工作的汇报。</p>
+<p><a id="p5"></a></p>
+<h3 id="5-工作日志弹框"><a href="#5-工作日志弹框" class="headerlink" title="5.工作日志弹框"></a>5.工作日志弹框</h3><h4 id="问题描述-4"><a href="#问题描述-4" class="headerlink" title="问题描述"></a>问题描述</h4><p>上面我们已经解决了基本的任务创建、冲刺的快捷查看，每天早上的看板清晰展示，同时大家在创建子任务的时候也都会填写预估的开发时间，但是对于正在开发中的需求，我们想要知道其开发的进展如何，这个就需要用到时间跟踪了。通过让大家自己在子任务卡片下登记工作日志，填写每天在一个问题上消耗的时间，我们就能看到这个任务的进展了，如下：</p>
+<p><img src="https://img.carlwe.com/xs/jira_worklog_create.png" alt=""></p>
+<p>例如预估2天，第一天工作完成后，点击登记工作日志，录入耗费时间1d，则jira会自动计算剩余1d，当前任务的process是50%。但是一段时间后早会经常发现大家忘记录入工作日志，有时候只有某些同学能够养成这个比较好的习惯，那如何能够确保大家都录入工作日志，让整个项目的进度更清晰呢？</p>
+<h4 id="处理思路-4"><a href="#处理思路-4" class="headerlink" title="处理思路"></a>处理思路</h4><p>这里的想法是，大家都会拖动卡片，当卡片拖动到开发完成或者集成完成时，大家肯定是消耗了时间的，那就可以相办法在大家拖动卡片状态的时候如果能够自动弹出这个工作日志记录弹框就好啦。</p>
+<h4 id="解决方法-4"><a href="#解决方法-4" class="headerlink" title="解决方法"></a>解决方法</h4><p>在解决这个问题的时候最开始一直在尝试使用JMWE官方提供的方法，结果找了一圈没有发现针对节点转换时弹出这样一个弹框的，最后还是在工作流转换中找到了思路：</p>
+<p><img src="https://img.carlwe.com/xs/jira_workflow_edit_screen.png" alt=""></p>
+<p>当我们选中一个转换时可以点击右侧的编辑按钮，在弹框中我们我们发现了一个界面的字段。很容易想象到，这个功能应该是在进行工作流转换时可以配置一个页面，那就好说了，我们可以尝试在上一篇文章中所介绍的页面里自定义一个页面，把工作日志登记这个字段加到页面中，再把这个页面在进入调试和开发完成的转换上绑定不就可以了。</p>
+<p><img src="https://img.carlwe.com/xs/jira_create_worklog_screen.png" alt=""></p>
+<p>这里很快我们就创建好啦一个工作日志登记页面，然后会到刚刚的工作流编辑页面进行绑定：</p>
+<p><img src="https://img.carlwe.com/xs/jira_workflow_config_woklog_screen.png" alt=""></p>
+<p>绑定完成之后，我们再回到我们的Spring面板中，在任务开发完成时拖动到集成中则会自动弹出工作日志登记页面：</p>
+<p><img src="https://img.carlwe.com/xs/jira_start_intergrate_worklog.png" alt=""></p>
+<p>这里需要我们录入耗费时间才可以开始集成，到这里这个问题就很好的解决了，项目中任务的进度也变得更清晰了。</p>
+<p><a id="p6"></a></p>
+<h3 id="6-故事状态同步"><a href="#6-故事状态同步" class="headerlink" title="6.故事状态同步"></a>6.故事状态同步</h3><h4 id="问题描述-5"><a href="#问题描述-5" class="headerlink" title="问题描述"></a>问题描述</h4><p>前面我们已经解决了工作日志登记，Sprint快速筛选当前未完成的问题，卡片也可以在各个泳道之前进行拖动，但是jira存在的一个问题是子任务大家都记得拖动卡片，但是对于主任务，大家创建的故事，其状态也需要手动的拖动才行，这个总感觉不是很智能，如果主任务能够自动根据其子任务下的卡片的状态变更来综合判断主任务的卡片状态进行自动更改，那我们就可以不用关心主任务卡片的状态了，在任务列表看的也都是实时最新的状态了，那如何实现呢？</p>
+<p><img src="https://img.carlwe.com/xs/jira_quick_search_processing.png" alt=""></p>
+<h4 id="处理思路-5"><a href="#处理思路-5" class="headerlink" title="处理思路"></a>处理思路</h4><p>首先如果对于每一个子任务的状态更新都可能影响到主任务的状态，所以我们可以考虑在子任务状态更新时来判断是否更新主任务，那我们可以先定义好主任务更新的条件：</p>
+<p><strong>待办-&gt;开发中</strong></p>
+<blockquote>
+<p>故事当前是待办状态，子任务只要有一个从待办状态变为开发中状态的时候我们就认为这个故事是开发中了，那么此时将其状态变为开发中。</p>
+</blockquote>
+<p><strong>开发中-&gt;集成中</strong></p>
+<blockquote>
+<p>故事当前是开发中，子任务只要有一个从开发中变为集成中状态，那么我们就认为故事的状态变成了集成中，则自动将故事的状态变成集成中，类似待办-&gt;开发中。</p>
+</blockquote>
+<p><strong>集成中-&gt;开发完成</strong></p>
+<blockquote>
+<p>故事开发完成的状态，我们的理解是只有所有的开发子任务都调试集成完成，并拖动到开发完成状态了，我们才认为故事的状态变为开发完成，所以应当是最后一个子任务从集成中拖动到开发完成时触发故事的状态变为开发完成。</p>
+</blockquote>
+<p><strong>开发完成-&gt;测试中</strong></p>
+<blockquote>
+<p>故事当前状态是开发完成，其下只要有一个子任务的状态从开发完成变成测试中状态时自动将故事的状态变为测试中。</p>
+</blockquote>
+<p><strong>测试中-&gt;完成</strong></p>
+<blockquote>
+<p>一般故事的状态变成完成，需要所有子任务的状态都变为完成，主任务的状态才认为是完成状态，所以这个转换发生在最后一个子任务变成完成时，好在jira v8.0之后的版本中自动支持了该功能，在最后一个子卡片拖动到完成时，系统会自动弹框提示是否将主任务的状态变为完成。</p>
+</blockquote>
+<p>通过上面的分析，可以看到，其实所有的状态变更都是从前往后的，这也符合软件开发的流程，所以我们可以一步一步的将故事的状态往后转换。其实总结下来就是两种，<strong>一种是只要有一个子任务的状态变为新状态则主任务就变成新的状态，另一种是所有子任务的状态都达到对应的状态时主任务的状态才更新</strong>。那么我们就可以在子任务状态发生变更时进行针对性的判断了。</p>
+<h4 id="解决方法-5"><a href="#解决方法-5" class="headerlink" title="解决方法"></a>解决方法</h4><p>首先来说第一种较为简单的，我们这里以故事的状态从<strong>待办变为开发中</strong>为例，先找到子任务的工作流进入开发进行编辑，然后切换到后处理功能，进行后处理功能添加：</p>
+<p><img src="https://img.carlwe.com/xs/jira_work_flow_jmwe_edit_start_dev.png" alt=""></p>
+<p>进入后这里直接选择Transition parent issue(JMWE app)</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_select_transition_parent_issue.png" alt=""></p>
+<p>进入到详情页后我们可以看到：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_transition_parent_issue_edit_parent.png" alt=""></p>
+<p>首先我们选择一个对父任务的转换。</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_pick_a_transition_for_parent.png" alt=""></p>
+<p>进入到转换页面后，先选择我们对应的工作流，然后选择这个工作流下面我们自己命名好的一个流程转换，这里我们选择从 <strong>待办-&gt;开发中</strong> 这个转换对应的就是进入开发，选择后保存，就可以在列表看到了。同时我们需要进行一个条件验证，也就是只有父任务的状态是待办时才进行这个转换，如果父任务已经是开发中了或者是其他的状态也就没必要进行这个转换了，所以在条件验证时我们这样处理：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_transition_parent_issue_condition.png" alt=""></p>
+<p>判断：<code>parentIssue.get(&quot;status&quot;)?.name == &quot;待办&quot;</code> 也就是父任务的状态是待办，且有一个子任务状态从待办变为开发中时才会触发父任务进行上述配置的转换，主任务状态随之转换为开发中。</p>
+<p>第二种情况同样也是针对父任务的状态转换，但是需要判断的条件稍微多一点，这里我们以<strong>集成中到开发完成</strong>先来分析下：</p>
+<blockquote>
+<p>1.因为每个故事测试同学会创建测试的子任务卡片，但是开发完成状态其实跟测试有没有开始介入没有什么关系，这样在所有的子任务中，我们首先需要排除测试同学创建的卡片。</p>
+<p>2.除了测试同学创建的卡片外其他都是开发创建的子任务，这些子任务除了当前拖动的这个子任务外，其他子任务都应该处于开发完成及以后的状态，这时拖动当前子任务到开发完成才会执行主任务的状态转换。</p>
+<p>3.拖动当前子任务时，父任务的状态应该正好处于集成中，才执行将其状态变更为开发完成。</p>
+</blockquote>
+<p>有了上面的分析下面我们来进行配置，首先还是进行父任务状态转换的配置：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_transition_parent_issue_to_dev_down.png" alt=""></p>
+<p>这里设置转换为完成集成，对应的就是<strong>集成中-&gt;开发完成</strong>，然后我们再看下条件校验：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_condition_dev_down.png" alt=""></p>
+<p>首先我们找到父任务下的子任务数量，进行逐个遍历，判断子任务的经办人在项目中的角色不是测试（这里经办人在项目中的角色参考上一篇文章中介绍的对于项目角色的配置，我们可以把测试同学都绑定测试这个项目级别的角色）同时遍历到的问题不是当前问题，然后判断其状态，如果有集成中，待办或者开发中这几个状态的则认为还有至少一个任务不是开发完成的，这个时候直接返回false不进行父问题的转换，如果所有子任务判断都通过后，再判断当前父任务的状态是集成中，则返回true，执行转换。</p>
+<p><strong>Debug</strong>:在编写脚本的时候因为有些逻辑可能会比较长，我们可以简单的看下groovy语法去编写正确的脚本，同时对于关键的判断或者对于某些表达式我们需要测试下其属性的值和结果是否是我们的预期，我们就需要有debug功能了，但是不巧的是jmwe暂时没有提供断点debug或者是<code>println(&quot;&quot;)</code> 日志输出，这里给大家介绍下我的处理方式：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_debug_return.png" alt=""></p>
+<p>我们可以在想要看debug的地方将代码写好，直接进行return返回。然后点击下上方的Test again，则在下面的输出中就会显示我们表达式的结果，这个方式还是非常有用的，同时也希望JMWE能够支持日志打印输出的功能。</p>
+<p>好了，上面的代码配置好后，我们看下效果：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_trans_parent_issue_show1.png" alt=""></p>
+<p>这是在转换前，有两个测试的任务，还有两个开发的任务，其中一个开发完成，一个是集成中状态，所以父任务当前也是集成中状态，当我们把集成中状态的这个任务拖动到开发完成时：</p>
+<p><img src="https://img.carlwe.com/xs/jira_jmwe_trans_parent_issue_show2.png" alt=""></p>
+<p>可以看到故事DEV-2306的状态就变成开发完成了，同时没有受到连个测试任务的干扰，到这里故事的状态就可以实时的根据大家对子任务状态的更改进行同步了。我们也就只需要在创建故事的时候关注下故事的内容，在后面的开发中只需要关注我们自己的子任务就ok了。这样故事的状态是对的，快捷筛选不管什么时候就都能正常使用了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>经过一段时间的使用以及不断的收集大家在使用中的反馈，我们解决了多个类似上面的问题，逐步的优化了jira的使用体验。可以看到这个过程中JMWE给了我们很大的支持，其内置的多个场景下的转换工具可以帮助我们快速的进行jira流程的自定义配置。当后面还有更多有意思有价值的的优化时还会继续给大家分享。</p>
+<p>JMWE在jira中如此好用及强大，正如JMWE介绍视频中说的那样：</p>
+<blockquote>
+<p>If you’re not using JMWE, you’re doing it wrong.</p>
+</blockquote>
+<p>在jira使用的便捷性问题解决后，后面我们就要思考的是jira如何帮助我们进行工程效率的提升，尽请期待下一篇文章。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Jira/" rel="tag"># Jira</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/05/06/jira2/" rel="next" title="研发管理（二）Jira实现基本功能">
+                <i class="fa fa-chevron-left"></i> 研发管理（二）Jira实现基本功能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/06/29/jira4/" rel="prev" title="研发管理（四）可用报表及项目管理">
+                研发管理（四）可用报表及项目管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+            
+              <p class="site-author-name" itemprop="name">CarlWe</p>
+              <p class="site-description motion-element" itemprop="description">Think Different</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JMWE介绍"><span class="nav-number">1.</span> <span class="nav-text">JMWE介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-number">2.</span> <span class="nav-text">解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-字段必填"><span class="nav-number">2.1.</span> <span class="nav-text">1.字段必填</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理思路"><span class="nav-number">2.1.2.</span> <span class="nav-text">处理思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法"><span class="nav-number">2.1.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-子任务字段复用"><span class="nav-number">2.2.</span> <span class="nav-text">2.子任务字段复用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理思路-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">处理思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-快捷筛选项"><span class="nav-number">2.3.</span> <span class="nav-text">3.快捷筛选项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理思路-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">处理思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法-2"><span class="nav-number">2.3.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-早会看版"><span class="nav-number">2.4.</span> <span class="nav-text">4.早会看版</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-3"><span class="nav-number">2.4.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理思路-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">处理思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法-3"><span class="nav-number">2.4.3.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-创建看版"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">1.创建看版</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-故事类型过滤"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">2.故事类型过滤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-在开发中的任务展示还未解决的bug"><span class="nav-number">2.4.3.3.</span> <span class="nav-text">3.在开发中的任务展示还未解决的bug</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-工作日志弹框"><span class="nav-number">2.5.</span> <span class="nav-text">5.工作日志弹框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-4"><span class="nav-number">2.5.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理思路-4"><span class="nav-number">2.5.2.</span> <span class="nav-text">处理思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法-4"><span class="nav-number">2.5.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-故事状态同步"><span class="nav-number">2.6.</span> <span class="nav-text">6.故事状态同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-5"><span class="nav-number">2.6.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理思路-5"><span class="nav-number">2.6.2.</span> <span class="nav-text">处理思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法-5"><span class="nav-number">2.6.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CarlWe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+
+
+<div class="BbeiAn-info">
+京ICP备 
+<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
+
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://img.carlwe.com/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//img.carlwe.com/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  
+    
+  
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz',
+        appKey: 'b0kYAp9zaADOzcuVAbiw4SeT',
+        placeholder: '发表评论...',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

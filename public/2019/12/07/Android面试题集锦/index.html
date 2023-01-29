@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="生活">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题集锦">
+<meta property="og:url" content="http://carlwe.com/2019/12/07/Android面试题集锦/index.html">
+<meta property="og:site_name" content="CarlWe">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.carlwe.com/mianshi_loc.jpg">
+<meta property="og:updated_time" content="2020-08-18T02:25:58.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android面试题集锦">
+<meta name="twitter:image" content="https://img.carlwe.com/mianshi_loc.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://carlwe.com/2019/12/07/Android面试题集锦/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android面试题集锦 | CarlWe</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CarlWe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/12/07/Android面试题集锦/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CarlWe">
+      <meta itemprop="description" content="Think Different">
+      <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CarlWe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android面试题集锦
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-07 23:19:23" itemprop="dateCreated datePublished" datetime="2019-12-07T23:19:23+08:00">2019-12-07</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/07/Android面试题集锦/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/12/07/Android面试题集锦/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/07/Android面试题集锦/" class="leancloud_visitors" data-flag-title="Android面试题集锦">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://img.carlwe.com/mianshi_loc.jpg" alt=""></p>
+<a id="more"></a>
+<p>时间来到了2019年的11、12月之交，两个月没有更新博客了，这段时间经历了很多事情，而随之面临的紧迫任务就是重新找工作了。时间紧，任务重！两周共面试了15家公司。公司有大也有小，这篇文章主要分享下这些公司的面试题及面试感受。</p>
+<p>在面试之前就想着先去一些小公司面试，丰富面试经验了再去大公司，所以把几个内推大厂的机会都推迟了一周。</p>
+<h2 id="MetaApp"><a href="#MetaApp" class="headerlink" title="MetaApp"></a>MetaApp</h2><ol>
+<li>上机完成一个图片加载App，尽量考虑性能优化。</li>
+<li>做完才能继续后面的面试。</li>
+</ol>
+<blockquote>
+<p>第一个面试，基本没有准备，不是很喜欢这种上机做一整个App的，感觉比较浪费时间。后面没有做完问能不能继续聊聊，hr给的答复是只有做完了才能进行后面的面试，我直接放弃了，感觉这样的规定会错过很多厉害的人，另外公司环境和几年前的网吧没什么区别。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★☆☆☆<br><strong>办公环境</strong>：★☆☆☆☆<br><strong>技术氛围</strong>：★★★★☆</p>
+<h2 id="车主帮"><a href="#车主帮" class="headerlink" title="车主帮"></a>车主帮</h2><ol>
+<li>手画项目中MVVM的每一层架构图。</li>
+<li>讲讲Binder。</li>
+<li>Lanucher启动App流程.</li>
+<li>热修复原理。</li>
+<li>RxJava内部实现原理。</li>
+<li>Retrofit实现原理。</li>
+<li>平衡二叉树和完全二叉树的区别。</li>
+</ol>
+<blockquote>
+<p>依旧是没怎么准备，回答的不是很好，不过面试官还是很nice，把要复习的东西都给我列了一遍，真的是感谢。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★☆☆☆<br><strong>办公环境</strong>：★★★☆☆<br><strong>技术氛围</strong>：★★★☆☆</p>
+<h2 id="Opay"><a href="#Opay" class="headerlink" title="Opay"></a>Opay</h2><ol>
+<li>数组、链表、二叉树的特点，及插入、查找和删除的复杂度。</li>
+<li>LRU算法的具体实现</li>
+<li>ArrayList数据结构是什么样的，是否线程安全。</li>
+<li>线程安全的数据结构有哪些？</li>
+<li>SpraseArray 实现原理。</li>
+<li>Kotlin中val和var的区别，kt单例如何实现，lateinit和by lazy的区别。</li>
+<li>Recyclerview和Listview的区别，如何获取当前屏幕第一个显示item的位置。</li>
+<li>Android如何开启多进程，多进程环境下Application是否会再次初始化。</li>
+<li>数据库多线程操作会不会有问题？</li>
+<li>空心圆如何绘制？</li>
+<li>创建observer有哪些操作符？</li>
+<li>Livedata的数据拷贝。</li>
+<li>Jvm是如何分区的？</li>
+<li>讲讲GC垃圾回收算法。</li>
+<li>handler的实现机制，子线程中如何使用handler， postdelay是如何实现的。</li>
+<li>ConstrantLayout三个button如何平分，ConstrantLayout中如何同时隐藏多个控件。</li>
+<li>Jetpack 熟悉吗？都用过哪些。</li>
+<li>什么情况会出现栈溢出？</li>
+<li>如何直接使用arr文件中的方法，而不初始化。</li>
+</ol>
+<blockquote>
+<p>一共三轮面试，面试官的问题都比较偏向于实际开发，公司在扩大规模，主要做非洲支付的业务。这次面试感觉比前两次好。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★☆☆<br><strong>办公环境</strong>：★★★☆☆<br><strong>技术氛围</strong>：★★★★☆</p>
+<h2 id="梧桐车联"><a href="#梧桐车联" class="headerlink" title="梧桐车联"></a>梧桐车联</h2><ol>
+<li>哪些方式可以让Activity执行finish方法。</li>
+<li>Activity A打开B的生命周期流程。</li>
+<li>onServiceConnected的回调时机。</li>
+<li>子线程代码块中的打印语句和子线程下方主线程的打印语句执行顺序。</li>
+<li>Long类型的比较。</li>
+<li>讲讲String、StringBuffer、StringBuilder的不同。</li>
+<li>Java访问修饰符各自的访问范围。</li>
+<li>什么是多态？</li>
+<li>Equals 和 == 的区别。</li>
+<li>手写二分查找。</li>
+<li>手写字符串去重后打印。</li>
+<li>字符串中只有一个字符只出现了一次，如何快速找到这字符。</li>
+<li>抽象类必须要有抽象方法吗，抽象类和接口有什么区别？</li>
+<li>Stackoverflow什么情况会出现？</li>
+<li>获取屏幕像素大小的方法是什么？</li>
+</ol>
+<blockquote>
+<p>腾讯投资的一家公司，在中关村，因为把期望工资写在了简历上，一面面试官一上来什么问题都没问，直接和我说，就算你面试全部通过了，你写的期望薪资也给不到。然后整个面试氛围就不对了，最关键的是二分查找，我写的是通过移位来计算除以2，结果面试官应是没看懂，还让我给他解释…</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★☆☆<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★★☆☆</p>
+<h2 id="多点科技"><a href="#多点科技" class="headerlink" title="多点科技"></a>多点科技</h2><ol>
+<li>MVVM的解读，对比MVC有哪些好处，为什么不用MVP?</li>
+<li>用队列实现的有哪些数据结构？</li>
+<li>HashMap线程安全吗，如果多线程操作会有什么问题?</li>
+<li>SparseArray的优点，是如何实现的？</li>
+<li>Handler先Postdelay一个消息后，立刻sendmessage，此时是如何处理的？</li>
+<li>Invalidate、postinvalidate、requestlayout 的区别。</li>
+<li>Rxjava中map、flatmap、zip操作符的实现原理，异常是如何处理的？</li>
+<li>Glide缓存机制，是如何实现生命周期的？</li>
+<li>Livedata是如何感知生命周期的？</li>
+<li>Threadlocal的作用及实现原理。</li>
+<li>讲讲Jvm内存分配和GC过程。</li>
+<li>NestedScrollView的实现机制，吸顶效果是如何实现的？</li>
+</ol>
+<blockquote>
+<p>一家中小型公司，面试官都比较负责，问到了很多知识盲点，公司是单独一栋楼，环境还可以，看起来加班不多。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★☆☆☆<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★★☆☆</p>
+<h2 id="寺库"><a href="#寺库" class="headerlink" title="寺库"></a>寺库</h2><ol>
+<li>具体讲讲动态代理。</li>
+<li>AsyncTsak的实现原理。</li>
+<li>多态是什么？</li>
+<li>内存优化都做了哪些？</li>
+<li>类变量和成员变量有什么区别吗？</li>
+<li>生产者消费者手写代码。</li>
+<li>工厂模式在哪些地方有应用。</li>
+<li>Java中Object类有哪些方法？</li>
+<li>具体讲讲JVM的分区。</li>
+<li>Java限定修饰符有哪些，修饰范围如何？</li>
+</ol>
+<blockquote>
+<p>这家公司在三里屯附近，面试官比较耐心，环境还不错。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★★☆<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★☆☆☆</p>
+<h2 id="贝壳"><a href="#贝壳" class="headerlink" title="贝壳"></a>贝壳</h2><ol>
+<li>线程池中有哪几个变量，分别是干什么用的？</li>
+<li>如何直接定位到ListView最后一个。</li>
+<li>Activity A打开B的生命周期，介绍四种启动模式。</li>
+<li>吸顶代码如何实现。</li>
+<li>项目中有哪些你觉得是做的有亮点的？</li>
+<li>Flutter混合开发中闪屏是如何解决的？</li>
+<li>Glide、Okhttp实现原理。</li>
+<li>ActivityThread、ApplicationThread的区别。</li>
+<li>Handler和ThreadHandler的区别。</li>
+<li>讲讲View绘制流程、事件分发机制。</li>
+<li>性能优化都做了哪些方面。</li>
+<li>https是如何实现的。 </li>
+<li>锁分为哪些类型，分别有什么特点？</li>
+<li>sleep和wait的区别？</li>
+</ol>
+<blockquote>
+<p>公司环境还可以，面试官也还行。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★★★<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★★☆☆</p>
+<h2 id="完美世界"><a href="#完美世界" class="headerlink" title="完美世界"></a>完美世界</h2><ol>
+<li>手写两数相加，实现两个链表存储每个数字，然后相加后输出。</li>
+<li>内存调优做了哪些？</li>
+<li>你觉得你之前做过的哪些地方能给我们公司带来价值或者提升？</li>
+<li>Rxjava的线程是如何切换的。</li>
+<li>LeackCanary实现原理</li>
+<li>在公司负责的事情。</li>
+</ol>
+<blockquote>
+<p>面试官虽然有些问题问的不太合适，但是总体还行。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★★☆<br><strong>办公环境</strong>：★★★☆☆<br><strong>技术氛围</strong>：★★★☆☆</p>
+<h2 id="美术宝"><a href="#美术宝" class="headerlink" title="美术宝"></a>美术宝</h2><ol>
+<li>引用传递和值传递的区别。</li>
+<li>多态、静态内部类通过代码来考察。</li>
+<li>Hander中post和sendmessage的区别。</li>
+<li>Hander中postdelay是如何实现的？</li>
+<li>说说View绘制流程。</li>
+<li>Jvm内存模型，new的对象和值分别存在哪里？</li>
+</ol>
+<blockquote>
+<p>面试官还不错，就是公司的各种薪酬福利都不行，估计真的没多少人愿意去。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★☆☆<br><strong>办公环境</strong>：★★★☆☆<br><strong>技术氛围</strong>：★★★☆☆</p>
+<h2 id="滴滴"><a href="#滴滴" class="headerlink" title="滴滴"></a>滴滴</h2><p><strong>一面</strong>：网约车面试官</p>
+<ol>
+<li>HashMap的数据结构，其中如何提高查找效率的，每种情况下的查询复杂度是多少？</li>
+<li>HashMa碰撞过多时是如何解决的？扩容具体是如何实现的？</li>
+<li>内存优化和apk瘦身分别做了哪些？</li>
+<li>内存里面分配一张大的bitmap会触发什么操作？</li>
+<li>Dalvik和Art有什么区别？每个Android版本具体有哪些改进。</li>
+<li>Bitmap的优化InsampleSize，着色模式有哪些，他们的区别？</li>
+<li>项目中遇到最难的问题，如何解决的？</li>
+<li>组件化做了哪些东西？</li>
+<li>Lint解决了哪些问题？</li>
+<li>手写二叉树展开成链表。</li>
+<li>Kotlin中协程和Rxjava的实现有什么异同？</li>
+</ol>
+<p><strong>二面</strong>：项目负责人</p>
+<ol>
+<li>讲讲在公司都负责什么事情？</li>
+<li>如何降低崩溃率的，你都做了哪些事情？</li>
+<li>如何协调安排工期的，如果产品给的需求在规定时间内完不成如何处理。</li>
+<li>和哪些人有过沟通？</li>
+<li>觉得做的比较好的地方？</li>
+<li>最难忘的事情。</li>
+<li>为什么要换工作？</li>
+<li>有哪些兴趣爱好。</li>
+</ol>
+<p><strong>三面</strong>：总监</p>
+<ol>
+<li>自我介绍。</li>
+<li>现在公司承担的角色。</li>
+<li>有哪些做的好的地方，有哪些做的不好的。</li>
+<li>职业发展方向</li>
+<li>有没有努力的对象，最崇拜的人是谁。</li>
+<li>有什么问题要问我的吗？</li>
+</ol>
+<blockquote>
+<p>总体面试感受就是面试官会尝试引导你回答一些问题，而不是说在你不会的地方死扣。项目负责人很nice，总监问的问题比较不好回答。后面hr的流程较慢。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★★★<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★★★★</p>
+<h2 id="快手"><a href="#快手" class="headerlink" title="快手"></a>快手</h2><p><strong>一面</strong>：技术面</p>
+<ol>
+<li>组件化和模块化的理解。</li>
+<li>handler中postdelay的原理。</li>
+<li>View的事件传递，手指移出view的事件触发流程。</li>
+<li>父view已经拦截了，子view想处理时用什么方法。</li>
+<li>自定义view的流程 ，测量模式，如何确定子view的测量模式。</li>
+<li>什么view的测量模式是UNSPECIFIED。</li>
+<li>打开支付宝后返回桌面 ，在进入支付宝，会看到刚刚的支付界面，原理是什么？</li>
+<li>Activity的启动模式 taskAfinity 什么情况下用。</li>
+<li>图片列表和视频列表，按照顺序融合，取前200条返回，手写代码实现。</li>
+</ol>
+<p><strong>二面</strong>：技术Leader面</p>
+<ol>
+<li>StartActivity启动流程。</li>
+<li>说说你对Binder的理解。</li>
+<li>ActivityManagerService和zygote进程通信是如何实现的（socket）。</li>
+<li>数据库多线程访问会出现什么问题。</li>
+</ol>
+<p><strong>三面</strong>：技术面</p>
+<ol>
+<li>线程池使用几个参数的意思。</li>
+<li>双重判断单例手写代码，说说为什么这样写。</li>
+<li>之前项目中事件总线怎么处理的。</li>
+<li>EventBus的实现原理，为什么现在项目没用？</li>
+<li>项目中的多线程如何处理?</li>
+<li>Rxjava有哪些好处？</li>
+<li>HashMap的键是存在哪里的？</li>
+<li>Activity A打开B AB分别的生命周期（注意要考虑透明情况）。</li>
+</ol>
+<blockquote>
+<p>快手面试的效率很高，去了两次。一面面试官印象深刻，把我会的基本全问出来了，不太会的还会耐心的给你讲解原理。后面的面试感觉回答的中规中矩。手写代码都写出来了，给人的感觉就会自信很多。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★★★<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★★★★</p>
+<h2 id="字节跳动"><a href="#字节跳动" class="headerlink" title="字节跳动"></a>字节跳动</h2><ol>
+<li>手写二维数组旋转打印。</li>
+<li>https的安全协议是什么？具体做了哪些事情。</li>
+<li>eventbus的内部实现原理。</li>
+<li>apk瘦身做了哪些事情。</li>
+<li>讲讲glide缓存策略。</li>
+<li>说说APT(Annotation Processing Tool)。</li>
+<li>Kt顶层属性和顶层方法的实现原理.</li>
+<li>Java如何调用kotlin的高阶函数</li>
+<li>Sophix热修复对比Andfix做了哪些优化。</li>
+</ol>
+<blockquote>
+<p>两位面试官一同面试，面试的时候是在员工食堂…问的问题都准备的不太好。最主要第一个题目没有写出来，后面就没信心了，然后问了好多好几年前项目的东西，虽然没有通过，但字节跳动还是我比较向往的。不好的地方就是加班比较严重。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★★★<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★★★★</p>
+<h2 id="探探"><a href="#探探" class="headerlink" title="探探"></a>探探</h2><ol>
+<li>透明Activity 启动流程。</li>
+<li>view的事件传递，什么时候会执行onCancel事件。</li>
+<li>自定义view流程。</li>
+<li>安装包瘦身。</li>
+<li>HashMap原理。</li>
+</ol>
+<blockquote>
+<p>公司在国贸附近，10点半去了看着大家都还比较清闲，面试官问的问题我都回答上来了，然后面完了就让我走了，感觉是没在好好招人。或者说面试官感觉我比他厉害，所以不想招我来了。谁知道呢？</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★★☆☆<br><strong>办公环境</strong>：★★★★☆<br><strong>技术氛围</strong>：★★★☆☆</p>
+<h2 id="轻课"><a href="#轻课" class="headerlink" title="轻课"></a>轻课</h2><ol>
+<li>说一下HashMap原理</li>
+<li>热修复原理</li>
+<li>Glide 缓存和生命周期管理</li>
+</ol>
+<blockquote>
+<p>又是一家浪费时间的公司，说HashMap原理的时候，面试官直接就打断了：“你说的网上都有，我想听听不一样的”，然后讲Glide缓存的时候，我还没讲完，面试官说：“那弱引用缓存怎么没说”，我说:“我还没说完”，面试官说：“你刚刚就是已经说完了”。最后面试官问：“我没什么问题了，你还有问题吗？”，直接了当的给了句：”我也没了”。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★☆☆☆<br><strong>办公环境</strong>：★☆☆☆☆<br><strong>技术氛围</strong>：★★☆☆☆</p>
+<h2 id="心上"><a href="#心上" class="headerlink" title="心上"></a>心上</h2><ol>
+<li>讲讲https协议和通讯的过程</li>
+<li>notification如何不显示icon。</li>
+<li>带阴影的图如何实现。</li>
+<li>对象传递和值传递。</li>
+<li>HashMap如何扩容。</li>
+<li>GC的过程。</li>
+<li>Android版本的适配做了哪些。</li>
+<li>说说对Android四大组件的理解。</li>
+</ol>
+<blockquote>
+<p>公司离家近，但是是单双休，面试官也很有耐心，给人的感觉还不错。</p>
+</blockquote>
+<p><strong>公司规模</strong>：★★☆☆☆<br><strong>办公环境</strong>：★★★☆☆<br><strong>技术氛围</strong>：★★★★☆</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对于面试流程，先去一些小公司，可去可不去的那种，这样可以先让自己明确需要着重复习的地方，同时了解下市场行情。面试到后面就会慢慢找到感觉。跑面试不容易，尤其上午一场下午一场，中午经常没时间吃饭，大家经历过了的都明白，不过也不要灰心，坚持下去总会找到一份满意的工作。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/生活/" rel="tag"># 生活</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/10/十一苏州行/" rel="next" title="十一苏州行">
+                <i class="fa fa-chevron-left"></i> 十一苏州行
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/31/2019年终总结/" rel="prev" title="2019年终总结">
+                2019年终总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+            
+              <p class="site-author-name" itemprop="name">CarlWe</p>
+              <p class="site-description motion-element" itemprop="description">Think Different</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MetaApp"><span class="nav-number">1.</span> <span class="nav-text">MetaApp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#车主帮"><span class="nav-number">2.</span> <span class="nav-text">车主帮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Opay"><span class="nav-number">3.</span> <span class="nav-text">Opay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梧桐车联"><span class="nav-number">4.</span> <span class="nav-text">梧桐车联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多点科技"><span class="nav-number">5.</span> <span class="nav-text">多点科技</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寺库"><span class="nav-number">6.</span> <span class="nav-text">寺库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝壳"><span class="nav-number">7.</span> <span class="nav-text">贝壳</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完美世界"><span class="nav-number">8.</span> <span class="nav-text">完美世界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#美术宝"><span class="nav-number">9.</span> <span class="nav-text">美术宝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滴滴"><span class="nav-number">10.</span> <span class="nav-text">滴滴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快手"><span class="nav-number">11.</span> <span class="nav-text">快手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字节跳动"><span class="nav-number">12.</span> <span class="nav-text">字节跳动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探探"><span class="nav-number">13.</span> <span class="nav-text">探探</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#轻课"><span class="nav-number">14.</span> <span class="nav-text">轻课</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心上"><span class="nav-number">15.</span> <span class="nav-text">心上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">16.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CarlWe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+
+
+<div class="BbeiAn-info">
+京ICP备 
+<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
+
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://img.carlwe.com/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//img.carlwe.com/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  
+    
+  
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz',
+        appKey: 'b0kYAp9zaADOzcuVAbiw4SeT',
+        placeholder: '发表评论...',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

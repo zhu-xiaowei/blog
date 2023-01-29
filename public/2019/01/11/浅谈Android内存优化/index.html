@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="今天我们来聊一聊Android 内存优化，这篇文章本来很早就应该写了，但因为小游戏开发太吸引人了，所以这个就拖到了现在才开始，不过我觉得也不晚😁">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈Android内存优化">
+<meta property="og:url" content="http://carlwe.com/2019/01/11/浅谈Android内存优化/index.html">
+<meta property="og:site_name" content="CarlWe">
+<meta property="og:description" content="今天我们来聊一聊Android 内存优化，这篇文章本来很早就应该写了，但因为小游戏开发太吸引人了，所以这个就拖到了现在才开始，不过我觉得也不晚😁">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.carlwe.com/android_memory_logo.png-h">
+<meta property="og:image" content="https://img.carlwe.com/process_priority.jpg">
+<meta property="og:image" content="https://img.carlwe.com/dalvik_art_gc.jpeg">
+<meta property="og:image" content="https://img.carlwe.com/dalvik_gc.jpg">
+<meta property="og:image" content="https://img.carlwe.com/art_gc.jpg">
+<meta property="og:image" content="https://img.carlwe.com/linux_kernel.jpg">
+<meta property="og:image" content="https://img.carlwe.com/memory_problem.jpg">
+<meta property="og:image" content="https://img.carlwe.com/reduce_running_memory.jpg">
+<meta property="og:image" content="https://img.carlwe.com/code_optimize.jpg">
+<meta property="og:image" content="https://img.carlwe.com/memory_leak_optimize.jpg">
+<meta property="og:image" content="https://img.carlwe.com/memory_is_enough.jpg">
+<meta property="og:image" content="https://img.carlwe.com/gc_type.jpg">
+<meta property="og:image" content="https://img.carlwe.com/gc_log.jpg">
+<meta property="og:image" content="https://img.carlwe.com/adb_dumpsys.jpg">
+<meta property="og:image" content="https://img.carlwe.com/use_profiler.jpg">
+<meta property="og:image" content="https://img.carlwe.com/leakcanary_logo.png">
+<meta property="og:updated_time" content="2020-08-18T02:25:58.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈Android内存优化">
+<meta name="twitter:description" content="今天我们来聊一聊Android 内存优化，这篇文章本来很早就应该写了，但因为小游戏开发太吸引人了，所以这个就拖到了现在才开始，不过我觉得也不晚😁">
+<meta name="twitter:image" content="https://img.carlwe.com/android_memory_logo.png-h">
+
+
+
+
+
+
+  <link rel="canonical" href="http://carlwe.com/2019/01/11/浅谈Android内存优化/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>浅谈Android内存优化 | CarlWe</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CarlWe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/01/11/浅谈Android内存优化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CarlWe">
+      <meta itemprop="description" content="Think Different">
+      <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CarlWe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅谈Android内存优化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-11 16:39:04" itemprop="dateCreated datePublished" datetime="2019-01-11T16:39:04+08:00">2019-01-11</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/11/浅谈Android内存优化/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/11/浅谈Android内存优化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/11/浅谈Android内存优化/" class="leancloud_visitors" data-flag-title="浅谈Android内存优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://img.carlwe.com/android_memory_logo.png-h" alt=""></p>
+<p>今天我们来聊一聊Android 内存优化，这篇文章本来很早就应该写了，但因为小游戏开发太吸引人了，所以这个就拖到了现在才开始，不过我觉得也不晚😁<br><a id="more"></a></p>
+<blockquote>
+<p>这篇文章主要通过如下三个方面对Android内存优化进行介绍：</p>
+<ol>
+<li>Android内存分配与回收机制</li>
+<li>Android常用的内存优化方法</li>
+<li>Android内存分析与监控</li>
+</ol>
+</blockquote>
+<p>文章不会涉及到native内存的优化，因为普通App开发中涉及的较少，如果想了解可以参考<a href="https://time.geekbang.org/column/article/71277" target="_blank" rel="noopener">极客时间</a>张绍文老师的Android开发高手课。</p>
+<h2 id="一、Android内存分配与回收机制"><a href="#一、Android内存分配与回收机制" class="headerlink" title="一、Android内存分配与回收机制"></a>一、Android内存分配与回收机制</h2><p>想要优化Android内存，一些必备的基础知识是不能少的。所以在第一部分，我们先从Application Framework、Dalvik/Art、Linux内核三个部分由浅入深来讲解关于Androd内存相关的知识。</p>
+<h3 id="Application-Framework"><a href="#Application-Framework" class="headerlink" title="Application Framework"></a>Application Framework</h3><p>首先来看下进程的优先级：</p>
+<p><img src="https://img.carlwe.com/process_priority.jpg" alt=""></p>
+<p><code>前台进程</code>：用户当前操作所必需的进程。</p>
+<p><code>可见进程</code>：没有任何前台组件、但仍会影响用户在屏幕上所见内容的进程。</p>
+<p><code>服务进程</code>：正在运行已使用 startService() 方法启动的服务。（后台播放音乐，网络下载数据）</p>
+<p><code>后台进程</code>：对用户不可见的 Activity 的进程（已调用 Activity 的 onStop() 方法）</p>
+<p><code>空进程</code>：不含任何活动应用组件的进程。保留这种进程的的唯一目的是用作缓存，以缩短下次在其中运行组件所需的启动时间</p>
+<p><code>进程生命周期</code>：Android 系统将尽量长时间地保持应用进程，但为了新建进程或运行更重要的进程，最终需要移除旧进程来回收内存。 为了确定保留或终止哪些进程，系统会根据进程中正在运行的组件以及这些组件的状态，将每个进程放入“重要性层次结构”中。 必要时，系统会首先消除重要性最低的进程，然后是重要性略高的进程，来回收系统资源。（一般情况下前台进程就是与用户交互的进程了,如果连前台进程都需要回收那么此时系统几乎不可用了）。由此也衍生了很多进程保活的方法（提高优先级，互相唤醒，native保活等等），出现各种杀不死的进程的APP。</p>
+<p><code>最后我们需要知道</code>：Android中由ActivityManagerService 类集中管理所有进程的内存资源分配，我们可以查看其源码来具体分析实现过程。</p>
+<h3 id="Dalvik-Art-虚拟机"><a href="#Dalvik-Art-虚拟机" class="headerlink" title="Dalvik/Art 虚拟机"></a>Dalvik/Art 虚拟机</h3><h4 id="Android-Dalvik-Heap"><a href="#Android-Dalvik-Heap" class="headerlink" title="Android Dalvik Heap"></a>Android Dalvik Heap</h4><p><img src="https://img.carlwe.com/dalvik_art_gc.jpeg" alt=""></p>
+<p><code>简介</code>：Android Dalvik Heap与原生Java一样，将堆的内存空间分为三个区域，Young Generation新生代，Old Generation年老代， Permanent Generation持久代。</p>
+<p><code>对象分配过程</code>：最近分配的对象会存放在新生代区域，新生代区域分为eden区（伊甸园，圣经中指上帝为亚当夏娃创造的生活乐园）、so区和s1区，s1和s0区也被称为from区和to区（合称Survivor区），他们是两块大小相等并且可以互换角色的空间，绝大多数情况下,对象首先分配在eden区，在一次新生代回收后，如果对象还存活会进入s0或者s1区，之后每一次gc，存活的对象年龄都会相应增加，当达到一定年龄则会进入老年代，最后累积一定时间再移动到持久代区域。系统会根据内存中不同的内存数据类型分别执行不同的gc操作。</p>
+<p><code>问题</code>：GC发生的时候，所有的线程都是会被暂停的。执行GC所占用的时间和它发生在哪一个Generation也有关系，新生代中的每次GC操作时间是最短的，年老代其次，持久代最长。GC时会导致线程暂停、界面卡顿的问题在Android Art中得到了优化。</p>
+<h4 id="Dalvik虚拟机执行模式"><a href="#Dalvik虚拟机执行模式" class="headerlink" title="Dalvik虚拟机执行模式"></a>Dalvik虚拟机执行模式</h4><p><img src="https://img.carlwe.com/dalvik_gc.jpg" alt=""></p>
+<p><code>Dalvik垃圾回收过程</code>：GC会去标记和查找所有可访问到的活动对象，这个时候整个程序的线程就会挂起，并且虚拟机内部的所有线程也会同时挂起(左下图) 。之所以要挂起所有线程是确保：所有程序没有进行任何变更，与此同时GC会隐藏所有处理过的对象，最终确保标记了所有需要回收的对象后，GC才会恢复所有线程，并释放空间。</p>
+<p><code>大内存对象分配</code>：当发现需要给一个较大的对象(蓝色方块)分配空间时，发现可用空间还是够的，但没有这么大的连续空间供新对象使用，这个时候就不得不进行一次GC回收（红色方块，右下图），为大对象腾出较大并且连续的空间。这就是我们在分配一个较大对象的时候非常容易引起丢帧和卡顿的原因之一，所以Android5.0以前大家都认为Android卡顿是因为Darvik虚拟机的效率低下导致的。</p>
+<p><code>总结</code>：Dalvik虚拟机的三个问题</p>
+<ol>
+<li>GC时挂起所有线程 </li>
+<li>大而连续的空间紧张 </li>
+<li>内存碎片化严重</li>
+</ol>
+<h4 id="ART虚拟机的优化"><a href="#ART虚拟机的优化" class="headerlink" title="ART虚拟机的优化"></a>ART虚拟机的优化</h4><p><img src="https://img.carlwe.com/art_gc.jpg" alt=""></p>
+<p><code>GC过程</code>：在ART中GC会要求程序在分配空间的时候标记自身的堆栈，这个过程非常短，不需要挂起所有程序的线程.这样就节约了很大一部分时间去查找活动对象。</p>
+<p><code>大内存对象分配</code>：ART里会有一个独立的LOS供Bitmap使用，从而提高了GC的管理效率和整体性能.</p>
+<p><code>内存碎片化</code>在ART里还会有一个moving collector来压缩活动对象(绿色方块)，使得内存空间更加紧凑。</p>
+<p><code>总结</code> ：Google在ART里对GC做了非常大的优化(更高效的回收算法),使ART内存分配的效率提高了10倍，GC的效率提高了2-3倍（可见原来效率有多低），不过主要还是优化中断和阻塞的时间，频繁的GC还是会导致卡顿。</p>
+<h3 id="Linux内核"><a href="#Linux内核" class="headerlink" title="Linux内核"></a>Linux内核</h3><p><img src="https://img.carlwe.com/linux_kernel.jpg" alt=""></p>
+<p><code>Lowmemorykiller</code>：ActivityManagerService中trimApplications() 函数中会执行一个叫做 updateOomAdjLocked() 的函数，updateOomAdjLocked 将针对每一个进程更新一个名为 adj 的变量，（用来表示发生内存不足时杀死进程的优先级顺序）并将其告知 Linux 内核，内核同样维护一个包含 adj 的数据结构（即进程表），并通过 lowmemorykiller 检查系统内存的使用情况，在内存不足时，遍历所有进程，选出低优先级的进程杀死，最终由内核去完成真正的内存回收。</p>
+<p><code>Oom_killer</code> ：如果上述各种方法都无法释放出足够的内存空间，那么当为新的进程分配内存时将发生 Out of Memory 异常，OOM_killer 将尽最后的努力杀掉一些进程来释放空间。Android 中的oom_killer同样会遍历进程，并计算所有进程的 badness 值，选择 badness 最大的那个进程将其杀掉。</p>
+<p><code>Oom的条件</code>：只要allocated + 新分配的内存 &gt;= dalvik heap(堆内存) 最大值的时候就会发生OOM（Art运行环境的统计规则还是和dalvik保持一致）</p>
+<h3 id="内存不优化会导致哪些问题？"><a href="#内存不优化会导致哪些问题？" class="headerlink" title="内存不优化会导致哪些问题？"></a>内存不优化会导致哪些问题？</h3><p><img src="https://img.carlwe.com/memory_problem.jpg" alt=""></p>
+<p>上面介绍了Android内存分配从应用层到Linux层的一些知识，所以我总结出上图内存会导致的一些问题，但是上图只是列出了一些常见情况，前后并没有绝对的因果关系，最后来说下内存抖动。</p>
+<p><code>内存抖动</code>：Memory Churn，内存抖动是因为在短时间内大量的对象被创建又马上被释放。瞬间产生大量的对象会严重占用内存区域，当达到阀值，剩余空间不够的时候，会触发GC从而导致刚产生的对象又很快被回收。即使每次分配的对象占用了很少的内存，但是他们叠加在一起会增加Heap的压力，从而触发更多其他类型的GC。这个操作有可能会影响到帧率，并使得用户感知到性能问题。</p>
+<h2 id="二、Android常用的内存优化方法"><a href="#二、Android常用的内存优化方法" class="headerlink" title="二、Android常用的内存优化方法"></a>二、Android常用的内存优化方法</h2><p>在Android中内存优化的方式实在是太多了，往细了说，到你写的每一行代码其实都和内存优化相关。在这里我从三个方面来说下Android内存优化的方法：</p>
+<blockquote>
+<ol>
+<li>降低运行时内存</li>
+<li>代码优化</li>
+<li>内存泄漏优化</li>
+</ol>
+</blockquote>
+<p>在实际开发中我们可以先考虑降低应用的运行时内存，然后针对代码写的不好的地方着重优化，最后通过规避一些可能导致内存泄漏的编码方式，去提前避免内存泄漏的问题。</p>
+<h3 id="降低运行时内存"><a href="#降低运行时内存" class="headerlink" title="降低运行时内存"></a>降低运行时内存</h3><p><img src="https://img.carlwe.com/reduce_running_memory.jpg" alt=""></p>
+<p>降低运行时内存可以分为减小APK的体积和Bitmap优化两部分：</p>
+<ul>
+<li>减小APK体积</li>
+</ul>
+<blockquote>
+<ol>
+<li>去除无用的资源和代码，通过合理使用git，一些由于业务变更而基本不会用到的代码，该删除的绝不能手软。即使以后要用到，通过git也能找回。同时一些图片资源未用到的也应该删除，因为即使gradle配了sharkresource选项，发布的时候这些没有用到的图片依然会被打包到你的apk。</li>
+<li>尽量复用资源，其实这是一种比较好的编码习惯。</li>
+<li>对应用的启动图引导页图片进行压缩，往往这些图片占据了大部分空间，压缩后可以起到很好的效果。平时开发中对于分辨率大雨100*100的图片基本上都会进行压缩，很多好的压缩算法经常可以减少一半的大小，而感官上基本看不出有任何改变。</li>
+</ol>
+</blockquote>
+<ul>
+<li>Bitmap优化</li>
+</ul>
+<blockquote>
+<ol>
+<li>统一的bitmap加载器，选择Glide、Fresco、Picasso中的一个作为图片加载框架。实际开发中加载到view的图片的大小不应该超过view的大小，图片加载框架默认会对图片进行缓存，按view实际大小加载。在开发中为了减少apk的大小，一般只放一套3X图片，但是这些图片在小分辨率的手机上直接加载就会出现内存浪费。统一的bitmap加载器就可以很好的解决该问题。</li>
+<li>图片存在像素浪费，对于.9图，美工可能在出图时在拉伸与非拉伸区域都有大量的像素重复。而这些图片是可以缩小，但并不影响显示效果。</li>
+<li>inSampleSize:缩放比例，在把图片载入内存之前，我们需要计算一个合适的缩放比例，避免不必要的大图载入。</li>
+<li>选择ARGB_8888/RBG_565/ARGB_4444/ALPHA_8，存在很大差异。</li>
+<li>inBitmap：这个参数用来实现Bitmap内存的复用，但复用存在一些限制，具体体现在：在Android 4.4之前只能重用相同大小的Bitmap的内存，而Android 4.4及以后版本则只要后来的Bitmap比之前的小即可。使用inBitmap参数前，每创建一个Bitmap对象都会分配一块内存供其使用，而使用了inBitmap参数后，多个Bitmap可以复用一块内存，这样可以提高性能。</li>
+</ol>
+</blockquote>
+<p>参考：</p>
+<p>Android 官网文档<a href="https://developer.android.com/topic/performance/graphics/manage-memory?hl=zh-cn" target="_blank" rel="noopener">Managing Bitmap Memory</a>、<a href="https://developer.android.com/topic/performance/graphics/?hl=zh-cn" target="_blank" rel="noopener">Handling bitmaps</a></p>
+<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><p>这里介绍一些好的编码习惯：</p>
+<p><img src="https://img.carlwe.com/code_optimize.jpg" alt=""></p>
+<ol>
+<li><p>考虑使用ArrayMap/SpareseArray而不是传统的HashMap等数据结构，Android系统为移动系统设计的容器ArrayMap更加高效，占用内存更少，因为HashMap需要一个额外的实例对象来记录Mapping的操作。而SparesArray高效的避免了key和value的自动装箱，而且避免了装箱后的解箱。详细参考<a href="http://hukai.me/android-performance-patterns-season-3/" target="_blank" rel="noopener">Android性能优化典范</a></p>
+</li>
+<li><p>在onDraw这种频繁调用的方法要避免对象的创建操作，因为他会迅速增加内存的使用，引起频繁的gc，甚至内存抖动。</p>
+</li>
+<li><p>SoftReference(软引用)、WeakReference(弱引用)、PhantomReference(虚引用)</p>
+<blockquote>
+<p><code>SoftReference</code>：如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。</p>
+<p><code>WeakReference</code>：与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。 </p>
+<p><code>PhantomReference</code>：虚引用”顾名思义，就是形同虚设，与其他几种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。虚引用主要用来跟踪对象被垃圾回收器回收的活动。虚引用与软引用和弱引用的一个区别在于：虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中。    </p>
+</blockquote>
+</li>
+<li><p>谨慎使用large heap，android设备由于软硬件的差异，heap阀值不同，特殊情况下可以在manifest中使用<code>largeheap=true</code>声明一个更大的heap空间，使用getLargeMemoryClass()来获取到这个更大的空间。但是要谨慎使用，因为额外的空间会影响到系统整体的用户体验，切换任务时性能大打折扣，对于oom异常是治标不治本的一种做法。</p>
+</li>
+<li><p>谨慎使用多进程，使用多进程可以把应用中的部分组件运行在单独的进程当中，这样可以扩大应用的内存占用范围，但是这个技术必须谨慎使用，绝大多数应用都不应该贸然使用多进程，一方面是因为使用多进程会使得代码逻辑更加复杂，另外如果使用不当，它可能反而会导致显著增加内存。当你的应用需要运行一个常驻后台的任务，而且这个任务并不轻量，可以考虑使用这个技术，一个典型的例子是创建一个可以长时间后台播放的Music Player。如果整个应用都运行在一个进程中，当后台播放的时候，前台的那些UI资源也没有办法得到释放。类似这样的应用可以切分成2个进程：一个用来操作UI，另外一个给后台的Service。</p>
+</li>
+<li><p>考虑第三方库的大小，如果会和现有的代码或其他库的代码重复，考虑不要真个引入而是把库的代码精简之后再引入。</p>
+</li>
+</ol>
+<h3 id="内存泄漏优化"><a href="#内存泄漏优化" class="headerlink" title="内存泄漏优化"></a>内存泄漏优化</h3><p>内存泄漏的原因有很多，下面介绍一些常见的，我们需要在开发中多注意：</p>
+<p><img src="https://img.carlwe.com/memory_leak_optimize.jpg" alt=""></p>
+<ol>
+<li><p>Activity调用了finish，但是引用Activity的对象未被释放(生命周期没有结束)，Activity Context被传递到其他实例中，可能导致自身被引用而发生泄露，建议使用weakReferce。</p>
+</li>
+<li><p>除必须使用Activity Context的情况(Dialog的context必须是Activity),我们可以使用Application Context来避免Activity泄露。</p>
+</li>
+<li><p>大多数情况下，我们对Bitmap对象增加缓存机制，但是有时候部分bitmap需要及时回收。比如我们临时创建的摸个相对大的bitmap对象，变换得到新的bitmap对象后，尽快回收原始的bitmap，及时释放原来的空间。</p>
+</li>
+<li><p>webview引起的内存泄漏主要是因为org.chromium.android_webview.AwContents 类中注册了component callbacks，但是未正常反注册而导致的。让onDetachedFromWindow先走，在主动调用destroy()之前，把webview从它的parent上面移除掉(Basewebfragment onDestroy())</p>
+</li>
+<li><p>虽然单例模式简单实用，提供了很多便利性，但是因为单例的生命周期和应用保持一致，使用不合理很容易出现持有对象的泄漏。</p>
+</li>
+<li><p>我们在对数据库进行操作时，使用完cursor没有及时关闭，cursor的泄露，会对内存管理带来负面影响。</p>
+</li>
+<li><p>谨慎使用static对象，因为static的生命周期过长，和应用的进程保持一致，使用不当很可能导致对象泄漏。</p>
+</li>
+</ol>
+<p><code>总结</code>：在实际的线上环境中发现，大部分内存泄漏是因为被调用的对象生命周期不同步导致，生命周期不同步不仅仅会导致内存泄漏，更会出现异常，崩溃等更严重的问题。</p>
+<h3 id="做好上面说的1、2、3就够了吗？"><a href="#做好上面说的1、2、3就够了吗？" class="headerlink" title="做好上面说的1、2、3就够了吗？"></a>做好上面说的1、2、3就够了吗？</h3><p><img src="https://img.carlwe.com/memory_is_enough.jpg" alt=""></p>
+<p>前面我们已经从系统级别了解了Android Framework、Darlvik/Art虚拟机、Linux在内存分配上的原理，接着又在代码级别分别从减少内存占用、避免内存泄漏和代码优化三个方面介绍了如何避免内存问题，再加上当前科技发展是如此迅速，4GB内存已经是很常见的手机配置。LPDDR4X的高速闪存也越来越被广泛的使用。对于内存优化我们是不是就已经可以高枕无忧了，有上面这些就够了吗？</p>
+<p>我想即使我们再了解内存，写的代码再好，用户的手机再先进，总还是有出错的时候，那么事后的内存分析和监控是必不可少的了！</p>
+<h2 id="三、Android内存分析与监控"><a href="#三、Android内存分析与监控" class="headerlink" title="三、Android内存分析与监控"></a>三、Android内存分析与监控</h2><p>Android内存分析和监控主要介绍如下四种方式：</p>
+<blockquote>
+<ol>
+<li>查看GC日志</li>
+<li>查看内存使用情况</li>
+<li>通过LeakCanary监控内存 泄漏</li>
+<li>线上监控</li>
+</ol>
+</blockquote>
+<h3 id="查看GC日志"><a href="#查看GC日志" class="headerlink" title="查看GC日志"></a>查看GC日志</h3><h4 id="GC的类型："><a href="#GC的类型：" class="headerlink" title="GC的类型："></a>GC的类型：</h4><p><img src="https://img.carlwe.com/gc_type.jpg" alt=""></p>
+<p><code>Concurrent</code>： 不会暂停应用线程的并发垃圾回收。此垃圾回收在后台线程中运行，而且不会阻止分配。</p>
+<p><code>Alloc</code>： 您的应用在堆已满时尝试分配内存引起的垃圾回收。在这种情况下分配线程中发生了垃圾回收。</p>
+<p><code>Explicit</code>：由应用明确请求的垃圾回收，例如，通过调用system.gc()。与 Dalvik 相同，在 ART 中，最佳做法是您应信任垃圾回收并避免请求显式垃圾回收（如果可能）。不建议使用显式垃圾回收，因为它们会阻止分配线程并不必要地浪费 CPU 周期。如果显式垃圾回收导致其他线程被抢占，那么它们也可能会导致卡顿（应用中出现间断、抖动或暂停）</p>
+<p><code>NativeAlloc</code>：原生分配（如位图或 RenderScript 分配对象）导致出现原生内存压力，进而引起的回收。</p>
+<h4 id="查看垃圾回收日志"><a href="#查看垃圾回收日志" class="headerlink" title="查看垃圾回收日志"></a>查看垃圾回收日志</h4><p><img src="https://img.carlwe.com/gc_log.jpg" alt=""></p>
+<p>在AndroidStudio Logcat过滤GC，然后操作App一段时间后会出现上图的GC内容：</p>
+<blockquote>
+<p><code>垃圾回收原因+垃圾回收的名称+释放对象+释放对象大小+释放大型对象的大小+堆统计数据+暂停时间</code></p>
+<p><code>LOS objects</code>是前面所说到的Art虚拟机新增的</p>
+<p>着重关注最后面的暂停时间，超过16ms会影响界面，一般大于700ms会影响体验，Android Vitals 将连续丢帧超过 700 毫秒定义为冻帧，也就是42帧</p>
+</blockquote>
+<h3 id="查看内存使用情况"><a href="#查看内存使用情况" class="headerlink" title="查看内存使用情况"></a>查看内存使用情况</h3><p>通过查看内存使用情况来分析App的内存占用是非常必要的，下面分别介绍如下两种方式：</p>
+<blockquote>
+<ol>
+<li>adb shell</li>
+<li>Profiler</li>
+</ol>
+</blockquote>
+<h4 id="查看内存使用情况-1"><a href="#查看内存使用情况-1" class="headerlink" title="查看内存使用情况"></a>查看内存使用情况</h4><p><img src="https://img.carlwe.com/adb_dumpsys.jpg" alt=""></p>
+<p>详细的使用请参考AndroidDeveloper<a href="https://developer.android.com/studio/profile/investigate-ram?hl=zh-cn" target="_blank" rel="noopener">调查RAM使用情况</a></p>
+<h4 id="使用Profiler分析内存"><a href="#使用Profiler分析内存" class="headerlink" title="使用Profiler分析内存"></a>使用Profiler分析内存</h4><p>AndroidStudio的Profiler功能越来越强大，不仅集成了内存分析，还有电量、CPU、网络等数据的分析。</p>
+<p><img src="https://img.carlwe.com/use_profiler.jpg" alt=""></p>
+<p>如何通过Profiler进行内存的分析，如何找到内存泄漏请查看</p>
+<p><a href="https://developer.android.com/studio/profile/memory-profiler" target="_blank" rel="noopener">使用 Memory Profiler 查看 Java 堆和内存分配</a></p>
+<p>这里要说下，Android官网的很多文章都被翻译成了中文，这对国内的开发者来说越来越有好了，但要注意中文翻译的文章会比较滞后，最新版一般都是英文。</p>
+<h3 id="使用LeakCanary监控内存泄漏"><a href="#使用LeakCanary监控内存泄漏" class="headerlink" title="使用LeakCanary监控内存泄漏"></a>使用LeakCanary监控内存泄漏</h3><p><img src="https://img.carlwe.com/leakcanary_logo.png" alt=""></p>
+<p><code>LeakCanary名字的由来</code>：Canary是煤矿中金丝雀表达的参考，暗示了矿工将随身携带进入矿井隧道的笼养金丝雀（鸟类）。如果在矿井中收集到一氧化碳等危险气体，这些气体会在杀死矿工之前杀死金丝雀，从而提供警告立即离开隧道。</p>
+<p><code>原理</code>：LeakCanary通过ApplicationContext统一注册监听的方式，通过application.registerActivityLifecycleCallbacks来绑定Activity生命周期的监听，从而监控所有Activity; 在Activity执行onDestroy时，开始检测当前页面是否存在内存泄漏，并分析结果。KeyedWeakReference与ReferenceQueue联合使用，在弱引用关联的对象被回收后，会将引用添加到ReferenceQueue；清空后，可以根据是否继续含有该引用来判定是否被回收；判定回收， 手动GC, 再次判定回收，采用双重判定来确保当前引用是否被回收的状态正确性；如果两次都未回收，则确定为泄漏对象。</p>
+<p><code>LeakCanary的问题</code>：LeakCanary也有一定的不确定性，一般同一个地方反复泄漏5次，算是一个泄漏，同时不建议用在线上环境。</p>
+<p>详细查看 <a href="https://github.com/square/leakcanary" target="_blank" rel="noopener">Github</a></p>
+<h3 id="线上监控"><a href="#线上监控" class="headerlink" title="线上监控"></a>线上监控</h3><p>线上的内存监控一般都是一些大公司在做，例如美团的<a href="https://static001.geekbang.org/con/19/pdf/593bc30c21689.pdf" target="_blank" rel="noopener">Probe</a>还有微信最近开源的<a href="https://mp.weixin.qq.com/s/muX_RgK3cXiMd4j2B0L_lA" target="_blank" rel="noopener">Matrix</a>，个人觉得这个可以去了解下，大公司用户数多时会用到，小公司App接入必要性不是很大，一般来说把上面的介绍的部分做好了就足够了。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/2018年终总结/" rel="next" title="2018年终总结">
+                <i class="fa fa-chevron-left"></i> 2018年终总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/03/我有20张照片想和你分享/" rel="prev" title="我有20张照片想和你分享">
+                我有20张照片想和你分享 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+            
+              <p class="site-author-name" itemprop="name">CarlWe</p>
+              <p class="site-description motion-element" itemprop="description">Think Different</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Android内存分配与回收机制"><span class="nav-number">1.</span> <span class="nav-text">一、Android内存分配与回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-Framework"><span class="nav-number">1.1.</span> <span class="nav-text">Application Framework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dalvik-Art-虚拟机"><span class="nav-number">1.2.</span> <span class="nav-text">Dalvik/Art 虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-Dalvik-Heap"><span class="nav-number">1.2.1.</span> <span class="nav-text">Android Dalvik Heap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dalvik虚拟机执行模式"><span class="nav-number">1.2.2.</span> <span class="nav-text">Dalvik虚拟机执行模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ART虚拟机的优化"><span class="nav-number">1.2.3.</span> <span class="nav-text">ART虚拟机的优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux内核"><span class="nav-number">1.3.</span> <span class="nav-text">Linux内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存不优化会导致哪些问题？"><span class="nav-number">1.4.</span> <span class="nav-text">内存不优化会导致哪些问题？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Android常用的内存优化方法"><span class="nav-number">2.</span> <span class="nav-text">二、Android常用的内存优化方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#降低运行时内存"><span class="nav-number">2.1.</span> <span class="nav-text">降低运行时内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码优化"><span class="nav-number">2.2.</span> <span class="nav-text">代码优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存泄漏优化"><span class="nav-number">2.3.</span> <span class="nav-text">内存泄漏优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做好上面说的1、2、3就够了吗？"><span class="nav-number">2.4.</span> <span class="nav-text">做好上面说的1、2、3就够了吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Android内存分析与监控"><span class="nav-number">3.</span> <span class="nav-text">三、Android内存分析与监控</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看GC日志"><span class="nav-number">3.1.</span> <span class="nav-text">查看GC日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GC的类型："><span class="nav-number">3.1.1.</span> <span class="nav-text">GC的类型：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看垃圾回收日志"><span class="nav-number">3.1.2.</span> <span class="nav-text">查看垃圾回收日志</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看内存使用情况"><span class="nav-number">3.2.</span> <span class="nav-text">查看内存使用情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看内存使用情况-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">查看内存使用情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Profiler分析内存"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用Profiler分析内存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用LeakCanary监控内存泄漏"><span class="nav-number">3.3.</span> <span class="nav-text">使用LeakCanary监控内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线上监控"><span class="nav-number">3.4.</span> <span class="nav-text">线上监控</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CarlWe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+
+
+<div class="BbeiAn-info">
+京ICP备 
+<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
+
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://img.carlwe.com/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//img.carlwe.com/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  
+    
+  
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz',
+        appKey: 'b0kYAp9zaADOzcuVAbiw4SeT',
+        placeholder: '发表评论...',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

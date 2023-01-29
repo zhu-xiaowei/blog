@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RSA加密(一) 密码学基础">
+<meta property="og:url" content="http://carlwe.com/2019/08/17/RSA加密(一) 密码学基础/index.html">
+<meta property="og:site_name" content="CarlWe">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.carlwe.com/rsa_logo1.png-h">
+<meta property="og:image" content="https://img.carlwe.com/rsa_encrypt_history.jpg">
+<meta property="og:image" content="https://img.carlwe.com/rsa_mudantingshaonv.jpg">
+<meta property="og:image" content="https://img.carlwe.com/rsa_caesar.jpg-s">
+<meta property="og:image" content="https://img.carlwe.com/ras_nawahuo.jpg">
+<meta property="og:image" content="https://img.carlwe.com/rsa_unsymmetric.jpg">
+<meta property="og:image" content="https://img.carlwe.com/rsa_symmetric.jpg">
+<meta property="og:image" content="https://img.carlwe.com/rsa_compare_sanlie.jpg">
+<meta property="og:image" content="https://img.carlwe.com/rsa_compare_symmetric.jpg">
+<meta property="og:image" content="https://img.carlwe.com/rsa_compare_unsymmetric.jpg">
+<meta property="og:updated_time" content="2020-08-18T02:25:58.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RSA加密(一) 密码学基础">
+<meta name="twitter:image" content="https://img.carlwe.com/rsa_logo1.png-h">
+
+
+
+
+
+
+  <link rel="canonical" href="http://carlwe.com/2019/08/17/RSA加密(一) 密码学基础/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>RSA加密(一) 密码学基础 | CarlWe</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CarlWe</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/08/17/RSA加密(一) 密码学基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CarlWe">
+      <meta itemprop="description" content="Think Different">
+      <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CarlWe">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RSA加密(一) 密码学基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-17 10:14:48" itemprop="dateCreated datePublished" datetime="2019-08-17T10:14:48+08:00">2019-08-17</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/17/RSA加密(一) 密码学基础/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/08/17/RSA加密(一) 密码学基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/17/RSA加密(一) 密码学基础/" class="leancloud_visitors" data-flag-title="RSA加密(一) 密码学基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://img.carlwe.com/rsa_logo1.png-h" alt=""></p>
+<a id="more"></a>
+<p>加密在生活中其实无处不在，我们先来看几个例子：</p>
+<ul>
+<li>输入用户名和密码登陆手机中的App。</li>
+<li>菜市场买菜时输入微信、支付宝的支付密码进行结账。</li>
+<li>网上银行转账、银行卡取现金时输入密码的操作。</li>
+</ul>
+<p>为了安全考虑上面这些操作都会涉及到加密，可想而知加密在现实生活中的重要性。从这篇文章开始我们来讲解下密码学中最重要的一种加密方式：RSA加密。在讲RSA加密之前，我们先来看看密码学，讲讲密码的发展历史以及当下一些常见的加密算法，对密码学及一些常见的加密算法有一个初步的认识。</p>
+<h3 id="密码学的发展历史"><a href="#密码学的发展历史" class="headerlink" title="密码学的发展历史"></a>密码学的发展历史</h3><p><img src="https://img.carlwe.com/rsa_encrypt_history.jpg" alt=""></p>
+<p>从上图可以看出，密码学的发展主要分为三个阶段：古典密码学、近代密码学和现代密码学，下面我们来逐一介绍。</p>
+<h4 id="1-古典密码学"><a href="#1-古典密码学" class="headerlink" title="1.古典密码学"></a>1.古典密码学</h4><p>1949年之前的密码学统称为古典密码学，古典密码学主要有三个特征，分别是：<strong>隐藏法</strong>、<strong>移位法</strong>和<strong>替代法</strong>。</p>
+<p>在我国古代隐藏法的藏头诗、藏尾诗、漏格诗及绘画等形式中有大量的运用。例如在《水浒传》中为了拉卢俊义入伙儿，智多星吴用和松江便想出一段《吴用智赚玉麒麟》的故事来，利用卢俊义正为躲避血光之灾的惶恐心理，口占四句卦歌：</p>
+<p><center>芦花丛中一扁舟，<br>俊杰俄从此地游。<br>义士若能知此理，<br>反躬难逃可无忧。 </center><br>暗藏<strong>卢俊义反</strong>四字，后广为传播。结果成了官府治罪的证据，终于把卢俊义“逼”上了梁山。另外表达爱意的感情诗也颇多，例如唐伯虎写给秋香的诗：</p>
+<p><center>我画蓝江水悠悠，<br>爱晚亭上枫叶愁。<br>秋月溶溶照佛寺，<br>香烟袅袅绕经楼。 </center><br>另外古人发明遇水才显现的墨，并利用人们不敢往名画上泼水的心理，隐藏一些信息。在电视剧《少年包青天Ⅱ》中包拯给无价之宝的名画泼了一盆水，揭开了牡丹亭少女之谜。</p>
+<p><img src="https://img.carlwe.com/rsa_mudantingshaonv.jpg" alt=""></p>
+<p>在同时期的西方，人们最开始使用棋盘密码、滚筒密码和换位密码进行加密，达到混淆原文的目的。其中有名的<strong>凯撒密码</strong>（ 把一个字母替换为它后面固定位置的另一个字母）成为单表置换的经典，但是人们可以通过单表简单频率分析方法不断尝试从而将其破解。</p>
+<p><img src="https://img.carlwe.com/rsa_caesar.jpg-s" alt=""></p>
+<p><center>凯撒密码(key=3)</center><br>为了提升破解的困难程度，人们开始发明多表置换密码。即一个明文字母可以表示为多个密文字母，<strong><a href="https://www.cnblogs.com/inverseEntropy/p/10151176.html" target="_blank" rel="noopener">维吉尼亚密码</a></strong>随之出现，其使用一系列凯撒密码组成密码字母表的加密算法，故使得单表简单频率分析方法失效，维吉尼亚密码在法语写作：le chiffre indéchiffrable。意思是：不可破译的密码。自此密码破解的难度大大提升，维吉尼亚密码也成为了古典密码的里程碑。</p>
+<p>另外在近代密码出现之前，为了传递大量信息，一些加密算法加密过程过于耗时，尤其在战争中。时效性尤为重要，这时俚语加密便流行起来。太平洋战役中，美军招募了一批纳瓦霍族人作为通讯兵，由于其语言只有发音没有文字，且该语言未被研究过，所以即使敌人获取到，没有纳瓦霍族自己人的帮助也很难解密。美军在此基础上加上一些其他的加密处理来传递军事信息，效果出奇的好，最终顺利的帮助美国海军陆战队攻克了硫磺岛。故事具体情节可以移步这里👉<a href="https://baike.baidu.com/item/%E7%BA%B3%E7%93%A6%E9%9C%8D%E5%AF%86%E7%A0%81/9482868?fr=aladdin" target="_blank" rel="noopener">钠瓦霍密码</a></p>
+<p>​    <img src="https://img.carlwe.com/ras_nawahuo.jpg" alt=""></p>
+<p><center>纳瓦霍通讯兵(左)&nbsp &nbsp 加密字典(右)</center><br>总的来说，古典密码学的思想主要通过隐藏、移位和替换来实现，而这一时期的密码学的体现形式则更像是一门艺术。</p>
+<h4 id="2-近代密码学"><a href="#2-近代密码学" class="headerlink" title="2.近代密码学"></a>2.近代密码学</h4><p>时间来到了1949年，在这一年美国数学家、信息论创始人<a href="https://baike.baidu.com/item/%E5%85%8B%E5%8A%B3%E5%BE%B7%C2%B7%E8%89%BE%E5%B0%94%E4%BC%8D%E5%BE%B7%C2%B7%E9%A6%99%E5%86%9C/10588593?fromtitle=%E9%A6%99%E5%86%9C&amp;fromid=1146248&amp;fr=aladdin" target="_blank" rel="noopener">香农</a>发表了一篇名叫《保密系统的信息理论》的论文。该文提出了<strong>混淆</strong>和<strong>扩散</strong>两大设计原则。为<strong>对称密码学</strong>建立了理论基础，自此密码学成为了一门科学，其代表性加密算法为DES和AES。其原理简单来说就是在加密前先分组，分组的过程中充分利用混淆和扩散，这样可以有效的抵抗对手根据密文的统计特性推测明文或密钥。</p>
+<h4 id="3-现代密码学"><a href="#3-现代密码学" class="headerlink" title="3.现代密码学"></a>3.现代密码学</h4><p>在不久后的1976年，迪菲－赫尔曼发表了论文《密码学的新方向》，论文中提出了“迪菲－赫尔曼密钥交换算法”该算法奠定了现代密码学的基础，因此也获得了2015年的图灵奖。其核心为单向陷门函数， 特点是：易计算，但难求逆难。人们通过这个思想设计出了<strong>非对称加密</strong>算法。简单来说就是通过两个相关联的密钥，将加密与解密操作分开，从而可以在不直接传递密钥的情况下完成解密。而“易计算，求逆难”正好可以利用数学界的三大难题：</p>
+<blockquote>
+<p>1.质因数分解</p>
+<p>2.离散对数问题</p>
+<p>3.椭圆曲线类</p>
+</blockquote>
+<p>其中最经典的公钥加密算法就是1978年由Rivest，Shamir和Adleman用数论方法构造的RSA算法（核心难题为质因数分解）是迄今为止理论上最成熟最完善的公钥密码体制，并已得到广泛应用，也是本系列文章所要着重介绍的加密算法。</p>
+<p>纵观密码学发展的三个阶段。从最原始基于隐藏、移位、替换法所形成的各种加密艺术，发展到后来以混淆和扩散为原则的加密科学，再到以通用数学难题为核心的现代非对称加密，可见密码学在发展的过程中，加密和破解始终在进行着激烈的博弈，进而催生着更安全的加密形式诞生。</p>
+<p>上面简单的介绍了密码学的发展历史，其中有两个概念我们来着重看下，那就是对称加密和非对称加密。</p>
+<h3 id="对称加密与非对称加密"><a href="#对称加密与非对称加密" class="headerlink" title="对称加密与非对称加密"></a>对称加密与非对称加密</h3><ul>
+<li><strong>对称加密</strong></li>
+</ul>
+<p>1976年以前，所有的加密方法都是同一种模式:</p>
+<blockquote>
+<ol>
+<li>发送方选择某一种加密规则，对信息进行加密；</li>
+<li>接受方使用同一种规则，对信息进行解密。</li>
+</ol>
+</blockquote>
+<p><img src="https://img.carlwe.com/rsa_unsymmetric.jpg" alt=""></p>
+<p>缺点：如上图所示甲方必须把加密规则告诉乙方，否则无法解密。保存和传递密钥，就成了最头疼的问题。</p>
+<ul>
+<li><strong>非对称加密</strong></li>
+</ul>
+<p>加密和解密过程：</p>
+<blockquote>
+<ol>
+<li>接收方先创建两把钥匙：公钥和私钥，并将公钥传递给发送方；</li>
+<li>发送发拿到公钥后对信息进行加密，并将加密后的信息发送给接收方；</li>
+<li>接收方收到信息后用之前自己生成的私钥进行解密，得到原信息。</li>
+</ol>
+</blockquote>
+<p><img src="https://img.carlwe.com/rsa_symmetric.jpg" alt=""></p>
+<p><center>②代表上述加解密过程的第2、3步</center><br>从上图可以看出，可能被截获的就是在传输途中的公钥和加密后的信息。如果被公钥加密后的信息只有私钥才解得开，那么只要私钥不泄漏，通信就是安全的。</p>
+<p>非对称加密巧妙的通过两把钥匙，规避了密钥在传输过程中被泄漏的问题。自1976年后，非对称加密开始盛行，下面我们来看看如今在互联网中经常用到的一些加密算法。</p>
+<h3 id="常见加密算法"><a href="#常见加密算法" class="headerlink" title="常见加密算法"></a>常见加密算法</h3><ul>
+<li><strong>散列算法</strong></li>
+</ul>
+<p><img src="https://img.carlwe.com/rsa_compare_sanlie.jpg" alt=""></p>
+<p>首先我们来看下散列算法，其中用到比较多的是MD5和SHA-1，MD5的生成用到了哈希函数，它的典型应用是对一段信息产生信息摘要，以防止被篡改，因而可以用来检查文件完整性和生成数字签名，从上表可以看出，MD5没有SHA-1的安全性高，但加密速度更快。</p>
+<p>另外MD5、SHA-1算法生成的结果一般而言是不可逆的（可通过碰撞法破解），严格来说MD5 不是一种加密算法而是摘要算法。</p>
+<ul>
+<li><strong>对称加密</strong></li>
+</ul>
+<p><img src="https://img.carlwe.com/rsa_compare_symmetric.jpg" alt=""></p>
+<p>通过上面我们知道对称加密是近代密码学的产物，但DES、AES加密算法依旧被广泛的使用着。3DES是基于 DES 的对称算法，即对一块数据用三个不同的密钥进行三次加密，强度更高，但必然会导致更高的资源消耗。</p>
+<p>AES 算法更易于各种硬件和软件实现，这种加密算法是美国联邦政府采用的区块加密标准。AES 的出现就是为了取代DES，AES 具有更好的安全性、效率和灵活性。相对于非对称加密，对称加密的速度要快上几百倍甚至上千倍，这对大文件进行加密非常友好，所以这就是为什么非对称加密如今依旧能够被广泛应用的原因。</p>
+<ul>
+<li><strong>非对称加密</strong></li>
+</ul>
+<p><img src="https://img.carlwe.com/rsa_compare_unsymmetric.jpg" alt=""></p>
+<p>最后就是非对称加密了算法了，除了我们所知道的RSA加密算法，还有一种叫做<strong><a href="https://www.jianshu.com/p/e41bc1eb1d81" target="_blank" rel="noopener">ECC加密算法</a></strong>，其显著特征是密钥长度低，故相同长度的密钥安全性比RSA更高，其在比特币中有大量运用，原理是通过上述提到的三大数学难题中的椭圆曲线问题，非对称加密算法相对于对称加密算法来说，安全性更高。拿RSA算法来说，一般认为密钥长度达到1024位基本安全，2048位的密钥极其安全。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不管是哪个时代，密码学在发展过程中，总是伴随着破解与反破解，而这个过程中，加密也变得越来越安全。我们可以看到加密从一种艺术演变成一门科学，从对称加密发展到非对称加密，那下一个加密时代又是如何呢？</p>
+<p>关于加密的故事其实还有很多,欢迎在留言区说出你记忆中古今中外的加密故事。下一篇我们将介绍RSA加密相关的知识，尽请期待！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/24/神奇的黄金分割比/" rel="next" title="神奇的黄金分割比">
+                <i class="fa fa-chevron-left"></i> 神奇的黄金分割比
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/16/RSA加密(二) 加密过程/" rel="prev" title="RSA加密(二) 加密过程">
+                RSA加密(二) 加密过程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+            
+              <p class="site-author-name" itemprop="name">CarlWe</p>
+              <p class="site-description motion-element" itemprop="description">Think Different</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#密码学的发展历史"><span class="nav-number">1.</span> <span class="nav-text">密码学的发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-古典密码学"><span class="nav-number">1.1.</span> <span class="nav-text">1.古典密码学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-近代密码学"><span class="nav-number">1.2.</span> <span class="nav-text">2.近代密码学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-现代密码学"><span class="nav-number">1.3.</span> <span class="nav-text">3.现代密码学</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称加密与非对称加密"><span class="nav-number">2.</span> <span class="nav-text">对称加密与非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见加密算法"><span class="nav-number">3.</span> <span class="nav-text">常见加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CarlWe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+
+
+<div class="BbeiAn-info">
+京ICP备 
+<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
+
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://img.carlwe.com/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//img.carlwe.com/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  
+    
+  
+  <script src="https://img.carlwe.com/modify.valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz',
+        appKey: 'b0kYAp9zaADOzcuVAbiw4SeT',
+        placeholder: '发表评论...',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

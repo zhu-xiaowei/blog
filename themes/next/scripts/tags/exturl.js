@@ -55,7 +55,7 @@ function extURL(args) {
     title     : title
   };
 
-  return htmlTag('span', attrs, text.join(' ') + '<i class="fa fa-external-link"></i>');
+  return htmlTag('span', attrs, text.join(' ') + '<i class="fa fa-external-link"></i>', false);
 }
 
 hexo.extend.tag.register('exturl', extURL, {ends: false});

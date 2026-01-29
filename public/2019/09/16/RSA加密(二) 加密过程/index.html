@@ -15,10 +15,10 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -54,7 +54,7 @@
   
     
   
-  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -62,9 +62,11 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+  
 
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
@@ -89,7 +91,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.6.0',
     sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -114,18 +116,19 @@
 
 
 
-  <meta name="keywords" content="技术">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article">
 <meta property="og:title" content="RSA加密(二) 加密过程">
-<meta property="og:url" content="http://carlwe.com/2019/09/16/RSA加密(二) 加密过程/index.html">
+<meta property="og:url" content="http://carlwe.com/2019/09/16/RSA%E5%8A%A0%E5%AF%86(%E4%BA%8C)%20%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="CarlWe">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.carlwe.com/rsa_designers.jpg-h">
 <meta property="og:image" content="https://img.carlwe.com/rsa_history.png-m">
 <meta property="og:image" content="https://img.carlwe.com/rsa_fomulai.jpg">
-<meta property="og:updated_time" content="2020-08-18T02:25:58.810Z">
+<meta property="article:published_time" content="2019-09-16T08:56:20.000Z">
+<meta property="article:modified_time" content="2026-01-28T10:14:18.948Z">
+<meta property="article:author" content="CarlWe">
+<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RSA加密(二) 加密过程">
 <meta name="twitter:image" content="https://img.carlwe.com/rsa_designers.jpg-h">
 
 
@@ -133,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://carlwe.com/2019/09/16/RSA加密(二) 加密过程/">
+  <link rel="canonical" href="http://carlwe.com/2019/09/16/RSA加密(二) 加密过程/"/>
 
 
 
@@ -183,9 +186,9 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -195,7 +198,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -239,7 +242,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
 
   </li>
         
@@ -256,7 +259,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
 
   </li>
         
@@ -273,7 +276,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
 
   </li>
 
@@ -320,20 +323,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/09/16/RSA加密(二) 加密过程/">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/09/16/RSA%E5%8A%A0%E5%AF%86(%E4%BA%8C)%20%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CarlWe">
       <meta itemprop="description" content="Think Different">
       <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CarlWe">
     </span>
 
@@ -377,21 +380,11 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/16/RSA加密(二) 加密过程/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/RSA加密(二) 加密过程/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
           
-             <span id="/2019/09/16/RSA加密(二) 加密过程/" class="leancloud_visitors" data-flag-title="RSA加密(二) 加密过程">
+             <span id="/2019/09/16/RSA%E5%8A%A0%E5%AF%86(%E4%BA%8C)%20%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B/" class="leancloud_visitors" data-flag-title="RSA加密(二) 加密过程">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,12 +416,12 @@
 
       
         <p><img src="https://img.carlwe.com/rsa_designers.jpg-h" alt=""></p>
-<a id="more"></a>
+<span id="more"></span>
 <p>上篇文章我们介绍了密码学的基础，相信你已经对密码学及相关的知识有所了解，如果还没有阅读过，可以点击这里查看👉 <a href="https://carlwe.com/2019/08/17/RSA%E5%8A%A0%E5%AF%86%28%E4%B8%80%29%20%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/">RSA加密(一) 密码学基础</a> 。</p>
 <p>这篇文章主要给大家讲解下RSA加密的过程，但在讲加密过程前我们需要了解几个数学公式。都很简单，相信大家看了就会明白，文中遇到有链接的地方，可先跳过不影响阅读。下面我们先来看看RSA加密的介绍。</p>
 <h2 id="RSA加密简介"><a href="#RSA加密简介" class="headerlink" title="RSA加密简介"></a>RSA加密简介</h2><p>本文开篇的这张图就是RSA加密的三位作者，RSA算法是由Rivest、Shamir和Adleman在1977年共同提出，他们当时正好都在麻省理工学院工作，RSA就是他们三人姓氏开头字母拼在一起组成的。</p>
 <p><img src="https://img.carlwe.com/rsa_history.png-m" alt=""></p>
-<p><center>当年的照片，留心下他们的发际线对比😅</center></p><p></p>
+<p><center>当年的照片，留心下他们的发际线对比😅</center><p></p>
 <p>但其实在RSA算法提出的4年前的1973年，在英国政府通讯总部工作的数学家克利福德·柯克斯（Clifford Cocks）在一个内部文件中便提出了一个与之等效的算法，但该算法当时被列入机密，直到1997年才得到公开（稍微有一些些可惜了~）。</p>
 <p>从上篇文章我们了解到，RSA加密算法是通过分解质因数的困难性来实现的。换言之，对一个极大整数做因数分解愈困难，RSA算法愈可靠。假如有人找到一种快速因数分解的算法的话，那么用RSA加密的信息的可靠性就会极度下降。但找到这样的算法的可能性是非常小的。今天只有短的RSA钥匙才可能被强力方式破解。到当前为止，世界上还没有任何可靠的攻击RSA算法的方式。只要其钥匙的长度足够长，用RSA加密的信息实际上是不能被破解的，正因为RSA加密的安全性，所以RSA加密算法在当今互联网信息传递中被广泛的使用。</p>
 <blockquote>
@@ -448,7 +441,7 @@
 <blockquote>
 <p> n是质数：φ(n) = n-1</p>
 </blockquote>
-<p>根据中国<a href="https://baike.baidu.com/item/孙子定理/2841597?fromtitle=剩余定理&amp;fromid=2362542" target="_blank" rel="noopener">剩余定理</a>(又称孙子定理)我们可以得到：两个互质整数p、q乘积的欧拉函数为：</p>
+<p>根据中国<a href="https://baike.baidu.com/item/孙子定理/2841597?fromtitle=剩余定理&amp;fromid=2362542">剩余定理</a>(又称孙子定理)我们可以得到：两个互质整数p、q乘积的欧拉函数为：</p>
 <blockquote>
 <p> φ(pxq) = φ(p)φ(q)  （即可分开计算再相乘）</p>
 </blockquote>
@@ -456,13 +449,13 @@
 <blockquote>
 <p>φ(pxq)=(p-1)(q-1)</p>
 </blockquote>
-<p>我们知道上面这种情况的欧拉公式就够了，关于更多欧拉函数的相关知识我们可以查看👉<a href="https://blog.csdn.net/paxhujing/article/details/51353672" target="_blank" rel="noopener">这里</a></p>
+<p>我们知道上面这种情况的欧拉公式就够了，关于更多欧拉函数的相关知识我们可以查看👉<a href="https://blog.csdn.net/paxhujing/article/details/51353672">这里</a></p>
 <h3 id="3-欧拉定理"><a href="#3-欧拉定理" class="headerlink" title="3.欧拉定理"></a>3.欧拉定理</h3><p>介绍欧拉定理之前，先说下取余操作。大家都知道 5除4余1，在数学中表示为 <code>5=1(mod4)</code> ，因为在计算机中计算余数的符号为百分号%，所以下面公式统一用 <code>5%4=1</code> 这种既简洁又好理解的形式表示。</p>
 <p><strong>欧拉定理</strong>：若正整数a和n互质则有</p>
 <blockquote>
 <p>$a^{φ(n)}$ % n=1</p>
 </blockquote>
-<p>正如上面的式子，<strong>伟大的定理往往都相当简洁！</strong>关于欧拉定理如何证明，感兴趣的同学可以查看👉<a href="https://www.cnblogs.com/wangxiaodai/p/9758242.html" target="_blank" rel="noopener">这里</a></p>
+<p>正如上面的式子，<strong>伟大的定理往往都相当简洁！</strong>关于欧拉定理如何证明，感兴趣的同学可以查看👉<a href="https://www.cnblogs.com/wangxiaodai/p/9758242.html">这里</a></p>
 <p>另外与之相关的一个概念，若正整数a和n互质则存在整数b使得：</p>
 <blockquote>
 <p>ab % n=1</p>
@@ -502,7 +495,7 @@
 <h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p>上面我们已经计算出了公钥和私钥，根据上篇文章中的非对称加密流程。发送发收到公钥后开始进行加密操作。</p>
 <p>假设现在我们要发送一段消息m=4，公钥为 (e=3,n=55)</p>
 <blockquote>
-<p>m必须是一个整数（可将发送的消息通过<a href="http://ascii.911cha.com/" target="_blank" rel="noopener">ASCII码</a>转换成十进制），且m&lt;n，这就导致RSA加密的内容长度受到了限制。</p>
+<p>m必须是一个整数（可将发送的消息通过<a href="http://ascii.911cha.com/">ASCII码</a>转换成十进制），且m&lt;n，这就导致RSA加密的内容长度受到了限制。</p>
 </blockquote>
 <p>计算密文：c = $m^e$ % n</p>
 <blockquote>
@@ -512,7 +505,7 @@
 <h3 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h3><p>接收方收到密文c=9后，使用自己创建的私钥 (d=27,n=55) 进行解密操作。</p>
 <p>计算原文：m =  $c^d$ % n</p>
 <blockquote>
-<p>即原文m = $9^{27}$ % 55 = 4 （简单推导见👉<a href="https://zhidao.baidu.com/question/558432799.html" target="_blank" rel="noopener">这里</a>，也可通过编程验证）</p>
+<p>即原文m = $9^{27}$ % 55 = 4 （简单推导见👉<a href="https://zhidao.baidu.com/question/558432799.html">这里</a>，也可通过编程验证）</p>
 </blockquote>
 <p>于是接收方便得到了发送方想要发送的消息，整个加密和解密过程就结束了。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>可以看到RSA加密和解密的过程并不复杂，用到的公式也只有仅仅两个，但这里面还有一些问题等待着我们去探索，例如：</p>
@@ -545,7 +538,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag"># 技术</a>
+            <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"># 技术</a>
           
         </div>
       
@@ -558,7 +551,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/17/RSA加密(一) 密码学基础/" rel="next" title="RSA加密(一) 密码学基础">
+              <a href="/2019/08/17/RSA%E5%8A%A0%E5%AF%86(%E4%B8%80)%20%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="next" title="RSA加密(一) 密码学基础">
                 <i class="fa fa-chevron-left"></i> RSA加密(一) 密码学基础
               </a>
             
@@ -568,7 +561,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/26/RSA加密(三) 加密原理/" rel="prev" title="RSA加密(三) 加密原理">
+              <a href="/2019/09/26/RSA%E5%8A%A0%E5%AF%86(%E4%B8%89)%20%E5%8A%A0%E5%AF%86%E5%8E%9F%E7%90%86/" rel="prev" title="RSA加密(三) 加密原理">
                 RSA加密(三) 加密原理 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -631,9 +624,11 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+              <img class="site-author-image" itemprop="image"
+                src="https://img.carlwe.com/blog_head.png"
+                alt="CarlWe" />
             
               <p class="site-author-name" itemprop="name">CarlWe</p>
               <p class="site-description motion-element" itemprop="description">Think Different</p>
@@ -644,7 +639,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
@@ -692,7 +687,7 @@
                   
                     
                   
-                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https:&#x2F;&#x2F;github.com&#x2F;love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -703,7 +698,7 @@
                   
                     
                   
-                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https:&#x2F;&#x2F;weibo.com&#x2F;144255366&#x2F;home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
                 </span>
               
             </div>
@@ -721,7 +716,7 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                    <a href="http://blog.kyleduo.com/" title="http:&#x2F;&#x2F;blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
                   </li>
                 
               </ul>
@@ -746,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA加密简介"><span class="nav-number">1.</span> <span class="nav-text">RSA加密简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学公式"><span class="nav-number">2.</span> <span class="nav-text">数学公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-互质关系"><span class="nav-number">2.1.</span> <span class="nav-text">1.互质关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-欧拉函数"><span class="nav-number">2.2.</span> <span class="nav-text">2.欧拉函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-欧拉定理"><span class="nav-number">2.3.</span> <span class="nav-text">3.欧拉定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA加密、解密过程"><span class="nav-number">3.</span> <span class="nav-text">RSA加密、解密过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成公钥、私钥"><span class="nav-number">3.1.</span> <span class="nav-text">生成公钥、私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密"><span class="nav-number">3.2.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解密"><span class="nav-number">3.3.</span> <span class="nav-text">解密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA%E5%8A%A0%E5%AF%86%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">RSA加密简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">数学公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BA%92%E8%B4%A8%E5%85%B3%E7%B3%BB"><span class="nav-number">2.1.</span> <span class="nav-text">1.互质关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">2.欧拉函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3.欧拉定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA%E5%8A%A0%E5%AF%86%E3%80%81%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">RSA加密、解密过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%85%AC%E9%92%A5%E3%80%81%E7%A7%81%E9%92%A5"><span class="nav-number">3.1.</span> <span class="nav-text">生成公钥、私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86"><span class="nav-number">3.2.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86"><span class="nav-number">3.3.</span> <span class="nav-text">解密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -766,7 +761,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2026</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -778,7 +773,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -786,13 +781,13 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
 
 
 <div class="BbeiAn-info">
 京ICP备 
-<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
-
+<a target="_blank"  href="http://beian.miit.gov.cn">18063442号</a>
+</a>
 </div>
 
 
@@ -949,7 +944,7 @@
         avatar:'mm',
         meta:guest,
         pageSize:'10' || 10,
-        visitor: true
+        visitor: false
     });
   </script>
 
@@ -962,6 +957,70 @@
 
 
   
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz",
+                'X-LC-Key': "b0kYAp9zaADOzcuVAbiw4SeT",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
 
   
 

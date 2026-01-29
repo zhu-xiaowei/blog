@@ -15,10 +15,10 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -54,7 +54,7 @@
   
     
   
-  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -62,9 +62,11 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+  
 
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
@@ -89,7 +91,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.6.0',
     sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -114,12 +116,11 @@
 
 
 
-  <meta name="keywords" content="技术">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article">
 <meta property="og:title" content="kotlin混合开发下">
-<meta property="og:url" content="http://carlwe.com/2019/07/20/kotlin混合开发下/index.html">
+<meta property="og:url" content="http://carlwe.com/2019/07/20/kotlin%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E4%B8%8B/index.html">
 <meta property="og:site_name" content="CarlWe">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.carlwe.com/kotlin_and_java_logo.png-h">
 <meta property="og:image" content="https://img.carlwe.com/kotlin_build_process.png">
 <meta property="og:image" content="https://img.carlwe.com/kotlin_added_methods.png-m">
@@ -127,9 +128,11 @@
 <meta property="og:image" content="https://img.carlwe.com/kotlin_target_code.png">
 <meta property="og:image" content="https://img.carlwe.com/use_java_in_kotlin.png">
 <meta property="og:image" content="https://img.carlwe.com/use_kotlin_in_java.png">
-<meta property="og:updated_time" content="2020-08-18T02:25:58.810Z">
+<meta property="article:published_time" content="2019-07-20T01:43:40.000Z">
+<meta property="article:modified_time" content="2026-01-28T10:14:18.949Z">
+<meta property="article:author" content="CarlWe">
+<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kotlin混合开发下">
 <meta name="twitter:image" content="https://img.carlwe.com/kotlin_and_java_logo.png-h">
 
 
@@ -137,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://carlwe.com/2019/07/20/kotlin混合开发下/">
+  <link rel="canonical" href="http://carlwe.com/2019/07/20/kotlin混合开发下/"/>
 
 
 
@@ -187,9 +190,9 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -199,7 +202,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -243,7 +246,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
 
   </li>
         
@@ -260,7 +263,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
 
   </li>
         
@@ -277,7 +280,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
 
   </li>
 
@@ -324,20 +327,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/07/20/kotlin混合开发下/">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/07/20/kotlin%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E4%B8%8B/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CarlWe">
       <meta itemprop="description" content="Think Different">
       <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CarlWe">
     </span>
 
@@ -381,21 +384,11 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/20/kotlin混合开发下/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/20/kotlin混合开发下/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
           
-             <span id="/2019/07/20/kotlin混合开发下/" class="leancloud_visitors" data-flag-title="kotlin混合开发下">
+             <span id="/2019/07/20/kotlin%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E4%B8%8B/" class="leancloud_visitors" data-flag-title="kotlin混合开发下">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -427,7 +420,7 @@
 
       
         <p><img src="https://img.carlwe.com/kotlin_and_java_logo.png-h" alt=""></p>
-<a id="more"></a>
+<span id="more"></span>
 <blockquote>
 <p>回顾：上篇博客介绍了kotlin的一些基本语法和新特性。我们知道了kotlin会更加的实用、简洁和安全。</p>
 </blockquote>
@@ -461,26 +454,26 @@
 <blockquote>
 <p>遵循 Java 约定的 getter 和 setter 的方法（名称以 <code>get</code> 开头的无参数方法和以 <code>set</code> 开头的单参数方法）在 Kotlin 中表示为属性。 <code>Boolean</code> 访问器方法（其中 getter 的名称以 <code>is</code> 开头而 setter 的名称以 <code>set</code> 开头）会表示为与 getter 方法具有相同名称的属性。 例如:</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">val</span> myHouse = House(<span class="string">"5th Avenue,NY."</span>, <span class="number">200000.0</span>, <span class="literal">true</span>)<span class="comment">//java类House</span></span><br><span class="line">myHouse.price = <span class="number">300000.0</span>   <span class="comment">//调用setPrice()方法</span></span><br><span class="line">myHouse.isNewHouse = <span class="literal">false</span> <span class="comment">//调用isNewHouse()方法</span></span><br><span class="line">println(<span class="string">"price:<span class="subst">$&#123;myHouse.price&#125;</span>\nisNewHouse:<span class="subst">$&#123;myHouse.isNewHouse&#125;</span>"</span>)<span class="comment">//调用getPrice()方法</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">val</span> myHouse = House(<span class="string">&quot;5th Avenue,NY.&quot;</span>, <span class="number">200000.0</span>, <span class="literal">true</span>)<span class="comment">//java类House</span></span><br><span class="line">myHouse.price = <span class="number">300000.0</span>   <span class="comment">//调用setPrice()方法</span></span><br><span class="line">myHouse.isNewHouse = <span class="literal">false</span> <span class="comment">//调用isNewHouse()方法</span></span><br><span class="line">println(<span class="string">&quot;price:<span class="subst">$&#123;myHouse.price&#125;</span>\nisNewHouse:<span class="subst">$&#123;myHouse.isNewHouse&#125;</span>&quot;</span>)<span class="comment">//调用getPrice()方法</span></span><br></pre></td></tr></table></figure>
 <p><strong>2、Java中使用了Kotlin的关键字</strong></p>
 <blockquote>
 <p>一些 Kotlin 关键字在 Java 中是有效标识符：<em>in</em>、 <em>object</em>、 <em>is</em> 等等。 如果一个 Java 库使用了 Kotlin 关键字作为方法，你仍然可以通过反引号（`）字符转义它来调用该方法:</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> arr = arrayListOf(<span class="string">"kotlin"</span>, <span class="string">"java"</span>, <span class="string">"and"</span>)</span><br><span class="line">    <span class="comment">//将 Kotlin 中是关键字的 Java 标识符进行转义</span></span><br><span class="line">    println(StringUtil.`<span class="keyword">in</span>`(arr))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> arr = arrayListOf(<span class="string">&quot;kotlin&quot;</span>, <span class="string">&quot;java&quot;</span>, <span class="string">&quot;and&quot;</span>)</span><br><span class="line">    <span class="comment">//将 Kotlin 中是关键字的 Java 标识符进行转义</span></span><br><span class="line">    println(StringUtil.`<span class="keyword">in</span>`(arr))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>3、空安全与平台类型</strong></p>
 <blockquote>
 <p>Java 中的任何引用都可能是 <em>null</em>，这使得 Kotlin 对来自 Java 的对象要求严格空安全是不现实的。 Java 声明的类型在 Kotlin 中会被特别对待并称为<em>平台类型</em>。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DataParser</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">parseData</span><span class="params">(String input, List&lt;T&gt; output, List&lt;String&gt; errors)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DataParser</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">parseData</span><span class="params">(String input, List&lt;T&gt; output, List&lt;String&gt; errors)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>kotlin类实现java的DataParser接口时，每个参数的类型是否可空、集合是否可变，可以根据实际情况来定义。</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonParse</span>:<span class="type">DataParser</span>&lt;<span class="type">Person</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">parseData</span><span class="params">(input:<span class="type">String</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">                           output:<span class="type">MutableList</span>&lt;<span class="type">Person</span>&gt;, </span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="comment">//根据实际情况也可以定义为MutableList&lt;String&gt;</span></span></span></span><br><span class="line"><span class="function"><span class="params">                           errors:<span class="type">MutableList</span>&lt;<span class="type">String</span>?&gt;)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PersonParse</span>:<span class="type">DataParser</span>&lt;<span class="type">Person</span>&gt;&#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">parseData</span><span class="params">(input:<span class="type">String</span>, </span></span></span><br><span class="line"><span class="params"><span class="function">                           output:<span class="type">MutableList</span>&lt;<span class="type">Person</span>&gt;, </span></span></span><br><span class="line"><span class="params"><span class="function">                           <span class="comment">//根据实际情况也可以定义为MutableList&lt;String&gt;</span></span></span></span><br><span class="line"><span class="params"><span class="function">                           errors:<span class="type">MutableList</span>&lt;<span class="type">String</span>?&gt;)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>4、Java可变参数</strong></p>
 <blockquote>
 <p>Java 类有时声明一个具有可变数量参数（varargs）的方法来使用索引</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaArrayExample</span> </span>&#123;</span><br><span class="line">	<span class="comment">//接受可变参数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">removeZero</span><span class="params">(<span class="keyword">int</span>... intArr)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; resultArr = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> value : intArr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value != <span class="number">0</span>) &#123;</span><br><span class="line">                resultArr.add(value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultArr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JavaArrayExample</span> &#123;</span><br><span class="line">	<span class="comment">//接受可变参数</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">removeZero</span><span class="params">(<span class="type">int</span>... intArr)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; resultArr = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> value : intArr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value != <span class="number">0</span>) &#123;</span><br><span class="line">                resultArr.add(value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultArr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>在这种情况下，你需要使用展开运算符 <code>*</code> 来传递 <code>IntArray</code></p>
 </blockquote>
@@ -489,7 +482,7 @@
 <blockquote>
 <p>Java 平台上，数组会使用原生数据类型以避免装箱/拆箱操作的开销。 由于 Kotlin 隐藏了这些实现细节，因此需要一个变通方法来与 Java 代码进行交互。 对于每种原生类型的数组都有一个特化的类（<code>IntArray</code>、 <code>DoubleArray</code>、 <code>CharArray</code> 等等）来处理这种情况。 它们与 <code>Array</code> 类无关，并且会编译成 Java 原生类型数组以获得最佳性能，Java代码如下：</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaArrayMethod</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeIndices</span><span class="params">(<span class="keyword">int</span>[] indices)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JavaArrayMethod</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">removeIndices</span><span class="params">(<span class="type">int</span>[] indices)</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>kotlin调用java代码</p>
 </blockquote>
@@ -498,11 +491,11 @@
 <blockquote>
 <p>Java 的通配符转换成类型投影，Java的原始类型转换成星投影，Java代码：</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaPattern</span>&lt;<span class="title">Animal</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test1</span><span class="params">(JavaPattern&lt;? extends Animal&gt; list)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test2</span><span class="params">(JavaPattern&lt;? <span class="keyword">super</span> Animal&gt; list)</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printColl</span><span class="params">(ArrayList&lt;?&gt; al)</span> </span>&#123;</span><br><span class="line">        Iterator&lt;?&gt; it = al.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next().toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JavaPattern</span>&lt;Animal&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test1</span><span class="params">(JavaPattern&lt;? extends Animal&gt; list)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test2</span><span class="params">(JavaPattern&lt;? <span class="built_in">super</span> Animal&gt; list)</span> &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">printColl</span><span class="params">(ArrayList&lt;?&gt; al)</span> &#123;</span><br><span class="line">        Iterator&lt;?&gt; it = al.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next().toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>转换后的kotlin代码</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KotlinPattern1</span>&lt;<span class="type">Animal</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">Test1</span><span class="params">(list: <span class="type">KotlinPattern1</span>&lt;<span class="type">out</span> <span class="type">Animal</span>&gt;)</span></span> &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">Test2</span><span class="params">(list: <span class="type">KotlinPattern1</span>&lt;<span class="type">in</span> <span class="type">Animal</span>&gt;)</span></span> &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">printColl</span><span class="params">(al: <span class="type">ArrayList</span>&lt;*&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> it = al.iterator()</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            println(it.next().toString())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">KotlinPattern1</span>&lt;<span class="type">Animal</span>&gt; &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">Test1</span><span class="params">(list: <span class="type">KotlinPattern1</span>&lt;<span class="type">out</span> <span class="type">Animal</span>&gt;)</span></span> &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">Test2</span><span class="params">(list: <span class="type">KotlinPattern1</span>&lt;<span class="type">in</span> <span class="type">Animal</span>&gt;)</span></span> &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">printColl</span><span class="params">(al: <span class="type">ArrayList</span>&lt;*&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> it = al.iterator()</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            println(it.next().toString())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>7、在 Kotlin 中使用 JNI</strong></p>
 <blockquote>
 <p>要声明一个在本地（C 或 C++）代码中实现的函数，你需要使用 <code>external</code> 修饰符来标记它</p>
@@ -517,22 +510,22 @@
 <blockquote>
 <p>在编译时会生成如下Java代码：</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String firstName;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> firstName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirstName</span><span class="params">(String firstName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String firstName;</span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getFirstName</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> firstName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFirstName</span><span class="params">(String firstName)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.firstName = firstName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>2、包级函数</strong></p>
 <blockquote>
 <p>Kotlin文件<code>File</code>中声明的所有的函数和属性，包括扩展函数， 都编译成一个名为<code>FileKt</code> 的 Java 类的静态方法，可以使用 <code>@JvmName</code> 注解修改生成的 Java 类的类名：</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@file:JvmName</span>(<span class="string">"Utils"</span>)</span><br><span class="line"><span class="keyword">package</span> com.ltz.kotlintest.usekotlininjava.example2</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printLowerCase</span><span class="params">(str: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(str.toLowerCase())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@file:JvmName</span>(<span class="string">&quot;Utils&quot;</span>)</span><br><span class="line"><span class="keyword">package</span> com.ltz.kotlintest.usekotlininjava.example2</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printLowerCase</span><span class="params">(str: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(str.toLowerCase())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>java中调用</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Utils.printLowerCase(<span class="string">"Hello XiaoHui"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Utils.printLowerCase(<span class="string">&quot;Hello XiaoHui&quot;</span>);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如果多个文件中生成了相同的 Java 类名（包名相同并且类名相同或者有相同的 <code>@JvmName</code> 注解）通常是错误的。然而，编译器能够生成一个单一的 Java 外观类，它具有指定的名称且包含来自所有文件中具有该名称的所有声明。 要启用生成这样的外观，请在所有相关文件中使用 @JvmMultifileClass 注解</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Fun.kt</span></span><br><span class="line"><span class="meta">@file</span>:JvmName(<span class="string">"Utils"</span>)</span><br><span class="line"><span class="meta">@file</span>:JvmMultifileClass</span><br><span class="line"><span class="keyword">package</span> com.ltz.kotlintest.usekotlininjava.example2</span><br><span class="line"></span><br><span class="line"><span class="function">fun <span class="title">printLowerCase</span><span class="params">(str: String)</span> </span>&#123;</span><br><span class="line">    println(str.toLowerCase())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Fun1.kt</span></span><br><span class="line"><span class="meta">@file:JvmName</span>(<span class="string">"Utils"</span>)<span class="comment">//@JvmName 注解修改生成的 Java 类的类名</span></span><br><span class="line"><span class="meta">@file:JvmMultifileClass</span></span><br><span class="line"><span class="keyword">package</span> com.ltz.kotlintest.usekotlininjava.example2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printUpperCase</span><span class="params">(str: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(str.toUpperCase())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line">Utils.printUpperCase(<span class="string">"hello xiaohui"</span>);</span><br><span class="line">Utils.printLowerCase(<span class="string">"Hello XiaoHui"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Fun.kt</span></span><br><span class="line"><span class="meta">@file</span>:JvmName(<span class="string">&quot;Utils&quot;</span>)</span><br><span class="line"><span class="meta">@file</span>:JvmMultifileClass</span><br><span class="line"><span class="keyword">package</span> com.ltz.kotlintest.usekotlininjava.example2</span><br><span class="line"></span><br><span class="line">fun <span class="title function_">printLowerCase</span><span class="params">(str: String)</span> &#123;</span><br><span class="line">    println(str.toLowerCase())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Fun1.kt</span></span><br><span class="line"><span class="meta">@file:JvmName</span>(<span class="string">&quot;Utils&quot;</span>)<span class="comment">//@JvmName 注解修改生成的 Java 类的类名</span></span><br><span class="line"><span class="meta">@file:JvmMultifileClass</span></span><br><span class="line"><span class="keyword">package</span> com.ltz.kotlintest.usekotlininjava.example2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printUpperCase</span><span class="params">(str: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    println(str.toUpperCase())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line">Utils.printUpperCase(<span class="string">&quot;hello xiaohui&quot;</span>);</span><br><span class="line">Utils.printLowerCase(<span class="string">&quot;Hello XiaoHui&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>3、静态字段和方法</strong></p>
 <ul>
 <li>静态字段</li>
@@ -546,25 +539,25 @@
 <li><code>const</code> 修饰符。</li>
 </ul>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Key</span></span>(<span class="keyword">val</span> value: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="comment">//伴生对象</span></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmField</span> <span class="comment">//使用 @JvmField 标注这样的属性使其成为与属性本身具有相同可见性的静态字段</span></span><br><span class="line">        <span class="keyword">val</span> COMPARATOR: Comparator&lt;Key&gt; = compareBy&lt;Key&gt; &#123; it.value &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//命名对象</span></span><br><span class="line"><span class="keyword">object</span> Singleton &#123;</span><br><span class="line">     <span class="keyword">lateinit</span> <span class="keyword">var</span> key: Key</span><br><span class="line">      <span class="keyword">const</span> <span class="keyword">val</span> SingletonConst = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line">Key.COMPARATOR.compare(<span class="keyword">new</span> Key(<span class="number">1</span>), <span class="keyword">new</span> Key(<span class="number">2</span>));</span><br><span class="line">Singleton.key = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">int</span> c = Singleton.SingletonConst;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Key</span>(<span class="keyword">val</span> value: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="comment">//伴生对象</span></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmField</span> <span class="comment">//使用 @JvmField 标注这样的属性使其成为与属性本身具有相同可见性的静态字段</span></span><br><span class="line">        <span class="keyword">val</span> COMPARATOR: Comparator&lt;Key&gt; = compareBy&lt;Key&gt; &#123; it.value &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//命名对象</span></span><br><span class="line"><span class="keyword">object</span> Singleton &#123;</span><br><span class="line">     <span class="keyword">lateinit</span> <span class="keyword">var</span> key: Key</span><br><span class="line">      <span class="keyword">const</span> <span class="keyword">val</span> SingletonConst = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java</span></span><br><span class="line">Key.COMPARATOR.compare(<span class="keyword">new</span> <span class="title class_">Key</span>(<span class="number">1</span>), <span class="keyword">new</span> <span class="title class_">Key</span>(<span class="number">2</span>));</span><br><span class="line">Singleton.key = <span class="keyword">new</span> <span class="title class_">Key</span>(<span class="number">1</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> Singleton.SingletonConst;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>静态方法</li>
 </ul>
 <blockquote>
 <p>Kotlin 可以为命名对象或伴生对象中定义的函数生成静态方法，如果你将这些函数标注为 <code>@JvmStatic</code> 的话，编译器既会在相应对象的类中生成静态方法，也会在对象自身中生成实例方法。 例如</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;<span class="comment">//伴生对象</span></span><br><span class="line">        <span class="meta">@JvmStatic</span> <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//命名对象</span></span><br><span class="line"><span class="keyword">object</span> Obj &#123;</span><br><span class="line">    <span class="meta">@JvmStatic</span> <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;<span class="comment">//伴生对象</span></span><br><span class="line">        <span class="meta">@JvmStatic</span> <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//命名对象</span></span><br><span class="line"><span class="keyword">object</span> Obj &#123;</span><br><span class="line">    <span class="meta">@JvmStatic</span> <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Java </span></span><br><span class="line">C.foo(); <span class="comment">// 没问题</span></span><br><span class="line">C.bar(); <span class="comment">// 错误：不是一个静态方法</span></span><br><span class="line">C.Companion.foo(); <span class="comment">// 保留实例方法</span></span><br><span class="line">C.Companion.bar(); <span class="comment">// 唯一的工作方式</span></span><br><span class="line"></span><br><span class="line">Obj.foo(); <span class="comment">// 没问题</span></span><br><span class="line">Obj.bar(); <span class="comment">// 错误</span></span><br><span class="line">Obj.INSTANCE.bar(); <span class="comment">// 没问题，通过单例实例调用</span></span><br><span class="line">Obj.INSTANCE.foo(); <span class="comment">// 也没问题</span></span><br></pre></td></tr></table></figure>
 <p><strong>4、生成重载</strong></p>
 <blockquote>
 <p>如果你写一个有默认参数值的 Kotlin 函数，在 Java 中只会有一个所有参数都存在的完整参数签名的方法可见，如果希望向 Java 调用者暴露多个重载，可以使用 <code>@JvmOverloads</code> 注解。</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="meta">@JvmOverloads</span> <span class="keyword">constructor</span></span>(x: <span class="built_in">Int</span>, y: <span class="built_in">Double</span> = <span class="number">0.0</span>) &#123;</span><br><span class="line">    <span class="meta">@JvmOverloads</span> <span class="function"><span class="keyword">fun</span> <span class="title">f</span><span class="params">(a: <span class="type">String</span>, b: <span class="type">Int</span> = <span class="number">0</span>, c: <span class="type">String</span> = <span class="string">"abc"</span>)</span></span> &#123; …… &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//kotlin</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> <span class="meta">@JvmOverloads</span> <span class="keyword">constructor</span>(x: <span class="built_in">Int</span>, y: <span class="built_in">Double</span> = <span class="number">0.0</span>) &#123;</span><br><span class="line">    <span class="meta">@JvmOverloads</span> <span class="function"><span class="keyword">fun</span> <span class="title">f</span><span class="params">(a: <span class="type">String</span>, b: <span class="type">Int</span> = <span class="number">0</span>, c: <span class="type">String</span> = <span class="string">&quot;abc&quot;</span>)</span></span> &#123; …… &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>上面的例子最终会生成如下代码：</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数：</span></span><br><span class="line">Foo(<span class="keyword">int</span> x, <span class="keyword">double</span> y)</span><br><span class="line">Foo(<span class="keyword">int</span> x)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(String a, <span class="keyword">int</span> b, String c)</span> </span>&#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(String a, <span class="keyword">int</span> b)</span> </span>&#123; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(String a)</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数：</span></span><br><span class="line">Foo(<span class="type">int</span> x, <span class="type">double</span> y)</span><br><span class="line">Foo(<span class="type">int</span> x)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">f</span><span class="params">(String a, <span class="type">int</span> b, String c)</span> &#123; &#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">f</span><span class="params">(String a, <span class="type">int</span> b)</span> &#123; &#125;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">f</span><span class="params">(String a)</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>5、用 @JvmName 解决签名冲突</strong></p>
 <blockquote>
 <p>有时我们想让一个 Kotlin 中的命名函数在字节码中有另外一个 JVM 名称，最突出的例子是由于<em>类型擦除</em>引发的，下面两个函数在kotlin中能同时定义，因为它们的 JVM 签名是一样的：</p>
@@ -573,11 +566,11 @@
 <blockquote>
 <p>我们可以用<code>@JvmName</code> 去标注其中的一个（或两个），并指定不同的名称作为参数</p>
 </blockquote>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> List<span class="type">&lt;String&gt;</span>.<span class="title">filterValid</span><span class="params">()</span></span>: List&lt;String&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">@JvmName(<span class="meta-string">"filterValidInt"</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> List<span class="type">&lt;Int&gt;</span>.<span class="title">filterValid</span><span class="params">()</span></span>: List&lt;<span class="built_in">Int</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> List<span class="type">&lt;String&gt;</span>.<span class="title">filterValid</span><span class="params">()</span></span>: List&lt;String&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">@JvmName(<span class="string">&quot;filterValidInt&quot;</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> List<span class="type">&lt;Int&gt;</span>.<span class="title">filterValid</span><span class="params">()</span></span>: List&lt;<span class="built_in">Int</span>&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Java中调用</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringArr = Arrays.asList(<span class="string">"abc"</span>, <span class="string">"efa"</span>, <span class="string">"bde"</span>);</span><br><span class="line">List&lt;Integer&gt; intArr = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line">KotlinUseJvmNameKt.filterValid(stringArr);</span><br><span class="line">KotlinUseJvmNameKt.filterValidInt(intArr);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringArr = Arrays.asList(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;efa&quot;</span>, <span class="string">&quot;bde&quot;</span>);</span><br><span class="line">List&lt;Integer&gt; intArr = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line">KotlinUseJvmNameKt.filterValid(stringArr);</span><br><span class="line">KotlinUseJvmNameKt.filterValidInt(intArr);</span><br></pre></td></tr></table></figure>
 <p><strong>6、受检异常</strong></p>
 <blockquote>
 <p>Kotlin 没有受检异常。 所以通常 Kotlin 函数的 Java 签名不会声明抛出异常。 于是如果我们有一个这样的 Kotlin 函数</p>
@@ -594,7 +587,7 @@
 <p>上面这些算是实际项目中混合开发的核心了。我们能有个提前的了解就可以。当我们遇到类似的问题的时候对这个问题有印象知道有办法解决就行，至于怎么解决再去网上查询也不迟。</p>
 <h3 id="Kotin引入的影响"><a href="#Kotin引入的影响" class="headerlink" title="Kotin引入的影响"></a>Kotin引入的影响</h3><p>对于Android开发来说，kotlin的引入有如下方面的改变：</p>
 <ul>
-<li>1.基本不需要再写findViewById. 可通过静态布局引入直接使用布局Id，比ButterKnife更简洁。原理在<a href="https://blog.csdn.net/hust_twj/article/details/80290362" target="_blank" rel="noopener">这里</a></li>
+<li>1.基本不需要再写findViewById. 可通过静态布局引入直接使用布局Id，比ButterKnife更简洁。原理在<a href="https://blog.csdn.net/hust_twj/article/details/80290362">这里</a></li>
 <li>2.会增加很多可空性判断，需要我们来关注和处理。</li>
 <li>3.如何使用kotlin的语法特性让原有代码更简洁，逻辑更清晰。</li>
 </ul>
@@ -615,7 +608,7 @@
 <li>？和 ?：的巧妙用法</li>
 </ul>
 <p>在java中有三元表达式，可以方便的进行简单的判断并返回值。但是kotlin则需要使用if…else…表达式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = (info != <span class="keyword">null</span> &amp;&amp; info.value != <span class="keyword">null</span>) ? info.value : <span class="number">0</span> <span class="comment">//java</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> (info != <span class="literal">null</span> &amp;&amp; info.value != <span class="literal">null</span>) ? info.value : <span class="number">0</span> <span class="comment">//java</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> a = <span class="keyword">if</span>(info != <span class="literal">null</span> &amp;&amp; info.value != <span class="literal">null</span>) info.value <span class="keyword">else</span> <span class="number">0</span> <span class="comment">//kotlin</span></span><br></pre></td></tr></table></figure>
 <p>其实像上面在一连串空判断后不为空时取值本身，否则取默认值的例子很多，我们可以通过kotlin <code>?</code> 和 <code>?:</code>两个操作符让其变得更简单：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> a = info?.value?:<span class="number">0</span></span><br></pre></td></tr></table></figure>
@@ -640,9 +633,9 @@
 <p>同时上面的例子我们可以看到，我们已经判断了非空，所有后面 <code>mDialog!!.dismiss()</code> 能够直接使用非空断言。在开发中我们尽量少使用非空断言，除非是在明确了不可能为null的情况。尤其是在通过java一键转kotlin的时候。我们需要对转换之后的逻辑进行确认。</p>
 <p><strong>5.as转换的问题</strong></p>
 <p>当我们在一键转换代码时，会遇到as转换自动为非空类型的问题，这会给代码带来很大的隐患。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Info info = (Info)data.getExtra(INFO); <span class="comment">//java代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Info</span> <span class="variable">info</span> <span class="operator">=</span> (Info)data.getExtra(INFO); <span class="comment">//java代码</span></span><br></pre></td></tr></table></figure>
 <p>自动转换成kotlin代码后：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> info = <span class="keyword">data</span>.getExtra(INFO) <span class="keyword">as</span> Info</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> info = <span class="keyword">data</span>.getExtra(INFO) <span class="keyword">as</span> Info </span><br></pre></td></tr></table></figure>
 <p>这里需要我们手动的添加可空：<code>as Info?</code> ，避免找不到对象造成的类型转换出错。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本篇文章从大家从kotlin与java混合开发的原理进行展开。介绍了混合开发中相互调用需要注意的问题，最后结合实际开发中的一些发现，告诉大家需要注意的问题。本文仅列出了当前发现的一些问题。如有后面有新的发现还会持续更新。</p>
 <p>如果还没有看过看过上篇对kotlin的简介，可以前往这里查看 👉<a href="https://carlwe.com/2019/04/30/Kotlin%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E4%B8%8A/">《kotlin混合开发上》</a></p>
@@ -669,7 +662,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag"># 技术</a>
+            <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"># 技术</a>
           
         </div>
       
@@ -682,7 +675,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/30/Kotlin混合开发上/" rel="next" title="Kotlin混合开发上">
+              <a href="/2019/04/30/Kotlin%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E4%B8%8A/" rel="next" title="Kotlin混合开发上">
                 <i class="fa fa-chevron-left"></i> Kotlin混合开发上
               </a>
             
@@ -692,7 +685,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/20/写给自己/" rel="prev" title="写给自己">
+              <a href="/2019/07/20/%E5%86%99%E7%BB%99%E8%87%AA%E5%B7%B1/" rel="prev" title="写给自己">
                 写给自己 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -755,9 +748,11 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+              <img class="site-author-image" itemprop="image"
+                src="https://img.carlwe.com/blog_head.png"
+                alt="CarlWe" />
             
               <p class="site-author-name" itemprop="name">CarlWe</p>
               <p class="site-description motion-element" itemprop="description">Think Different</p>
@@ -768,7 +763,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
@@ -816,7 +811,7 @@
                   
                     
                   
-                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https:&#x2F;&#x2F;github.com&#x2F;love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -827,7 +822,7 @@
                   
                     
                   
-                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https:&#x2F;&#x2F;weibo.com&#x2F;144255366&#x2F;home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
                 </span>
               
             </div>
@@ -845,7 +840,7 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                    <a href="http://blog.kyleduo.com/" title="http:&#x2F;&#x2F;blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
                   </li>
                 
               </ul>
@@ -870,7 +865,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin混合开发原理"><span class="nav-number">1.</span> <span class="nav-text">Kotlin混合开发原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#App构建过程介绍"><span class="nav-number">1.1.</span> <span class="nav-text">App构建过程介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译器工作过程"><span class="nav-number">1.2.</span> <span class="nav-text">编译器工作过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标代码生成"><span class="nav-number">1.3.</span> <span class="nav-text">目标代码生成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin中调用Java代码"><span class="nav-number">2.</span> <span class="nav-text">Kotlin中调用Java代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java中调用Kotlin代码"><span class="nav-number">3.</span> <span class="nav-text">Java中调用Kotlin代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotin引入的影响"><span class="nav-number">4.</span> <span class="nav-text">Kotin引入的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发中的问题汇总"><span class="nav-number">5.</span> <span class="nav-text">开发中的问题汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Kotlin混合开发原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#App%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">App构建过程介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">编译器工作过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="nav-number">1.3.</span> <span class="nav-text">目标代码生成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin%E4%B8%AD%E8%B0%83%E7%94%A8Java%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">Kotlin中调用Java代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java%E4%B8%AD%E8%B0%83%E7%94%A8Kotlin%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">Java中调用Kotlin代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotin%E5%BC%95%E5%85%A5%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">4.</span> <span class="nav-text">Kotin引入的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">5.</span> <span class="nav-text">开发中的问题汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -890,7 +885,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2026</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -902,7 +897,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -910,13 +905,13 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
 
 
 <div class="BbeiAn-info">
 京ICP备 
-<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
-
+<a target="_blank"  href="http://beian.miit.gov.cn">18063442号</a>
+</a>
 </div>
 
 
@@ -1073,7 +1068,7 @@
         avatar:'mm',
         meta:guest,
         pageSize:'10' || 10,
-        visitor: true
+        visitor: false
     });
   </script>
 
@@ -1086,6 +1081,70 @@
 
 
   
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz",
+                'X-LC-Key': "b0kYAp9zaADOzcuVAbiw4SeT",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
 
   
 

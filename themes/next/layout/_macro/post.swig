@@ -190,6 +190,7 @@
                   <span class="post-meta-item-text">{{ __('post.comments_count') + __('symbol.colon') }}</span> <span class="post-comments-count gitment-comments-count" data-xid="{{ url_for(post.path) }}" itemprop="commentsCount"></span>
                 </a>
               </span>
+            {# Valine comment count disabled to reduce API requests
             {% elseif theme.valine.enable and theme.valine.appid and theme.valine.appkey %}
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
@@ -200,6 +201,7 @@
                   <span class="post-meta-item-text">{{ __('post.comments_count') + __('symbol.colon') }}</span> <span class="post-comments-count valine-comment-count" data-xid="{{ url_for(post.path) }}" itemprop="commentCount"></span>
                 </a>
               </span>
+            #}
             {% endif %}
           {% endif %}
 

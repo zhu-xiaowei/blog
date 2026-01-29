@@ -535,9 +535,9 @@ valine:
   verify: false # Verification code
   placeholder: 发表评论... # comment box placeholder
   avatar: mm # gravatar style
-  guest_info: nick # custom comment header,this can't be chinese otherwhise db can't match 
+  guest_info: nick # custom comment header,this can't be chinese otherwhise db can't match
   pageSize: 10 # pagination size
-  visitor: true # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+  visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
   lang: zh-CN # use this can auto translate to chinese zh-CN can refere to language package item name
 
 # Support for LiveRe comments system.
@@ -682,7 +682,7 @@ leancloud_visitors:
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in lc counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set the `security` to `false`.
-  security: true
+  security: false
   betterPerformance: true
 
 
@@ -972,7 +972,7 @@ vendors:
   # Example:
   # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
   # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css
-  fontawesome:
+  fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
 
   # Internal version: 2.4.1
   # See: https://www.algolia.com

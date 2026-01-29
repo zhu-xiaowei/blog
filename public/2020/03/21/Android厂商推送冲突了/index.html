@@ -15,10 +15,10 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -54,7 +54,7 @@
   
     
   
-  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -62,9 +62,11 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+  
 
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
@@ -89,7 +91,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.6.0',
     sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -115,15 +117,14 @@
 
 
   <meta name="description" content="本文已授权在 郭霖公众号 发布">
-<meta name="keywords" content="技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android厂商推送冲突了">
-<meta property="og:url" content="http://carlwe.com/2020/03/21/Android厂商推送冲突了/index.html">
+<meta property="og:url" content="http://carlwe.com/2020/03/21/Android%E5%8E%82%E5%95%86%E6%8E%A8%E9%80%81%E5%86%B2%E7%AA%81%E4%BA%86/index.html">
 <meta property="og:site_name" content="CarlWe">
 <meta property="og:description" content="本文已授权在 郭霖公众号 发布">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.carlwe.com/push_confilt_xiaomi.png">
-<meta property="og:image" content="https://img.carlwe.com/MiPush逻辑图.png">
+<meta property="og:image" content="https://img.carlwe.com/MiPush%E9%80%BB%E8%BE%91%E5%9B%BE.png">
 <meta property="og:image" content="https://img.carlwe.com/plugin_xiaomi_push_remark.png">
 <meta property="og:image" content="https://img.carlwe.com/xiaomi_push_receiver.png">
 <meta property="og:image" content="https://img.carlwe.com/push_confilt_xiaomi.png">
@@ -134,10 +135,11 @@
 <meta property="og:image" content="https://img.carlwe.com/plugin_xiaomi_push.png">
 <meta property="og:image" content="https://img.carlwe.com/push_manifest.png">
 <meta property="og:image" content="https://img.carlwe.com/push_confilct_right.png">
-<meta property="og:updated_time" content="2021-11-17T14:23:12.166Z">
+<meta property="article:published_time" content="2020-03-21T06:55:26.000Z">
+<meta property="article:modified_time" content="2026-01-28T10:14:18.947Z">
+<meta property="article:author" content="CarlWe">
+<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android厂商推送冲突了">
-<meta name="twitter:description" content="本文已授权在 郭霖公众号 发布">
 <meta name="twitter:image" content="https://img.carlwe.com/push_confilt_xiaomi.png">
 
 
@@ -145,7 +147,7 @@
 
 
 
-  <link rel="canonical" href="http://carlwe.com/2020/03/21/Android厂商推送冲突了/">
+  <link rel="canonical" href="http://carlwe.com/2020/03/21/Android厂商推送冲突了/"/>
 
 
 
@@ -195,9 +197,9 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -207,7 +209,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -251,7 +253,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
 
   </li>
         
@@ -268,7 +270,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
 
   </li>
         
@@ -285,7 +287,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
 
   </li>
 
@@ -332,20 +334,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2020/03/21/Android厂商推送冲突了/">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2020/03/21/Android%E5%8E%82%E5%95%86%E6%8E%A8%E9%80%81%E5%86%B2%E7%AA%81%E4%BA%86/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CarlWe">
       <meta itemprop="description" content="Think Different">
       <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CarlWe">
     </span>
 
@@ -389,21 +391,11 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/03/21/Android厂商推送冲突了/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/03/21/Android厂商推送冲突了/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
           
-             <span id="/2020/03/21/Android厂商推送冲突了/" class="leancloud_visitors" data-flag-title="Android厂商推送冲突了">
+             <span id="/2020/03/21/Android%E5%8E%82%E5%95%86%E6%8E%A8%E9%80%81%E5%86%B2%E7%AA%81%E4%BA%86/" class="leancloud_visitors" data-flag-title="Android厂商推送冲突了">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -438,7 +430,7 @@
 <blockquote>
 <p>本文已授权在 <strong>郭霖公众号</strong> 发布</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 <ul>
 <li><strong>关于厂商推送</strong></li>
 </ul>
@@ -451,7 +443,7 @@
 <p>透传消息：顾名思义就是直接把消息内容传到客户端，对用户来说是透明的，收到消息后是否显示及显示形式由客户端控制，使用起来更加灵活，很多第三方SDK中称之为自定义消息。一般App中的自定义消息也都是用的透传消息，App收到通知后可通过拿到的消息通知的类型，以及需要前往的页面进行相应处理。 </p>
 <h2 id="问题由来"><a href="#问题由来" class="headerlink" title="问题由来"></a>问题由来</h2><p>最开始我们App中使用网易云信来支持聊天业务；使用极光推送来处理业务的推送消息，由于上述Android版本的限制，进程保活变得困难，也是不推荐的方式。这也导致了应用被杀后消息收不到，所以极光和云信都陆续提供了自家关于厂商推送的接入方案。</p>
 <p>由于业务需要我们先接入了极光的厂商推送，极光针对不同厂商提供的<strong>厂商推送SDK</strong>进行了封装，你只需要引入对应封装好的包就行，如下：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    implementation <span class="string">'cn.jiguang.sdk:jpush:3.3.9'</span></span><br><span class="line">    implementation <span class="string">'cn.jiguang.sdk:jcore:2.1.6'</span></span><br><span class="line">    implementation <span class="string">'cn.jiguang.sdk.plugin:xiaomi:3.3.9'</span></span><br><span class="line">    implementation <span class="string">'cn.jiguang.sdk.plugin:huawei:3.3.9'</span></span><br><span class="line">    implementation <span class="string">'cn.jiguang.sdk.plugin:oppo:3.3.9'</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    implementation <span class="string">&#x27;cn.jiguang.sdk:jpush:3.3.9&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;cn.jiguang.sdk:jcore:2.1.6&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;cn.jiguang.sdk.plugin:xiaomi:3.3.9&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;cn.jiguang.sdk.plugin:huawei:3.3.9&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;cn.jiguang.sdk.plugin:oppo:3.3.9&#x27;</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以小米为例，我们看看极光引入的<code>cn.jiguang.sdk.plugin:xiaomi:3.3.9</code> arr包是如何工作的：</p>
 <p><img src="https://img.carlwe.com/plugin_xiaomi_push_remark.png" alt=""></p>
 <p>可以看到极光提供的这个arr包中直接把小米官方提供的<code>MiPush_SDK_Client_3_6_18.jar</code>(处理小米厂商推送的SDK) 包了进来，同时提供了一个<code>PluginXiaomiPlatformsReceiver</code>类，让其继承自上述小米jar包中的<code>PushMessageReceiver</code>，打包后<code>PluginXiaomiPlatformsReceiver</code>会被添加到Manifest文件，当系统收到推送后，会将消息转发到继承了<code>PushMessageReceiver</code>的类，所以<code>PluginXiaomiPlatformsReceiver</code>就会收到消息，并将消息传递给极光自己的SDK进行处理，后面的流程就和App在前台的推送流程一样了。简单总结下这个Plugin类：</p>
@@ -459,8 +451,8 @@
 <p> Plugin类会被注册到Manifest从而接收系统消息，并在对应的回调方法中将消息转发给极光SDK处理。</p>
 </blockquote>
 <p>在网易云信兼容厂商推送之前这一切工作的都很好，应用进程被杀后，push推送可正常收到，问题从云信消息推送兼容厂商推送开始：</p>
-<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>按照网易云信提供的 <strong><a href="https://dev.yunxin.163.com/docs/product/IM即时通讯/SDK开发集成/Android开发集成/推送?#小米推送" target="_blank" rel="noopener">接入方法</a></strong> 需要接入小米的推送SDK，因为极光的已经引入，所以再次引入会冲突，这里就直接不引入，使用极光的就行，然后按照接入流程接入即可，在接入流程后面我们注意到AndroidManifest.xml文件中会插入如下内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"com.netease.nimlib.mixpush.mi.MiPushReceiver"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"0x7fffffff"</span>&gt;</span> //这里设置了优先级</span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.RECEIVE_MESSAGE"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.MESSAGE_ARRIVED"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.ERROR"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h3><p>按照网易云信提供的 <strong><a href="https://dev.yunxin.163.com/docs/product/IM即时通讯/SDK开发集成/Android开发集成/推送?#小米推送">接入方法</a></strong> 需要接入小米的推送SDK，因为极光的已经引入，所以再次引入会冲突，这里就直接不引入，使用极光的就行，然后按照接入流程接入即可，在接入流程后面我们注意到AndroidManifest.xml文件中会插入如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;com.netease.nimlib.mixpush.mi.MiPushReceiver&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">&quot;0x7fffffff&quot;</span>&gt;</span> //这里设置了优先级</span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.RECEIVE_MESSAGE&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.MESSAGE_ARRIVED&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.ERROR&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这个<code>MiPushReceiver</code>我们查看源码会发现它主要是处理并转发小米厂商推送的各种事件，<code>MiPushReceiver</code>同样是继承自小米push sdk中的<code>PushMessageReceiver</code>，<code>MiPushReceiver</code>代码如下：</p>
 <p><img src="https://img.carlwe.com/xiaomi_push_receiver.png" alt=""></p>
 <p>到这里官方文档说已经可以开始测试推送消息，于是把手机进程杀掉，给手机发送一条消息，确实能够收到。但进程杀掉后原本接收正常的极光推送，现在却收不到了🤪，其他厂商机型有的能收到，但点击推送消息不能打开App，我们看下图来分析原因：</p>
@@ -469,16 +461,16 @@
 <p>不管是极光的消息还是云信的消息，首先都会把消息推给小米的推送云服务，然后小米手机系统会和小米的推送云服务保持一个长链接，MiPush SDK收到后，首先会找到继承了<code>PushMessageReceiver</code> 并且注册到Manifest的Receiver，并把消息传给这个Receiver，因为极光和云信在Manifest中都注册了<code>PushMessageReceiver</code>，所以这个时候谁能收到就存在不确定性了。如果配置了<code>priority</code> 优先级，则优先级高的会收到。</p>
 </blockquote>
 <p>回到上面我们注意到网易云信的 <code>MiPushReceiver</code>设置了优先级，所以要解释为什么极光的消息就收不到呢，我赶紧查看了下打包后Manifest中极光的<code>PluginXiaomiPlatformsReceiver</code> 如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"cn.jpush.android.service.PluginXiaomiPlatformsReceiver"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.RECEIVE_MESSAGE"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.MESSAGE_ARRIVED"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.ERROR"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;cn.jpush.android.service.PluginXiaomiPlatformsReceiver&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.RECEIVE_MESSAGE&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.MESSAGE_ARRIVED&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.ERROR&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>果真，极光并没有设置优先级，这就能解释为什么极光的推送在网易云信接入厂商推送后收不到了。</p>
 <p>由于不同的厂商接入厂商推送的方式不同，对于上述这种冲突的表现也不太一样，像小米手机云信的消息总是优先于极光的推送，oppo、vivo都会显示消息，但点击通知栏消息无反应(消息没有传到对应的Receiver)，而华为的部分手机则能正常区分。<strong>总之两个Receiver同时去接收厂商的推送，会出现冲突的情况。</strong></p>
 <p>然后我们继续在网易云信和极光的集成文档中寻找解决这种冲突的方案，终于我们在网易云信的文档后面找到了，紧接着我们遇到了第二个问题。</p>
-<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>网易云信的推送文档中提供了<strong><a href="https://dev.yunxin.163.com/docs/product/IM即时通讯/SDK开发集成/Android开发集成/推送?pos=toc-0-0-2" target="_blank" rel="noopener">小米推送兼容性</a></strong>的处理方案，云信提供了一个<code>MiPushMessageReceiver</code> ,让其他接入了厂商推送并处理推送转发逻辑的Receiver继承这个<code>MiPushMessageReceiver</code>，然后在对应的回调方法中处理处理相应的逻辑，<code>MiPushMessageReceiver</code>如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MiPushMessageReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivePassThroughMessage</span><span class="params">(Context context, MiPushMessage message)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationMessageClicked</span><span class="params">(Context context, MiPushMessage message)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationMessageArrived</span><span class="params">(Context context, MiPushMessage message)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceiveRegisterResult</span><span class="params">(Context context, MiPushCommandMessage message)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCommandResult</span><span class="params">(Context context, MiPushCommandMessage message)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h3><p>网易云信的推送文档中提供了<strong><a href="https://dev.yunxin.163.com/docs/product/IM即时通讯/SDK开发集成/Android开发集成/推送?pos=toc-0-0-2">小米推送兼容性</a></strong>的处理方案，云信提供了一个<code>MiPushMessageReceiver</code> ,让其他接入了厂商推送并处理推送转发逻辑的Receiver继承这个<code>MiPushMessageReceiver</code>，然后在对应的回调方法中处理处理相应的逻辑，<code>MiPushMessageReceiver</code>如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MiPushMessageReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceivePassThroughMessage</span><span class="params">(Context context, MiPushMessage message)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onNotificationMessageClicked</span><span class="params">(Context context, MiPushMessage message)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onNotificationMessageArrived</span><span class="params">(Context context, MiPushMessage message)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceiveRegisterResult</span><span class="params">(Context context, MiPushCommandMessage message)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCommandResult</span><span class="params">(Context context, MiPushCommandMessage message)</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后将自己的Receiver添加到Manifest中，不去设置priority优先级：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">"xxx.YourSelfReceiver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.RECEIVE_MESSAGE"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.MESSAGE_ARRIVED"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.xiaomi.mipush.ERROR"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">&quot;xxx.YourSelfReceiver&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.RECEIVE_MESSAGE&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.MESSAGE_ARRIVED&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.xiaomi.mipush.ERROR&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这样就能保证推送都由网易云信的<code>MiPushReceiver</code>先接收到，然后通过判断是否是自己的推送消息，是自己的就直接处理，不是自己的就交给继承自<code>MiPushMessageReceiver</code>的Receiver处理，查看网易云信的源码发现确实是这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MiPushReceiver</span> <span class="keyword">extends</span> <span class="title">PushMessageReceiver</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MiPushReceiver</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">onNotificationMessageClicked</span><span class="params">(Context var1, MiPushMessage var2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (g.a(var2.getExtra())) &#123;</span><br><span class="line">            c.a(<span class="number">5</span>).onNotificationClick(var1, var2); <span class="comment">//自己处理</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            MiPushMessageReceiver var3;</span><br><span class="line">            <span class="keyword">if</span> ((var3 = a.a(var1)) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                var3.onNotificationMessageClicked(var1, var2);<span class="comment">//交给MiPushMessageReceiver处理</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">MiPushReceiver</span> <span class="keyword">extends</span> <span class="title class_">PushMessageReceiver</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MiPushReceiver</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">onNotificationMessageClicked</span><span class="params">(Context var1, MiPushMessage var2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (g.a(var2.getExtra())) &#123;</span><br><span class="line">            c.a(<span class="number">5</span>).onNotificationClick(var1, var2); <span class="comment">//自己处理</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            MiPushMessageReceiver var3;</span><br><span class="line">            <span class="keyword">if</span> ((var3 = a.a(var1)) != <span class="literal">null</span>) &#123;</span><br><span class="line">                var3.onNotificationMessageClicked(var1, var2);<span class="comment">//交给MiPushMessageReceiver处理</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果按照云信推荐的方法，处理之后就是这样的流程：</p>
 <p><img src="https://img.carlwe.com/push_confilct_right.png" alt=""></p>
 <p>好了到这里处理方式和原理都弄清楚了，我们现在也就只需要将极光处理推送的<code>PluginXiaomiPlatformsReceiver</code>改为继承<code>MiPushMessageReceiver</code>，然后按照上面的方法将其添加到Manifest中即可，看起来很简单，然后我们再来看看极光的<code>PluginXiaomiPlatformsReceiver</code>：</p>
@@ -504,10 +496,10 @@
 <p>其实我们现在只需要有一个类，内部实现逻辑和云信的 <code>PluginXiaomiPlatformsReceiver</code> 一样，能将收到的消息转发给云信SDK，并且该类能任意修改继承关系。好了不知道你想到没有，我们可以在自己的代码里写一个一模一样的类，内部的代码直接把<code>PluginXiaomiPlatformsReceiver</code>的拷贝过来，然后修改继承关系不就可以了！是的，我们还是来看下云信的<code>PluginXiaomiPlatformsReceiver</code>：</p>
 <p><img src="https://img.carlwe.com/plugin_xiaomi_push.png" alt=""></p>
 <p>看到虽然这个类混淆了，不过没关系，源码都在sdk中，在外部也可以调用，我们可以直接把代码拷贝到自己新建的类<code>PluginXiaomiPlatformsReceiverYx</code>中:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cn.jpush.android.thirdpush.xiaomi.a;<span class="comment">//引入极光被混淆的包</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PluginXiaomiPlatformsReceiverYx</span> <span class="keyword">extends</span> <span class="title">MiPushMessageReceiver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"XMPlatformsReceiver"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PluginXiaomiPlatformsReceiverYx</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivePassThroughMessage</span><span class="params">(Context var1, MiPushMessage var2)</span> </span>&#123;</span><br><span class="line">        Logger.dd(<span class="string">"XMPlatformsReceiver"</span>, <span class="string">"onReceivePassThroughMessage is called. "</span> + var2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationMessageClicked</span><span class="params">(Context var1, MiPushMessage var2)</span> </span>&#123;</span><br><span class="line">        Logger.dd(<span class="string">"XMPlatformsReceiver"</span>, <span class="string">"onNotificationMessageClicked is called. "</span> + var2);</span><br><span class="line">        <span class="keyword">if</span> (var2 == <span class="keyword">null</span>) &#123;</span><br><span class="line">            Logger.v(<span class="string">"XMPlatformsReceiver"</span>, <span class="string">"message was null"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//虽然混淆了，但是用的都是极光sdk中的方法一样可以正常工作。</span></span><br><span class="line">            a.a(var1, var2, <span class="string">"action_notification_clicked"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cn.jpush.android.thirdpush.xiaomi.a;<span class="comment">//引入极光被混淆的包</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PluginXiaomiPlatformsReceiverYx</span> <span class="keyword">extends</span> <span class="title class_">MiPushMessageReceiver</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">TAG</span> <span class="operator">=</span> <span class="string">&quot;XMPlatformsReceiver&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PluginXiaomiPlatformsReceiverYx</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceivePassThroughMessage</span><span class="params">(Context var1, MiPushMessage var2)</span> &#123;</span><br><span class="line">        Logger.dd(<span class="string">&quot;XMPlatformsReceiver&quot;</span>, <span class="string">&quot;onReceivePassThroughMessage is called. &quot;</span> + var2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onNotificationMessageClicked</span><span class="params">(Context var1, MiPushMessage var2)</span> &#123;</span><br><span class="line">        Logger.dd(<span class="string">&quot;XMPlatformsReceiver&quot;</span>, <span class="string">&quot;onNotificationMessageClicked is called. &quot;</span> + var2);</span><br><span class="line">        <span class="keyword">if</span> (var2 == <span class="literal">null</span>) &#123;</span><br><span class="line">            Logger.v(<span class="string">&quot;XMPlatformsReceiver&quot;</span>, <span class="string">&quot;message was null&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//虽然混淆了，但是用的都是极光sdk中的方法一样可以正常工作。</span></span><br><span class="line">            a.a(var1, var2, <span class="string">&quot;action_notification_clicked&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看到这个类继承了云信提供的<code>MiPushMessageReceiver</code>，其每个回调实现和极光之前的一模一样，这样能把收到的消息传给极光处理，然后按照云信的文档将该类添加到Manifest中：</p>
 <p><img src="https://img.carlwe.com/push_manifest.png" alt=""></p>
-<p>这里需要注意，为了只让云信去监听厂商的推送，还需要将极光SDK在编译时自动添加到Manifest中的<code>PluginXiaomiPlatformsReceiver</code> 手动remove掉，关于Manifest的merge规则我们可以查看Android文档<a href="https://developer.android.google.cn/studio/build/manifest-merge.html" target="_blank" rel="noopener">合并多个清单文件</a>。</p>
+<p>这里需要注意，为了只让云信去监听厂商的推送，还需要将极光SDK在编译时自动添加到Manifest中的<code>PluginXiaomiPlatformsReceiver</code> 手动remove掉，关于Manifest的merge规则我们可以查看Android文档<a href="https://developer.android.google.cn/studio/build/manifest-merge.html">合并多个清单文件</a>。</p>
 <p>这样修改之后，相当于我们就把极光的<code>PluginXiaomiPlatformsReceiver</code> <strong>“架空”</strong>了，云信和极光的消息推送就统一由云信来接收，不是云信的消息会交给<code>PluginXiaomiPlatformsReceiverYx</code>转发到极光再去处理，流程和上面提到的就一样了：</p>
 <p><img src="https://img.carlwe.com/push_confilct_right.png" alt=""></p>
 <p>这里只是以小米厂商推送的冲突为例，其他像华为、魅族、OPPO、VIVO等都可以以同样的方式处理。通过上述方案，可以顺利的完成云信和极光的厂商推送兼容。当升级极光SDK版本时，如果极光各厂商以”Plugin”开头的Receiver内部实现有变化，则直接拷贝对应的内容到自定义的Receiver中，这点需要注意。</p>
@@ -535,7 +527,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag"># 技术</a>
+            <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"># 技术</a>
           
         </div>
       
@@ -548,7 +540,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/27/我记忆中的武汉/" rel="next" title="我记忆中的武汉">
+              <a href="/2020/01/27/%E6%88%91%E8%AE%B0%E5%BF%86%E4%B8%AD%E7%9A%84%E6%AD%A6%E6%B1%89/" rel="next" title="我记忆中的武汉">
                 <i class="fa fa-chevron-left"></i> 我记忆中的武汉
               </a>
             
@@ -621,9 +613,11 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+              <img class="site-author-image" itemprop="image"
+                src="https://img.carlwe.com/blog_head.png"
+                alt="CarlWe" />
             
               <p class="site-author-name" itemprop="name">CarlWe</p>
               <p class="site-description motion-element" itemprop="description">Think Different</p>
@@ -634,7 +628,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
@@ -682,7 +676,7 @@
                   
                     
                   
-                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https:&#x2F;&#x2F;github.com&#x2F;love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -693,7 +687,7 @@
                   
                     
                   
-                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https:&#x2F;&#x2F;weibo.com&#x2F;144255366&#x2F;home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
                 </span>
               
             </div>
@@ -711,7 +705,7 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                    <a href="http://blog.kyleduo.com/" title="http:&#x2F;&#x2F;blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
                   </li>
                 
               </ul>
@@ -736,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题由来"><span class="nav-number">1.</span> <span class="nav-text">问题由来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题一"><span class="nav-number">1.1.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题二"><span class="nav-number">1.2.</span> <span class="nav-text">问题二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-number">2.</span> <span class="nav-text">解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻求云信和极光的帮助"><span class="nav-number">2.1.</span> <span class="nav-text">寻求云信和极光的帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析问题原理，找解决方案"><span class="nav-number">2.2.</span> <span class="nav-text">分析问题原理，找解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%94%B1%E6%9D%A5"><span class="nav-number">1.</span> <span class="nav-text">问题由来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text">问题二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E6%B1%82%E4%BA%91%E4%BF%A1%E5%92%8C%E6%9E%81%E5%85%89%E7%9A%84%E5%B8%AE%E5%8A%A9"><span class="nav-number">2.1.</span> <span class="nav-text">寻求云信和极光的帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98%E5%8E%9F%E7%90%86%EF%BC%8C%E6%89%BE%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.2.</span> <span class="nav-text">分析问题原理，找解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -756,7 +750,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2026</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -768,7 +762,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -776,13 +770,13 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
 
 
 <div class="BbeiAn-info">
 京ICP备 
-<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
-
+<a target="_blank"  href="http://beian.miit.gov.cn">18063442号</a>
+</a>
 </div>
 
 
@@ -939,7 +933,7 @@
         avatar:'mm',
         meta:guest,
         pageSize:'10' || 10,
-        visitor: true
+        visitor: false
     });
   </script>
 
@@ -952,6 +946,70 @@
 
 
   
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz",
+                'X-LC-Key': "b0kYAp9zaADOzcuVAbiw4SeT",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
 
   
 

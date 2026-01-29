@@ -15,10 +15,10 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -54,7 +54,7 @@
   
     
   
-  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -62,9 +62,11 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+  
 
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
@@ -89,7 +91,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.6.0',
     sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -115,13 +117,12 @@
 
 
   <meta name="description" content="上一篇文章，我们从实际使用出发，优化了在jira使用过程中的各种问题，到这里大家已经可以较为便捷的使用jira来进行项目任务的创建、状态改变，项目管理者也可以很好的进行每个冲刺的开始结束等工作，但是我们如何在项目结束或项目进行中，及时掌控项目进展状况并发现问题呢，这里我们就需要使用到jira自带的报表以及我们可以使用的第三方插件来帮助我们解决这些问题了。">
-<meta name="keywords" content="Jira">
 <meta property="og:type" content="article">
 <meta property="og:title" content="研发管理（四）可用报表及项目管理">
 <meta property="og:url" content="http://carlwe.com/2022/06/29/jira4/index.html">
 <meta property="og:site_name" content="CarlWe">
 <meta property="og:description" content="上一篇文章，我们从实际使用出发，优化了在jira使用过程中的各种问题，到这里大家已经可以较为便捷的使用jira来进行项目任务的创建、状态改变，项目管理者也可以很好的进行每个冲刺的开始结束等工作，但是我们如何在项目结束或项目进行中，及时掌控项目进展状况并发现问题呢，这里我们就需要使用到jira自带的报表以及我们可以使用的第三方插件来帮助我们解决这些问题了。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.carlwe.com/xs/jira4_version_report_setting.png">
 <meta property="og:image" content="https://img.carlwe.com/xs/jira4_version_report_main.png">
 <meta property="og:image" content="https://img.carlwe.com/xs/jira4_version_report_detail.png">
@@ -139,10 +140,11 @@
 <meta property="og:image" content="https://img.carlwe.com/xs/jira4_plans_block_detail.png">
 <meta property="og:image" content="https://img.carlwe.com/xs/jiar4_yanfa.png">
 <meta property="og:image" content="https://img.carlwe.com/xs/jira4_yanfaxiaoneng.png">
-<meta property="og:updated_time" content="2022-07-06T10:15:30.611Z">
+<meta property="article:published_time" content="2022-06-29T02:37:21.000Z">
+<meta property="article:modified_time" content="2026-01-28T10:14:18.949Z">
+<meta property="article:author" content="CarlWe">
+<meta property="article:tag" content="Jira">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="研发管理（四）可用报表及项目管理">
-<meta name="twitter:description" content="上一篇文章，我们从实际使用出发，优化了在jira使用过程中的各种问题，到这里大家已经可以较为便捷的使用jira来进行项目任务的创建、状态改变，项目管理者也可以很好的进行每个冲刺的开始结束等工作，但是我们如何在项目结束或项目进行中，及时掌控项目进展状况并发现问题呢，这里我们就需要使用到jira自带的报表以及我们可以使用的第三方插件来帮助我们解决这些问题了。">
 <meta name="twitter:image" content="https://img.carlwe.com/xs/jira4_version_report_setting.png">
 
 
@@ -150,7 +152,7 @@
 
 
 
-  <link rel="canonical" href="http://carlwe.com/2022/06/29/jira4/">
+  <link rel="canonical" href="http://carlwe.com/2022/06/29/jira4/"/>
 
 
 
@@ -200,9 +202,9 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -212,7 +214,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -256,7 +258,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
 
   </li>
         
@@ -273,7 +275,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
 
   </li>
         
@@ -290,7 +292,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
 
   </li>
 
@@ -337,20 +339,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://carlwe.com/2022/06/29/jira4/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CarlWe">
       <meta itemprop="description" content="Think Different">
       <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CarlWe">
     </span>
 
@@ -394,16 +396,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/06/29/jira4/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2022/06/29/jira4/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -440,7 +432,7 @@
 
       
         <p>上一篇文章，我们从实际使用出发，优化了在jira使用过程中的各种问题，到这里大家已经可以较为便捷的使用jira来进行项目任务的创建、状态改变，项目管理者也可以很好的进行每个冲刺的开始结束等工作，但是我们如何在项目结束或项目进行中，及时掌控项目进展状况并发现问题呢，这里我们就需要使用到jira自带的报表以及我们可以使用的第三方插件来帮助我们解决这些问题了。</p>
-<a id="more"></a>
+<span id="more"></span>
 <ul>
 <li><a href="/2022/03/07/jira1">研发管理（一）从现状到Jira</a></li>
 <li><a href="/2022/05/06/jira2">研发管理（二）Jira实现基本功能</a></li>
@@ -505,7 +497,7 @@
 <p><img src="https://img.carlwe.com/xs/jira4_cumulative_flow%20chart.png" alt=""></p>
 <p>累积流量图 横轴是时间，纵轴是问题个数，同一时间，不同颜色的高度代表不同状态任务的数量，这里包含了子任务（由于上篇文章，主任务可以自动的更新状态，所有上图的数据是可用的），我们可以看到前期任务数量增长很快，大部分都是待办，到中间时待办逐渐减少，集成中逐渐增多，开发完成和测试完成的高度基本相同，说明前期测试可以很好的处理掉开发完成的任务，反而集成中的减少的较慢，应该是有任务关联导致等待。从累积流量图中我们可以基本看出当前开发阶段，以及团队，开发、集成、测试的分工效率是否合理。</p>
 <h1 id="项目管理插件"><a href="#项目管理插件" class="headerlink" title="项目管理插件"></a>项目管理插件</h1><p>接下来介绍几个对项目管理比较友好的插件</p>
-<h2 id="Tests"><a href="#Tests" class="headerlink" title="Tests"></a><a href="https://marketplace.atlassian.com/apps/1213259/zephyr-scale-test-management-for-jira?hosting=server&amp;tab=overview" target="_blank" rel="noopener">Tests</a></h2><p>Test Management 是Jira内部可扩展的高性能测试管理解决方案，具有高级测试计划、报告和可重用性功能，可以很好的帮助我摸嗯对测试用例进行管理，编写测试步骤，同时关联到开发任务卡片。</p>
+<h2 id="Tests"><a href="#Tests" class="headerlink" title="Tests"></a><a href="https://marketplace.atlassian.com/apps/1213259/zephyr-scale-test-management-for-jira?hosting=server&amp;tab=overview">Tests</a></h2><p>Test Management 是Jira内部可扩展的高性能测试管理解决方案，具有高级测试计划、报告和可重用性功能，可以很好的帮助我摸嗯对测试用例进行管理，编写测试步骤，同时关联到开发任务卡片。</p>
 <p><img src="https://img.carlwe.com/xs/jira4_test_case.png" alt=""></p>
 <p>我们可以通过创建文件夹针对不同的业务不同的版本进行测试用例管理。</p>
 <p><img src="https://img.carlwe.com/xs/jira4_test_main_fix.png" alt=""></p>
@@ -513,21 +505,21 @@
 <p><img src="https://img.carlwe.com/xs/jira4_test_script.png" alt=""></p>
 <p>尤其是在TestScript模块，可以很好的一步一步进行测试用例执行步骤及期望结果的编写。</p>
 <p>同时该插件还可以帮助我们生成测试报告，具体使用请查看上面的链接，非常推荐测试的小伙伴去尝试使用。</p>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a><a href="https://marketplace.atlassian.com/apps/4984/git-integration-for-jira?hosting=server&amp;tab=overview" target="_blank" rel="noopener">Git</a></h2><p>git插件对于开发的同学来说非常好用，可以在 Jira 中集成 Git 提交、分支、标签和拉取请求。连接 git 服务器 GitHub、GitLab，将代码提交和项目管理进行集成。这里大家就直接参考官方的介绍：</p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a><a href="https://marketplace.atlassian.com/apps/4984/git-integration-for-jira?hosting=server&amp;tab=overview">Git</a></h2><p>git插件对于开发的同学来说非常好用，可以在 Jira 中集成 Git 提交、分支、标签和拉取请求。连接 git 服务器 GitHub、GitLab，将代码提交和项目管理进行集成。这里大家就直接参考官方的介绍：</p>
 <blockquote>
 <ol>
 <li><p>在 Jira 中查看您的 Git 提交。快速查看提交评论、更改的文件和作者。</p>
 </li>
-<li><p>自动化jira工作流程，据提交、分支和拉取请求配置 DevOps 触发器，以通过<a href="https://marketplace.atlassian.com/apps/1215460/automation-for-jira-data-center-and-server?hosting=datacenter&amp;tab=overview" target="_blank" rel="noopener">Automation for Jira</a>简化团队的 Jira 工作流程。</p>
+<li><p>自动化jira工作流程，据提交、分支和拉取请求配置 DevOps 触发器，以通过<a href="https://marketplace.atlassian.com/apps/1215460/automation-for-jira-data-center-and-server?hosting=datacenter&amp;tab=overview">Automation for Jira</a>简化团队的 Jira 工作流程。</p>
 </li>
 <li><p>在jira中创建分支和拉取请求。</p>
 </li>
 </ol>
 </blockquote>
-<h2 id="Worklogs"><a href="#Worklogs" class="headerlink" title="Worklogs"></a><a href="https://marketplace.atlassian.com/apps/1219004/worklogs-time-tracking-and-reports?hosting=server&amp;tab=overview" target="_blank" rel="noopener">Worklogs</a></h2><p>这个插件所做的事情就是统计大家每天研发登记的工作时间，最开始领到希望看到每个人每天都做了哪些事情，花了多长时间，可能会觉得有些人是在摸鱼的，于是就整出这么一个插件。</p>
+<h2 id="Worklogs"><a href="#Worklogs" class="headerlink" title="Worklogs"></a><a href="https://marketplace.atlassian.com/apps/1219004/worklogs-time-tracking-and-reports?hosting=server&amp;tab=overview">Worklogs</a></h2><p>这个插件所做的事情就是统计大家每天研发登记的工作时间，最开始领到希望看到每个人每天都做了哪些事情，花了多长时间，可能会觉得有些人是在摸鱼的，于是就整出这么一个插件。</p>
 <p><img src="https://img.carlwe.com/xs/jira4_work_log.png" alt=""></p>
 <p>很明显大家是很反感这种方式的，而且其实很多事情是不能够很好的在jira上进行体现，例如各种需求评审，技术方案设计、测试用例会议，解决临时线上问题等，而且会导致大家为了凑够一天8小时而去凑够一天8小时，个人觉得这种方式真的是为了统计而统计，研发的产出价值并不只是通过时间来进行统计的，这样达不到太多有益且正向的目的，反而会带来大家的反感和厌恶。</p>
-<h2 id="Plans"><a href="#Plans" class="headerlink" title="Plans"></a><a href="https://www.atlassian.com/zh/software/jira/features/roadmaps" target="_blank" rel="noopener">Plans</a></h2><p>那如何真多中小型团队进行较好的工作计划和开发任务管理呢，这里jira推荐我们使用Roadmap，在jira上也叫plans，我们可以针对不同的项目创建不同的plan，这里介绍两个我自己觉得比较常用的plan。</p>
+<h2 id="Plans"><a href="#Plans" class="headerlink" title="Plans"></a><a href="https://www.atlassian.com/zh/software/jira/features/roadmaps">Plans</a></h2><p>那如何真多中小型团队进行较好的工作计划和开发任务管理呢，这里jira推荐我们使用Roadmap，在jira上也叫plans，我们可以针对不同的项目创建不同的plan，这里介绍两个我自己觉得比较常用的plan。</p>
 <p><strong>1.以人的维度来安排自己的开发任务顺序</strong>，如下图：</p>
 <p><img src="https://img.carlwe.com/xs/jira4_roadmap_person_2_subtask.png" alt=""></p>
 <p>具体设置这里直接参考官方教程，来说下上面的图，Hierarchy只显示子任务，横向通过经办人的维度来进行分组，这样我们就可以看到分配给自己的所有任务，我们首先可以根据任务的优先级上下拖动进行排序，优先级高的先处理，然后根据我们创建卡片的时候预估的时长，及第一个任务的开始时间来进行时间拖动，规划每个任务的起始时间，这样我们就可以看到上图的内容，黄色竖线为当前时间点，红色圆圈为当前冲刺的结束时间点，这样大家就能够很好的对自己的任务进行排序，以及了解当前的开发进度是否正常。</p>
@@ -542,7 +534,7 @@
 <h1 id="我对项目管理的理解"><a href="#我对项目管理的理解" class="headerlink" title="我对项目管理的理解"></a>我对项目管理的理解</h1><p><img src="https://img.carlwe.com/xs/jiar4_yanfa.png" alt=""></p>
 <p>上面这张图是整个研发过程，其实我觉得，一个公司的效率我们更应该关注需求完整的生命周期，也就是产品+研发+测试其心协力的输出效率和交付质量，往往在开发过程中我们会发现，当需求等待、需求评审、需求变更这几个环节处理的比较好的团队，往往在研发环节可以省去很多不必要的沟通，同时研发能力强的团队同时也可以弥补一些产品设计不到位所到之的问题，提升研发效能应该是全流程的，且是大家每个齐心协力的结果。</p>
 <p><img src="https://img.carlwe.com/xs/jira4_yanfaxiaoneng.png" alt=""></p>
-<p>同时然间研发效能并不光光是指单独的交付效率提升，交付效率、交付质量、交付能力三方面缺一不可，具体的分析我们可以参考 <a href="https://www.infoq.cn/theme/107" target="_blank" rel="noopener">Infoq研发效能启示录</a> 系列文章中的分析。</p>
+<p>同时然间研发效能并不光光是指单独的交付效率提升，交付效率、交付质量、交付能力三方面缺一不可，具体的分析我们可以参考 <a href="https://www.infoq.cn/theme/107">Infoq研发效能启示录</a> 系列文章中的分析。</p>
 <p>研发管理自己的理解就是需要更多的吸取行业上先进的管理方式，同时结合团队自身的情况来进行量体裁衣，只有大家都积极配合，且管理者能够不断的优化流程，实际的解决大家在研发中与到的问题，才能更好的形成一个集体，功能提升研发效率和质量。</p>
 <p>到这里整个基于jira的研发管理就结束了，这个系列的文章主要是想记录下过去几个月中对于研发管理的实践及自己的思考，欢迎大家结合自己的工作，说说自己的心得。</p>
 
@@ -650,9 +642,11 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+              <img class="site-author-image" itemprop="image"
+                src="https://img.carlwe.com/blog_head.png"
+                alt="CarlWe" />
             
               <p class="site-author-name" itemprop="name">CarlWe</p>
               <p class="site-description motion-element" itemprop="description">Think Different</p>
@@ -663,7 +657,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
@@ -711,7 +705,7 @@
                   
                     
                   
-                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https:&#x2F;&#x2F;github.com&#x2F;love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -722,7 +716,7 @@
                   
                     
                   
-                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https:&#x2F;&#x2F;weibo.com&#x2F;144255366&#x2F;home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
                 </span>
               
             </div>
@@ -740,7 +734,7 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                    <a href="http://blog.kyleduo.com/" title="http:&#x2F;&#x2F;blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
                   </li>
                 
               </ul>
@@ -765,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jira自带报表"><span class="nav-number">1.</span> <span class="nav-text">jira自带报表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#版本工作量报告"><span class="nav-number">1.1.</span> <span class="nav-text">版本工作量报告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#燃耗图"><span class="nav-number">1.2.</span> <span class="nav-text">燃耗图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#累积流量图"><span class="nav-number">1.3.</span> <span class="nav-text">累积流量图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目管理插件"><span class="nav-number">2.</span> <span class="nav-text">项目管理插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tests"><span class="nav-number">2.1.</span> <span class="nav-text">Tests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">2.2.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Worklogs"><span class="nav-number">2.3.</span> <span class="nav-text">Worklogs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plans"><span class="nav-number">2.4.</span> <span class="nav-text">Plans</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我对项目管理的理解"><span class="nav-number">3.</span> <span class="nav-text">我对项目管理的理解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jira%E8%87%AA%E5%B8%A6%E6%8A%A5%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">jira自带报表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%B7%A5%E4%BD%9C%E9%87%8F%E6%8A%A5%E5%91%8A"><span class="nav-number">1.1.</span> <span class="nav-text">版本工作量报告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%87%83%E8%80%97%E5%9B%BE"><span class="nav-number">1.2.</span> <span class="nav-text">燃耗图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%AF%E7%A7%AF%E6%B5%81%E9%87%8F%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">累积流量图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">项目管理插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tests"><span class="nav-number">2.1.</span> <span class="nav-text">Tests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">2.2.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Worklogs"><span class="nav-number">2.3.</span> <span class="nav-text">Worklogs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plans"><span class="nav-number">2.4.</span> <span class="nav-text">Plans</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E5%AF%B9%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">我对项目管理的理解</span></a></li></ol></div>
             
 
           </div>
@@ -785,7 +779,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2026</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -797,7 +791,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -805,13 +799,13 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
 
 
 <div class="BbeiAn-info">
 京ICP备 
-<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
-
+<a target="_blank"  href="http://beian.miit.gov.cn">18063442号</a>
+</a>
 </div>
 
 
@@ -968,7 +962,7 @@
         avatar:'mm',
         meta:guest,
         pageSize:'10' || 10,
-        visitor: true
+        visitor: false
     });
   </script>
 
@@ -981,6 +975,70 @@
 
 
   
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz",
+                'X-LC-Key': "b0kYAp9zaADOzcuVAbiw4SeT",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
 
   
 

@@ -15,10 +15,10 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -54,7 +54,7 @@
   
     
   
-  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+  <link href="//img.carlwe.com/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -62,9 +62,11 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+  
 
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=6.6.0">
@@ -89,7 +91,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.6.0',
     sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -114,12 +116,11 @@
 
 
 
-  <meta name="keywords" content="技术">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article">
 <meta property="og:title" content="RSA加密(一) 密码学基础">
-<meta property="og:url" content="http://carlwe.com/2019/08/17/RSA加密(一) 密码学基础/index.html">
+<meta property="og:url" content="http://carlwe.com/2019/08/17/RSA%E5%8A%A0%E5%AF%86(%E4%B8%80)%20%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="CarlWe">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.carlwe.com/rsa_logo1.png-h">
 <meta property="og:image" content="https://img.carlwe.com/rsa_encrypt_history.jpg">
 <meta property="og:image" content="https://img.carlwe.com/rsa_mudantingshaonv.jpg">
@@ -130,9 +131,11 @@
 <meta property="og:image" content="https://img.carlwe.com/rsa_compare_sanlie.jpg">
 <meta property="og:image" content="https://img.carlwe.com/rsa_compare_symmetric.jpg">
 <meta property="og:image" content="https://img.carlwe.com/rsa_compare_unsymmetric.jpg">
-<meta property="og:updated_time" content="2020-08-18T02:25:58.809Z">
+<meta property="article:published_time" content="2019-08-17T02:14:48.000Z">
+<meta property="article:modified_time" content="2026-01-28T10:14:18.948Z">
+<meta property="article:author" content="CarlWe">
+<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RSA加密(一) 密码学基础">
 <meta name="twitter:image" content="https://img.carlwe.com/rsa_logo1.png-h">
 
 
@@ -140,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="http://carlwe.com/2019/08/17/RSA加密(一) 密码学基础/">
+  <link rel="canonical" href="http://carlwe.com/2019/08/17/RSA加密(一) 密码学基础/"/>
 
 
 
@@ -190,9 +193,9 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -202,7 +205,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -246,7 +249,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
 
   </li>
         
@@ -263,7 +266,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
 
   </li>
         
@@ -280,7 +283,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
 
   </li>
 
@@ -327,20 +330,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/08/17/RSA加密(一) 密码学基础/">
+    <link itemprop="mainEntityOfPage" href="http://carlwe.com/2019/08/17/RSA%E5%8A%A0%E5%AF%86(%E4%B8%80)%20%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CarlWe">
       <meta itemprop="description" content="Think Different">
       <meta itemprop="image" content="https://img.carlwe.com/blog_head.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CarlWe">
     </span>
 
@@ -384,21 +387,11 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/17/RSA加密(一) 密码学基础/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/08/17/RSA加密(一) 密码学基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
           
-             <span id="/2019/08/17/RSA加密(一) 密码学基础/" class="leancloud_visitors" data-flag-title="RSA加密(一) 密码学基础">
+             <span id="/2019/08/17/RSA%E5%8A%A0%E5%AF%86(%E4%B8%80)%20%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="leancloud_visitors" data-flag-title="RSA加密(一) 密码学基础">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -430,7 +423,7 @@
 
       
         <p><img src="https://img.carlwe.com/rsa_logo1.png-h" alt=""></p>
-<a id="more"></a>
+<span id="more"></span>
 <p>加密在生活中其实无处不在，我们先来看几个例子：</p>
 <ul>
 <li>输入用户名和密码登陆手机中的App。</li>
@@ -447,11 +440,11 @@
 <p><img src="https://img.carlwe.com/rsa_mudantingshaonv.jpg" alt=""></p>
 <p>在同时期的西方，人们最开始使用棋盘密码、滚筒密码和换位密码进行加密，达到混淆原文的目的。其中有名的<strong>凯撒密码</strong>（ 把一个字母替换为它后面固定位置的另一个字母）成为单表置换的经典，但是人们可以通过单表简单频率分析方法不断尝试从而将其破解。</p>
 <p><img src="https://img.carlwe.com/rsa_caesar.jpg-s" alt=""></p>
-<p><center>凯撒密码(key=3)</center><br>为了提升破解的困难程度，人们开始发明多表置换密码。即一个明文字母可以表示为多个密文字母，<strong><a href="https://www.cnblogs.com/inverseEntropy/p/10151176.html" target="_blank" rel="noopener">维吉尼亚密码</a></strong>随之出现，其使用一系列凯撒密码组成密码字母表的加密算法，故使得单表简单频率分析方法失效，维吉尼亚密码在法语写作：le chiffre indéchiffrable。意思是：不可破译的密码。自此密码破解的难度大大提升，维吉尼亚密码也成为了古典密码的里程碑。</p>
-<p>另外在近代密码出现之前，为了传递大量信息，一些加密算法加密过程过于耗时，尤其在战争中。时效性尤为重要，这时俚语加密便流行起来。太平洋战役中，美军招募了一批纳瓦霍族人作为通讯兵，由于其语言只有发音没有文字，且该语言未被研究过，所以即使敌人获取到，没有纳瓦霍族自己人的帮助也很难解密。美军在此基础上加上一些其他的加密处理来传递军事信息，效果出奇的好，最终顺利的帮助美国海军陆战队攻克了硫磺岛。故事具体情节可以移步这里👉<a href="https://baike.baidu.com/item/%E7%BA%B3%E7%93%A6%E9%9C%8D%E5%AF%86%E7%A0%81/9482868?fr=aladdin" target="_blank" rel="noopener">钠瓦霍密码</a></p>
+<p><center>凯撒密码(key=3)</center><br>为了提升破解的困难程度，人们开始发明多表置换密码。即一个明文字母可以表示为多个密文字母，<strong><a href="https://www.cnblogs.com/inverseEntropy/p/10151176.html">维吉尼亚密码</a></strong>随之出现，其使用一系列凯撒密码组成密码字母表的加密算法，故使得单表简单频率分析方法失效，维吉尼亚密码在法语写作：le chiffre indéchiffrable。意思是：不可破译的密码。自此密码破解的难度大大提升，维吉尼亚密码也成为了古典密码的里程碑。</p>
+<p>另外在近代密码出现之前，为了传递大量信息，一些加密算法加密过程过于耗时，尤其在战争中。时效性尤为重要，这时俚语加密便流行起来。太平洋战役中，美军招募了一批纳瓦霍族人作为通讯兵，由于其语言只有发音没有文字，且该语言未被研究过，所以即使敌人获取到，没有纳瓦霍族自己人的帮助也很难解密。美军在此基础上加上一些其他的加密处理来传递军事信息，效果出奇的好，最终顺利的帮助美国海军陆战队攻克了硫磺岛。故事具体情节可以移步这里👉<a href="https://baike.baidu.com/item/%E7%BA%B3%E7%93%A6%E9%9C%8D%E5%AF%86%E7%A0%81/9482868?fr=aladdin">钠瓦霍密码</a></p>
 <p>​    <img src="https://img.carlwe.com/ras_nawahuo.jpg" alt=""></p>
 <p><center>纳瓦霍通讯兵(左)&nbsp &nbsp 加密字典(右)</center><br>总的来说，古典密码学的思想主要通过隐藏、移位和替换来实现，而这一时期的密码学的体现形式则更像是一门艺术。</p>
-<h4 id="2-近代密码学"><a href="#2-近代密码学" class="headerlink" title="2.近代密码学"></a>2.近代密码学</h4><p>时间来到了1949年，在这一年美国数学家、信息论创始人<a href="https://baike.baidu.com/item/%E5%85%8B%E5%8A%B3%E5%BE%B7%C2%B7%E8%89%BE%E5%B0%94%E4%BC%8D%E5%BE%B7%C2%B7%E9%A6%99%E5%86%9C/10588593?fromtitle=%E9%A6%99%E5%86%9C&amp;fromid=1146248&amp;fr=aladdin" target="_blank" rel="noopener">香农</a>发表了一篇名叫《保密系统的信息理论》的论文。该文提出了<strong>混淆</strong>和<strong>扩散</strong>两大设计原则。为<strong>对称密码学</strong>建立了理论基础，自此密码学成为了一门科学，其代表性加密算法为DES和AES。其原理简单来说就是在加密前先分组，分组的过程中充分利用混淆和扩散，这样可以有效的抵抗对手根据密文的统计特性推测明文或密钥。</p>
+<h4 id="2-近代密码学"><a href="#2-近代密码学" class="headerlink" title="2.近代密码学"></a>2.近代密码学</h4><p>时间来到了1949年，在这一年美国数学家、信息论创始人<a href="https://baike.baidu.com/item/%E5%85%8B%E5%8A%B3%E5%BE%B7%C2%B7%E8%89%BE%E5%B0%94%E4%BC%8D%E5%BE%B7%C2%B7%E9%A6%99%E5%86%9C/10588593?fromtitle=%E9%A6%99%E5%86%9C&amp;fromid=1146248&amp;fr=aladdin">香农</a>发表了一篇名叫《保密系统的信息理论》的论文。该文提出了<strong>混淆</strong>和<strong>扩散</strong>两大设计原则。为<strong>对称密码学</strong>建立了理论基础，自此密码学成为了一门科学，其代表性加密算法为DES和AES。其原理简单来说就是在加密前先分组，分组的过程中充分利用混淆和扩散，这样可以有效的抵抗对手根据密文的统计特性推测明文或密钥。</p>
 <h4 id="3-现代密码学"><a href="#3-现代密码学" class="headerlink" title="3.现代密码学"></a>3.现代密码学</h4><p>在不久后的1976年，迪菲－赫尔曼发表了论文《密码学的新方向》，论文中提出了“迪菲－赫尔曼密钥交换算法”该算法奠定了现代密码学的基础，因此也获得了2015年的图灵奖。其核心为单向陷门函数， 特点是：易计算，但难求逆难。人们通过这个思想设计出了<strong>非对称加密</strong>算法。简单来说就是通过两个相关联的密钥，将加密与解密操作分开，从而可以在不直接传递密钥的情况下完成解密。而“易计算，求逆难”正好可以利用数学界的三大难题：</p>
 <blockquote>
 <p>1.质因数分解</p>
@@ -503,7 +496,7 @@
 <li><strong>非对称加密</strong></li>
 </ul>
 <p><img src="https://img.carlwe.com/rsa_compare_unsymmetric.jpg" alt=""></p>
-<p>最后就是非对称加密了算法了，除了我们所知道的RSA加密算法，还有一种叫做<strong><a href="https://www.jianshu.com/p/e41bc1eb1d81" target="_blank" rel="noopener">ECC加密算法</a></strong>，其显著特征是密钥长度低，故相同长度的密钥安全性比RSA更高，其在比特币中有大量运用，原理是通过上述提到的三大数学难题中的椭圆曲线问题，非对称加密算法相对于对称加密算法来说，安全性更高。拿RSA算法来说，一般认为密钥长度达到1024位基本安全，2048位的密钥极其安全。</p>
+<p>最后就是非对称加密了算法了，除了我们所知道的RSA加密算法，还有一种叫做<strong><a href="https://www.jianshu.com/p/e41bc1eb1d81">ECC加密算法</a></strong>，其显著特征是密钥长度低，故相同长度的密钥安全性比RSA更高，其在比特币中有大量运用，原理是通过上述提到的三大数学难题中的椭圆曲线问题，非对称加密算法相对于对称加密算法来说，安全性更高。拿RSA算法来说，一般认为密钥长度达到1024位基本安全，2048位的密钥极其安全。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不管是哪个时代，密码学在发展过程中，总是伴随着破解与反破解，而这个过程中，加密也变得越来越安全。我们可以看到加密从一种艺术演变成一门科学，从对称加密发展到非对称加密，那下一个加密时代又是如何呢？</p>
 <p>关于加密的故事其实还有很多,欢迎在留言区说出你记忆中古今中外的加密故事。下一篇我们将介绍RSA加密相关的知识，尽请期待！</p>
 
@@ -529,7 +522,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag"># 技术</a>
+            <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"># 技术</a>
           
         </div>
       
@@ -542,7 +535,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/24/神奇的黄金分割比/" rel="next" title="神奇的黄金分割比">
+              <a href="/2019/07/24/%E7%A5%9E%E5%A5%87%E7%9A%84%E9%BB%84%E9%87%91%E5%88%86%E5%89%B2%E6%AF%94/" rel="next" title="神奇的黄金分割比">
                 <i class="fa fa-chevron-left"></i> 神奇的黄金分割比
               </a>
             
@@ -552,7 +545,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/16/RSA加密(二) 加密过程/" rel="prev" title="RSA加密(二) 加密过程">
+              <a href="/2019/09/16/RSA%E5%8A%A0%E5%AF%86(%E4%BA%8C)%20%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B/" rel="prev" title="RSA加密(二) 加密过程">
                 RSA加密(二) 加密过程 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -615,9 +608,11 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://img.carlwe.com/blog_head.png" alt="CarlWe">
+              <img class="site-author-image" itemprop="image"
+                src="https://img.carlwe.com/blog_head.png"
+                alt="CarlWe" />
             
               <p class="site-author-name" itemprop="name">CarlWe</p>
               <p class="site-description motion-element" itemprop="description">Think Different</p>
@@ -628,7 +623,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
@@ -676,7 +671,7 @@
                   
                     
                   
-                  <a href="https://github.com/love-ai" title="GitHub &rarr; https://github.com/love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/love-ai" title="GitHub &rarr; https:&#x2F;&#x2F;github.com&#x2F;love-ai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -687,7 +682,7 @@
                   
                     
                   
-                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https://weibo.com/144255366/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  <a href="https://weibo.com/144255366/home" title="微博 &rarr; https:&#x2F;&#x2F;weibo.com&#x2F;144255366&#x2F;home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
                 </span>
               
             </div>
@@ -705,7 +700,7 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://blog.kyleduo.com" title="http://blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
+                    <a href="http://blog.kyleduo.com/" title="http:&#x2F;&#x2F;blog.kyleduo.com" rel="noopener" target="_blank">kyleduo</a>
                   </li>
                 
               </ul>
@@ -730,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#密码学的发展历史"><span class="nav-number">1.</span> <span class="nav-text">密码学的发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-古典密码学"><span class="nav-number">1.1.</span> <span class="nav-text">1.古典密码学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-近代密码学"><span class="nav-number">1.2.</span> <span class="nav-text">2.近代密码学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-现代密码学"><span class="nav-number">1.3.</span> <span class="nav-text">3.现代密码学</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称加密与非对称加密"><span class="nav-number">2.</span> <span class="nav-text">对称加密与非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见加密算法"><span class="nav-number">3.</span> <span class="nav-text">常见加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">密码学的发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="nav-number">1.1.</span> <span class="nav-text">1.古典密码学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%91%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="nav-number">1.2.</span> <span class="nav-text">2.近代密码学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="nav-number">1.3.</span> <span class="nav-text">3.现代密码学</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">2.</span> <span class="nav-text">对称加密与非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">常见加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -750,7 +745,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2026</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -762,7 +757,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
 
 
 
@@ -770,13 +765,13 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a></div>
 
 
 <div class="BbeiAn-info">
 京ICP备 
-<a target="_blank" href="http://beian.miit.gov.cn">18063442号</a>
-
+<a target="_blank"  href="http://beian.miit.gov.cn">18063442号</a>
+</a>
 </div>
 
 
@@ -933,7 +928,7 @@
         avatar:'mm',
         meta:guest,
         pageSize:'10' || 10,
-        visitor: true
+        visitor: false
     });
   </script>
 
@@ -946,6 +941,70 @@
 
 
   
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "v4tMSyKtnkNXshopxHKzSGBu-gzGzoHsz",
+                'X-LC-Key': "b0kYAp9zaADOzcuVAbiw4SeT",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
 
   
 
